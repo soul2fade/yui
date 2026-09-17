@@ -36,6 +36,15 @@ describe('legal pages', () => {
     }
   })
 
+  it('discloses what the free diagnostics send, on the privacy page', () => {
+    renderRoute('/privacy')
+    const text = screen.getByTestId('privacy-page').textContent
+    expect(text).toMatch(/Operations Health Check/)
+    expect(text).toMatch(/Find My Bottleneck/)
+    expect(text).toMatch(/Anthropic/)
+    expect(text).toMatch(/do not save your answers/)
+  })
+
   it('points the security page at the security address', () => {
     renderRoute('/security')
     expect(screen.getByTestId('security-page').textContent).toMatch(/security@yuiops\.com/)

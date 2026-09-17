@@ -40,7 +40,24 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '3. Third-Party Sharing',
+    heading: '3. Website Diagnostics',
+    content: [
+      {
+        type: 'p',
+        text: 'Our website offers two free self-serve diagnostics — the Operations Health Check and Find My Bottleneck. Neither asks for your name, email address, or phone number, and neither requires an account.',
+      },
+      {
+        type: 'p',
+        text: 'When you finish one, the answers you selected are sent to our own server function, which forwards them to Anthropic’s API so that a Claude model can generate your result. Anthropic processes those answers as our service provider and, under its commercial terms, does not use API inputs to train its models.',
+      },
+      {
+        type: 'p',
+        text: 'We do not save your answers once the result has been returned to your browser — there is no database behind either tool — and because we never ask who you are, the answers are not linked to you or to any contact record we hold.',
+      },
+    ],
+  },
+  {
+    heading: '4. Third-Party Sharing',
     content: [
       {
         type: 'p',
@@ -49,7 +66,7 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '4. Opt-Out & Help',
+    heading: '5. Opt-Out & Help',
     content: [
       {
         type: 'p',
@@ -62,7 +79,7 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '5. Message Frequency & Costs',
+    heading: '6. Message Frequency & Costs',
     content: [
       {
         type: 'p',
@@ -71,13 +88,13 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '6. Carriers',
+    heading: '7. Carriers',
     content: [
       { type: 'p', text: 'Carriers are not liable for delayed or undelivered messages.' },
     ],
   },
   {
-    heading: '7. Data Safeguards',
+    heading: '8. Data Safeguards',
     content: [
       {
         type: 'p',
@@ -86,7 +103,7 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '8. Changes to This Policy',
+    heading: '9. Changes to This Policy',
     content: [
       {
         type: 'p',
@@ -104,7 +121,7 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '9. Contact Us',
+    heading: '10. Contact Us',
     content: [
       {
         type: 'p',
