@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Eyebrow, Headline } from '../ui'
-import { BOOKING_HREF } from '../../site'
+import { BookingLink, Eyebrow, Headline } from '../ui'
 
 // Five-question bottleneck finder. The diagnosis is written server-side by the
 // `bottleneck` Netlify function, which keeps the API key off the client.
@@ -149,9 +147,7 @@ export default function BottleneckFinder() {
                   Thirty minutes on the phone and we will tell you whether this is a fix you
                   can run yourself or one worth handing over.
                 </p>
-                <Link to={BOOKING_HREF} className="btn btn-accent mt-7">
-                  Book a fit call
-                </Link>
+                <BookingLink className="mt-7">Book a fit call</BookingLink>
               </div>
 
               <div className="pt-8 text-center">

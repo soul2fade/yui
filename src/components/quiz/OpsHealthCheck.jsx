@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Eyebrow, Headline } from '../ui'
-import { BOOKING_HREF, EMAIL } from '../../site'
+import { BookingLink, Eyebrow, Headline } from '../ui'
+import { EMAIL } from '../../site'
 
 // Ten-question Operations Health Check. The answers are scored server-side by
 // the `audit` Netlify function, which keeps the API key off the client.
@@ -434,9 +433,7 @@ function ResultsCard({ result, onReset }) {
           Book a fit call. We will walk through your gaps and tell you what it takes to
           close them — or tell you honestly that you do not need us.
         </p>
-        <Link to={BOOKING_HREF} className="btn btn-accent mt-7">
-          Book a fit call
-        </Link>
+        <BookingLink className="mt-7">Book a fit call</BookingLink>
       </div>
 
       <div className="pt-4 text-center">

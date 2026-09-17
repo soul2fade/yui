@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom'
 import Meta from '../components/Meta'
-import { Eyebrow, Headline, Stat } from '../components/ui'
-import { BOOKING_HREF, EMAIL, STATS } from '../site'
+import { BookingLink, Eyebrow, Headline, Stat } from '../components/ui'
+import { EMAIL, STATS } from '../site'
 
 // Voice note: the About page speaks as "I" throughout. Every other page is "we".
 export default function AboutPage() {
@@ -145,9 +144,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link to={BOOKING_HREF} className="btn btn-accent">
-                Book a fit call
-              </Link>
+              <BookingLink>Book a fit call</BookingLink>
               <a href={`mailto:${EMAIL}`} className="btn btn-outline-ink">
                 {EMAIL}
               </a>

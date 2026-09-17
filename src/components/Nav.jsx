@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Wordmark from './Wordmark'
-import { BOOKING_HREF, NAV_LINKS } from '../site'
+import { BookingLink } from './ui'
+import { NAV_LINKS } from '../site'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -36,9 +37,7 @@ export default function Nav() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <Link to={BOOKING_HREF} className="btn btn-accent hidden sm:inline-flex">
-            Book a fit call
-          </Link>
+          <BookingLink className="hidden sm:inline-flex">Book a fit call</BookingLink>
           <button
             type="button"
             onClick={() => setOpen(!open)}
@@ -67,9 +66,9 @@ export default function Nav() {
             ))}
           </ul>
           <div className="mx-auto max-w-6xl px-6 pb-5 sm:hidden sm:px-8">
-            <Link to={BOOKING_HREF} onClick={close} className="btn btn-accent w-full">
+            <BookingLink onClick={close} className="w-full">
               Book a fit call
-            </Link>
+            </BookingLink>
           </div>
         </div>
       )}

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import Meta from '../components/Meta'
-import { Eyebrow, Headline } from '../components/ui'
-import { BOOKING_HREF } from '../site'
+import { BookingLink, Eyebrow, Headline } from '../components/ui'
 
 const TOOLS = [
   {
@@ -65,9 +64,9 @@ export default function FreeAuditPage() {
               Would rather just talk it through? A fit call is thirty minutes and we will
               tell you straight whether this is something we can help with.
             </p>
-            <Link to={BOOKING_HREF} className="btn btn-outline-ink shrink-0">
+            <BookingLink variant="outline-ink" className="shrink-0">
               Book a fit call
-            </Link>
+            </BookingLink>
           </div>
         </div>
       </section>

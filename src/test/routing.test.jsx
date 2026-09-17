@@ -42,3 +42,22 @@ describe('routes', () => {
     expect(footer).toHaveTextContent('© 2026 Yui')
   })
 })
+
+describe('booking CTAs', () => {
+  // BOOKING_HREF is an external scheduler, so these must be real anchors that
+  // open off-site — a react-router Link cannot navigate away from the app.
+  it.each([
+    ['/', 'home'],
+    ['/about', 'about'],
+    ['/free-audit', 'free audit'],
+  ])('points the fit-call CTA off-site on %s', (path) => {
+    renderRoute(path)
+    const ctas = screen.getAllByRole('link', { name: /book a fit call/i })
+    expect(ctas.length).toBeGreaterThan(0)
+    for (const cta of ctas) {
+      expect(cta).toHaveAttribute('href', expect.stringMatching(/^https:\/\/cal\.com\//))
+      expect(cta).toHaveAttribute('target', '_blank')
+      expect(cta).toHaveAttribute('rel', expect.stringContaining('noopener'))
+    }
+  })
+})

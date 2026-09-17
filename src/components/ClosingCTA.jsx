@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom'
-import { Headline } from './ui'
-import { BOOKING_HREF, EMAIL } from '../site'
+import { BookingLink, Headline } from './ui'
+import { EMAIL } from '../site'
 
 export default function ClosingCTA() {
   return (
@@ -14,9 +13,7 @@ export default function ClosingCTA() {
           whether we can fix it — and what it would take.
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
-          <Link to={BOOKING_HREF} className="btn btn-accent">
-            Book a fit call
-          </Link>
+          <BookingLink>Book a fit call</BookingLink>
           <a href={`mailto:${EMAIL}`} className="btn btn-outline">
             {EMAIL}
           </a>

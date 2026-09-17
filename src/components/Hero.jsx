@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Eyebrow, Headline } from './ui'
-import { BOOKING_HREF } from '../site'
+import { BookingLink, Eyebrow, Headline } from './ui'
 
 const TAGS = ['Based in Sacramento', 'Any small business', 'Builds, not decks']
 
@@ -24,9 +23,7 @@ export default function Hero() {
         </p>
 
         <div className="mt-10 flex flex-wrap gap-3">
-          <Link to={BOOKING_HREF} className="btn btn-accent">
-            Book a fit call
-          </Link>
+          <BookingLink>Book a fit call</BookingLink>
           <Link to="/#how-it-works" className="btn btn-outline">
             See how it works
           </Link>

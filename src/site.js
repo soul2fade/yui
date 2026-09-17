@@ -18,9 +18,10 @@ export const POSTAL_ADDRESS = [
 ]
 export const APP_URL = 'app.yuiops.com'
 
-// Fit-call destination. Points at the contact page until a scheduler link
-// exists — swap this one constant when it does and every CTA follows.
-export const BOOKING_HREF = '/contact'
+// Fit-call destination. External URLs are fine here: <BookingLink> renders an
+// anchor for them and a router link for internal paths. Swap this one constant
+// and every CTA on the site follows.
+export const BOOKING_HREF = 'https://cal.com/benchcoo/fit-call'
 
 export const NAV_LINKS = [
   { label: 'Services', href: '/#services' },

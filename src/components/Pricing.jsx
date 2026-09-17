@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom'
-import { Eyebrow, Headline } from './ui'
-import { BOOKING_HREF, EMAIL } from '../site'
+import { BookingLink, Eyebrow, Headline } from './ui'
+import { EMAIL } from '../site'
 
 const TIERS = [
   {
@@ -108,9 +107,9 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Link to={BOOKING_HREF} className="btn btn-outline-ink mt-7">
+              <BookingLink variant="outline-ink" className="mt-7">
                 Book a fit call
-              </Link>
+              </BookingLink>
             </div>
           ))}
         </div>

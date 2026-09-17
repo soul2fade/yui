@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { BOOKING_HREF } from '../site'
 
 // Mono eyebrow: Geist Mono, uppercase, 0.12em tracking, 11px.
 export function Eyebrow({ children, tone = 'accent', className = '' }) {
@@ -47,5 +48,32 @@ export function ButtonLink({ href, variant = 'accent', children, className = '' 
     <a href={href} className={cls}>
       {children}
     </a>
+  )
+}
+
+// The fit-call CTA. BOOKING_HREF may be an external scheduler or an internal
+// path, and those need different elements: react-router's Link cannot navigate
+// off-site, so an absolute URL has to render as a plain anchor.
+export function BookingLink({ variant = 'accent', className = '', onClick, children }) {
+  const cls = `btn btn-${variant} ${className}`.trim()
+  const isExternal = /^https?:\/\//.test(BOOKING_HREF)
+
+  if (isExternal) {
+    return (
+      <a
+        href={BOOKING_HREF}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick}
+        className={cls}
+      >
+        {children}
+      </a>
+    )
+  }
+  return (
+    <Link to={BOOKING_HREF} onClick={onClick} className={cls}>
+      {children}
+    </Link>
   )
 }
