@@ -85,3 +85,32 @@ lists what is still needed, the spec for each, and where it is referenced.
 The contact form is a Netlify Form. `public/__forms.html` is the static file
 Netlify parses at deploy time to register the form; `src/pages/ContactPage.jsx`
 posts to it. Keep the field names in the two files in sync.
+
+## Deployment
+
+Hosted on Netlify as the **yuiops** project (team `zimmerdc`), serving
+`yuiops.com`. Pushes to `main` build and deploy automatically.
+
+Build settings come from `netlify.toml` and match the project's own settings:
+branch `main`, no base directory, `npm run build`, publish `dist`, functions
+`netlify/functions`.
+
+### DNS
+
+`yuiops.com` is registered at GoDaddy, which is also authoritative for the zone
+(`ns47`/`ns48.domaincontrol.com`). Two records point it here:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| A | `@` | `75.2.60.5` (Netlify's apex load balancer) |
+| CNAME | `www` | `yuiops.netlify.app.` |
+
+There is deliberately only one apex A record — a second one alongside it would
+round-robin visitors between Netlify and the registrar's parking page.
+
+### Still needed for email
+
+The zone has no MX or SPF records, so `hello@`, `security@`, and `daniel@`
+`yuiops.com` do not receive mail yet, even though the footer, contact page, and
+all three legal pages publish them. Adding the domain to Google Workspace and
+its MX, SPF, and DKIM records at GoDaddy is the outstanding step.
