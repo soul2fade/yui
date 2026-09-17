@@ -2,7 +2,21 @@
 // place. Change them here, not in the components.
 
 export const EMAIL = 'hello@yuiops.com'
+export const SECURITY_EMAIL = 'security@yuiops.com'
+export const FOUNDER_EMAIL = 'daniel@yuiops.com'
 export const LOCATION = 'Sacramento, CA'
+
+// Legal-page facts. These carried over from the prior brand's reviewed policies
+// and describe the same operating entity — confirm each before launch.
+export const PHONE = '916-775-7717'
+export const ENTITY = 'Man Up Mentality Project LLC'
+export const POSTAL_ADDRESS = [
+  'Yui',
+  'Daniel Zimmer',
+  '5960 South Land Park Dr #608',
+  'Sacramento, CA 95822',
+]
+export const APP_URL = 'app.yuiops.com'
 
 // Fit-call destination. Points at the contact page until a scheduler link
 // exists — swap this one constant when it does and every CTA follows.

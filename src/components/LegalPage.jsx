@@ -1,9 +1,103 @@
 import Meta from './Meta'
 import { Eyebrow, Headline } from './ui'
 
-// Shared shell for /privacy, /terms and /security. `sections` is an array of
-// { heading, paragraphs: string[] }.
-export default function LegalPage({ testId, title, metaTitle, description, path, updated, intro, sections }) {
+// Shared shell for /privacy, /terms and /security.
+//
+// `sections` is an array of { heading, content }, where each content entry is
+// one of:
+//   { type: 'p', text }                     a paragraph
+//   { type: 'h3', text }                    a subsection heading
+//   { type: 'ul', items: [] }               a bulleted list
+//   { type: 'table', head: [], rows: [[]] } a two-or-more column table
+//   { type: 'address', lines: [] }          a postal address block
+function Block({ block }) {
+  switch (block.type) {
+    case 'h3':
+      return (
+        <h3
+          className="pt-2 text-[1.0625rem] text-ink"
+          style={{ fontWeight: 600, letterSpacing: '-0.01em' }}
+        >
+          {block.text}
+        </h3>
+      )
+    case 'ul':
+      return (
+        <ul className="space-y-2.5">
+          {block.items.map((item, i) => (
+            <li key={i} className="flex gap-3">
+              <span
+                aria-hidden="true"
+                className="mt-[0.5rem] block shrink-0 bg-accent"
+                style={{ width: 6, height: 6, borderRadius: 2 }}
+              />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    case 'table':
+      return (
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-left text-[0.9375rem]">
+            <thead>
+              <tr>
+                {block.head.map((cell) => (
+                  <th
+                    key={cell}
+                    scope="col"
+                    className="mono border-b border-line py-2.5 pr-4 text-muted"
+                  >
+                    {cell}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row) => (
+                <tr key={row[0]}>
+                  <th
+                    scope="row"
+                    className="border-b border-line py-2.5 pr-4 align-top font-medium text-ink"
+                  >
+                    {row[0]}
+                  </th>
+                  {row.slice(1).map((cell, i) => (
+                    <td key={i} className="border-b border-line py-2.5 pr-4 align-top">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    case 'address':
+      return (
+        <address className="not-italic leading-relaxed">
+          {block.lines.map((line, i) => (
+            <span key={i} className="block">
+              {line}
+            </span>
+          ))}
+        </address>
+      )
+    default:
+      return <p>{block.text}</p>
+  }
+}
+
+export default function LegalPage({
+  testId,
+  title,
+  metaTitle,
+  description,
+  path,
+  updated,
+  intro,
+  sections,
+}) {
   return (
     <div data-testid={testId}>
       <Meta title={metaTitle} description={description} path={path} />
@@ -27,8 +121,8 @@ export default function LegalPage({ testId, title, metaTitle, description, path,
                   {section.heading}
                 </h2>
                 <div className="mt-4 space-y-4 leading-relaxed text-muted">
-                  {section.paragraphs.map((paragraph, i) => (
-                    <p key={i}>{paragraph}</p>
+                  {section.content.map((block, i) => (
+                    <Block key={i} block={block} />
                   ))}
                 </div>
               </section>
