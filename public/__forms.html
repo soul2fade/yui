@@ -1,0 +1,22 @@
+<!doctype html>
+<!--
+  Netlify Forms detection file. Netlify parses this static HTML at deploy time to
+  register the "contact" form; the React page at /contact posts to it. Keep the
+  field names here in sync with src/pages/ContactPage.jsx.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form definitions</title>
+  </head>
+  <body>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="business" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>

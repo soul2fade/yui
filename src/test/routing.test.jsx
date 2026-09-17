@@ -1,0 +1,44 @@
+import { screen } from '@testing-library/react'
+import { renderRoute } from './renderRoute'
+
+const PAGES = [
+  ['/', 'home-page'],
+  ['/about', 'about-page'],
+  ['/audit', 'audit-page'],
+  ['/bottleneck', 'bottleneck-page'],
+  ['/free-audit', 'free-audit-page'],
+  ['/contact', 'contact-page'],
+  ['/privacy', 'privacy-page'],
+  ['/terms', 'terms-page'],
+  ['/security', 'security-page'],
+]
+
+describe('routes', () => {
+  it.each(PAGES)('renders %s', async (path, testId) => {
+    renderRoute(path)
+    expect(await screen.findByTestId(testId)).toBeInTheDocument()
+  })
+
+  it('sends unknown paths home', async () => {
+    renderRoute('/does-not-exist')
+    expect(await screen.findByTestId('home-page')).toBeInTheDocument()
+  })
+
+  it('puts the wordmark and the fit-call CTA in the nav on every page', async () => {
+    renderRoute('/privacy')
+    const nav = screen.getByRole('navigation', { name: 'Primary' })
+    expect(nav).toHaveTextContent('Yui')
+    expect(nav).toHaveTextContent('Book a fit call')
+  })
+
+  it('links the footer to the legal pages and the contact address', async () => {
+    renderRoute('/')
+    const footer = screen.getByRole('contentinfo')
+    for (const label of ['Privacy', 'Terms', 'Security', 'Contact']) {
+      expect(footer).toHaveTextContent(label)
+    }
+    expect(footer).toHaveTextContent('hello@yuiops.com')
+    expect(footer).toHaveTextContent('Sacramento, CA')
+    expect(footer).toHaveTextContent('© 2026 Yui')
+  })
+})

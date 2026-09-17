@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="OG IMAGE placeholder">
+  <rect width="1200" height="630" fill="#F6F6F4"/>
+  <rect x="12" y="12" width="1176" height="606" rx="20" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="3" stroke-dasharray="14 12"/>
+  <rect x="587" y="143" width="26" height="26" rx="3" fill="#187D6D"/>
+  <text x="600" y="272" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="31" letter-spacing="3" fill="#5A5A60">ASSET PLACEHOLDER</text>
+  <text x="600" y="358" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="43" font-weight="500" letter-spacing="3" fill="#0B0B0C">OG IMAGE</text>
+  <text x="600" y="444" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24" letter-spacing="2" fill="#187D6D">REPLACE WITH 1200x630 PNG</text>
+</svg>

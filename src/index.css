@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/* ── Brand tokens ───────────────────────────────────────────────────────────
+   ink        #0B0B0C  dark section backgrounds, primary text on light
+   paper      #F6F6F4  light section backgrounds
+   white      #FFFFFF  cards
+   accent     #187D6D  buttons, the period after headlines, the wordmark square
+   border     #E4E4E7
+   muted      #5A5A60  body text on light
+   muted-dark #8A8A90  body text on dark
+   ------------------------------------------------------------------------- */
+@theme {
+  --color-ink: #0B0B0C;
+  --color-paper: #F6F6F4;
+  --color-accent: #187D6D;
+  --color-accent-soft: #1E9384;
+  --color-line: #E4E4E7;
+  --color-muted: #5A5A60;
+  --color-muted-dark: #8A8A90;
+
+  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-pill: 999px;
+  --radius-panel: 20px;
+}
+
+:root {
+  font-family: var(--font-sans);
+  color-scheme: light;
+  color: #0B0B0C;
+  background: #F6F6F4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #F6F6F4;
+  color: #0B0B0C;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Component classes live in Tailwind's components layer so that utilities —
+   `hidden`, `md:hidden`, `text-lg` and friends — still override them. */
+@layer components {
+  /* ── Type primitives ──────────────────────────────────────────────────────── */
+
+  /* Headlines: Geist 600, tight tracking, near-solid leading. */
+  .headline {
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+  }
+
+  /* Eyebrows, labels, numerals. */
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* The period that closes a headline. */
+  .period { color: var(--color-accent); }
+
+  /* ── Components ───────────────────────────────────────────────────────────── */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-pill);
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-accent {
+    background: var(--color-accent);
+    color: #FFFFFF;
+  }
+  .btn-accent:hover { background: var(--color-accent-soft); }
+
+  /* Outline on dark sections. */
+  .btn-outline {
+    border-color: rgba(255, 255, 255, 0.28);
+    color: #FFFFFF;
+  }
+  .btn-outline:hover { border-color: #FFFFFF; background: rgba(255, 255, 255, 0.06); }
+
+  /* Outline on light sections. */
+  .btn-outline-ink {
+    border-color: var(--color-line);
+    color: var(--color-ink);
+    background: #FFFFFF;
+  }
+  .btn-outline-ink:hover { border-color: var(--color-ink); }
+
+  .btn:disabled { cursor: not-allowed; opacity: 0.45; }
+
+  .card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-panel);
+  }
+
+  /* Card on a dark background. */
+  .card-dark {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-panel);
+  }
+
+  /* Visible focus for keyboard users, on both backgrounds. */
+  :where(a, button, input, textarea, select):focus-visible {
+    outline: 2px solid var(--color-accent-soft);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

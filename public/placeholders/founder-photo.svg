@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="FOUNDER PHOTO placeholder">
+  <rect width="800" height="1000" fill="#F6F6F4"/>
+  <rect x="12" y="12" width="776" height="976" rx="20" fill="#FFFFFF" stroke="#E4E4E7" stroke-width="3" stroke-dasharray="14 12"/>
+  <rect x="392" y="388" width="17" height="17" rx="3" fill="#187D6D"/>
+  <text x="400" y="472" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" letter-spacing="2" fill="#5A5A60">ASSET PLACEHOLDER</text>
+  <text x="400" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="28" font-weight="500" letter-spacing="2" fill="#0B0B0C">FOUNDER PHOTO</text>
+  <text x="400" y="584" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" letter-spacing="1" fill="#187D6D">REPLACE WITH 4:5 PHOTO</text>
+</svg>
