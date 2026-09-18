@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <div data-testid="home-page">
       <Meta
-        title="Yui — AI integrations and operations management for small business"
+        title="Yui: AI integrations and operations management for small business"
         description="Yui is the operator your business is missing. AI integrations, operations management, and automation builds for small businesses. Based in Sacramento."
         path="/"
       />

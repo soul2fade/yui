@@ -4,7 +4,7 @@ const CARDS = [
   {
     title: 'You are the front office',
     body:
-      'You quote the job, you schedule it, you chase the invoice. The work that actually grows the business waits until everything else is done — which is never.',
+      'You quote the job, you schedule it, you chase the invoice. The work that actually grows the business waits until everything else is done, which is never.',
   },
   {
     title: 'You are the back office',

@@ -1,10 +1,10 @@
 # Assets still needed
 
-The founder photo is **done** — `public/daniel.jpg`, 700×700, EXIF and GPS
+The founder photo is **done**: `public/daniel.jpg`, 700×700, EXIF and GPS
 stripped before committing. Everything below is still a placeholder.
 
 Every item below is currently a **labeled placeholder**. Nothing here is final
-artwork — each file says "ASSET PLACEHOLDER" on its face so a missing asset is
+artwork. Each file says "ASSET PLACEHOLDER" on its face so a missing asset is
 obvious in review rather than silently shipping.
 
 | Asset | Placeholder in repo | Referenced from | Needed spec |
@@ -18,7 +18,7 @@ obvious in review rather than silently shipping.
 
 1. Drop the real file in `public/` (not `public/placeholders/`).
 2. Update the `src` in the component listed above, and keep the existing `alt`
-   text — it is written for the final asset, not the placeholder.
+   text, which is written for the final asset, not the placeholder.
 3. For the OG image, point both `og:image` and `twitter:image` in `index.html`
    at the absolute `https://yuiops.com/og-image.png` URL.
 4. Delete the placeholder file once nothing references it.

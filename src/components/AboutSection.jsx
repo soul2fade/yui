@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Eyebrow, Headline, Stat } from './ui'
 import { STATS } from '../site'
 
-// Voice note: the About section speaks as "I" — everywhere else on the site is "we".
+// Voice note: the About section speaks as "I". Everywhere else on the site is "we".
 export default function AboutSection() {
   return (
     <section id="about" className="border-b border-line bg-paper">
@@ -25,14 +25,14 @@ export default function AboutSection() {
 
             <div className="mt-7 max-w-xl space-y-5 text-lg leading-relaxed text-muted">
               <p>
-                I am Daniel. I have spent my career inside operations — managing $3.2B in
+                I am Daniel. I have spent my career inside operations, managing $3.2B in
                 assets at Folio Dynamix, running a youth soccer club of 900 players and 88
                 teams, and cutting $2M of cost out of a university&rsquo;s back office. Different
                 worlds, same job: figure out what is actually broken, then build the thing
                 that fixes it.
               </p>
               <p>
-                I started Yui because small businesses get the worst version of this help —
+                I started Yui because small businesses get the worst version of this help:
                 consultants who leave a deck behind, or software nobody adopts. I would
                 rather sit in your operation, build what it needs, and stay until it runs
                 without me watching it.

@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <div data-testid="about-page">
       <Meta
-        title="About — Daniel and the story behind Yui"
+        title="About: Daniel and the story behind Yui"
         description="Why Yui exists, what the name means, and the operations work behind it: $3.2B in assets at Folio Dynamix, 900 players at Greenhaven Soccer Club, $2M in cost reductions at William Jessup University."
         path="/about"
       />
@@ -30,14 +30,14 @@ export default function AboutPage() {
             <div className="space-y-5 text-lg leading-relaxed text-muted">
               <p>
                 I am Daniel. I have spent my career inside operations rather than beside
-                them — as the person accountable when the numbers are wrong, the schedule
+                them, as the person accountable when the numbers are wrong, the schedule
                 breaks, or nobody can find the file.
               </p>
               <p>
                 At Folio Dynamix I worked on operations behind $3.2B in managed assets,
                 where a small process gap is not an inconvenience, it is a reportable
                 problem. At Greenhaven Soccer Club I ran the operation for 900 players
-                across 88 teams — registration, scheduling, volunteers, fields, and a
+                across 88 teams: registration, scheduling, volunteers, fields, and a
                 hundred parents who needed an answer that evening. At William Jessup
                 University I delivered $2M in cost reductions, which in practice meant
                 reading every contract and every workflow until the waste was obvious.
@@ -54,7 +54,7 @@ export default function AboutPage() {
             </h2>
             <p>
               Small businesses get the worst version of operations help. Either a
-              consultant arrives, interviews everyone, leaves a deck, and invoices — or a
+              consultant arrives, interviews everyone, leaves a deck, and invoices, or a
               software vendor sells a platform that nobody adopts because it was never
               fitted to how the work actually happens. Both leave the owner exactly where
               they started, just poorer and more tired.
@@ -70,7 +70,7 @@ export default function AboutPage() {
               AI changed what is possible here, and not in the way most of the noise
               suggests. It does not replace anyone in a nine-person company. What it does
               is absorb the work that was never worth a salary and never got done properly
-              anyway — the call that went to voicemail, the follow-up nobody sent, the
+              anyway: the call that went to voicemail, the follow-up nobody sent, the
               report assembled by hand every month. That is unglamorous, and it is where
               the hours are.
             </p>
@@ -87,13 +87,13 @@ export default function AboutPage() {
             <div className="mt-5 space-y-4 text-lg leading-relaxed text-muted-dark">
               <p>
                 Yui is an old Japanese practice where neighbors pitched in on each
-                other&rsquo;s work — a roof to re-thatch, a field to harvest, a house to
+                other&rsquo;s work: a roof to re-thatch, a field to harvest, a house to
                 raise. Nobody invoiced anybody. You showed up because the help would come
                 back around when it was your turn.
               </p>
               <p>
                 That is the standard I am trying to hold. Not a vendor relationship, and
-                not charity either — showing up on someone else&rsquo;s work like the
+                not charity either. It is showing up on someone else&rsquo;s work like the
                 outcome is partly mine, because in practice it is.
               </p>
             </div>
@@ -124,8 +124,8 @@ export default function AboutPage() {
               fine.
             </p>
             <p>
-              If your operation is mostly fine and you need one automation built, say so —
-              that is a sprint, not a retainer, and I will tell you that on the call. If
+              If your operation is mostly fine and you need one automation built, say so.
+              That is a sprint, not a retainer, and I will tell you as much on the call. If
               you are the bottleneck for everything and you know it, that is the longer
               engagement. Either way, the first call is me asking what breaks most often,
               and telling you honestly whether I am the right help.

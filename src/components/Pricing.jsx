@@ -64,7 +64,7 @@ export default function Pricing() {
         </Headline>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
           Start with an assessment or go straight to a build. The monthly plans are month
-          to month — we would rather earn them than lock you in.
+          to month. We would rather earn them than lock you in.
         </p>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

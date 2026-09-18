@@ -10,7 +10,7 @@ const SERVICES = [
   {
     name: 'Operations management',
     body:
-      'We take the operating work off your plate and run it on a cadence — scheduling, receivables, vendors, the weekly numbers. Your processes get written down once, so they stop living in one person’s head.',
+      'We take the operating work off your plate and run it on a cadence: scheduling, receivables, vendors, the weekly numbers. Your processes get written down once, so they stop living in one person’s head.',
     points: ['Weekly operating rhythm', 'Documented, handoff-ready processes', 'Vendor and receivables follow-through'],
   },
   {

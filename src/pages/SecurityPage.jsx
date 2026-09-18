@@ -81,7 +81,7 @@ const SECTIONS = [
     content: [
       {
         type: 'p',
-        text: 'If you make a good-faith effort to comply with this policy — you stay in scope, you do not exfiltrate data, you do not disrupt service, and you give us a reasonable window to respond before public disclosure — we will not pursue legal action, regulatory complaints, or DMCA claims against you for your research.',
+        text: 'If you make a good-faith effort to comply with this policy (you stay in scope, you do not exfiltrate data, you do not disrupt service, and you give us a reasonable window to respond before public disclosure), we will not pursue legal action, regulatory complaints, or DMCA claims against you for your research.',
       },
       {
         type: 'p',
@@ -137,7 +137,7 @@ const SECTIONS = [
           'OAuth tokens are encrypted at rest using AES-256-GCM with a key held outside the database, so a stolen database alone does not yield usable credentials.',
           'Tokens are never logged. Error reports sent to our monitoring system have Authorization headers, cookies, and OAuth-shaped query parameters replaced with [Filtered] before transmission.',
           'Customer data is fetched on demand and cached only briefly (up to four hours) to reduce upstream API load. Cached values are deleted on disconnect.',
-          'Disconnecting removes the data. When you disconnect a platform — whether from within our app or from the connected platform’s settings — we revoke the OAuth token, null the encrypted token fields, clear cached values, and strip platform-derived numerical blocks from prior chat history. This happens synchronously at the time of disconnect, not on a delay.',
+          'Disconnecting removes the data. When you disconnect a platform, whether from within our app or from the connected platform’s settings, we revoke the OAuth token, null the encrypted token fields, clear cached values, and strip platform-derived numerical blocks from prior chat history. This happens synchronously at the time of disconnect, not on a delay.',
           'Audit log entries for connection lifecycle events (connect, refresh, disconnect) are retained for security and compliance purposes but contain no customer-readable platform data.',
         ],
       },
@@ -152,7 +152,7 @@ const SECTIONS = [
       },
       {
         type: 'p',
-        text: 'Connection-related data tied to a third-party integration (OAuth tokens, cached API responses, platform-derived report blocks in chat) is removed within 30 days of disconnection — in practice, synchronously at disconnect time, well before the 30-day limit.',
+        text: 'Connection-related data tied to a third-party integration (OAuth tokens, cached API responses, platform-derived report blocks in chat) is removed within 30 days of disconnection. In practice this happens synchronously at disconnect time, well before the 30-day limit.',
       },
     ],
   },

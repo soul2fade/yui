@@ -7,7 +7,7 @@ export const FOUNDER_EMAIL = 'daniel@yuiops.com'
 export const LOCATION = 'Sacramento, CA'
 
 // Legal-page facts. These carried over from the prior brand's reviewed policies
-// and describe the same operating entity — confirm each before launch.
+// and describe the same operating entity. Confirm each before launch.
 export const PHONE = '916-775-7717'
 export const ENTITY = 'Man Up Mentality Project LLC'
 export const POSTAL_ADDRESS = [

@@ -16,7 +16,7 @@ const TOOLS = [
     name: 'Find My Bottleneck',
     length: '5 questions · ~1 minute',
     body:
-      'The narrow one. Five questions, and we name the single constraint holding everything else up — plus one concrete step you can take this week without hiring anyone.',
+      'The narrow one. Five questions, and we name the single constraint holding everything else up, plus one concrete step you can take this week without hiring anyone.',
     cta: 'Find my bottleneck',
   },
 ]
@@ -25,7 +25,7 @@ export default function FreeAuditPage() {
   return (
     <div data-testid="free-audit-page">
       <Meta
-        title="Free audit — two self-serve operations diagnostics | Yui"
+        title="Free audit: two self-serve operations diagnostics | Yui"
         description="Two free diagnostics for small business operations: a 10-question Operations Health Check and a 5-question bottleneck finder. No email required."
         path="/free-audit"
       />

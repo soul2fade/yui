@@ -17,7 +17,7 @@ const QUESTIONS = [
   {
     q: 'What is eating the most of your time right now?',
     opts: [
-      'Scheduling — juggling who does what and when',
+      'Scheduling: juggling who does what and when',
       'Chasing payments or managing invoices',
       'Keeping my team organized and accountable',
       'Client or member communication',
@@ -40,10 +40,10 @@ const QUESTIONS = [
   {
     q: 'How often do things fall through the cracks?',
     opts: [
-      'Regularly — it is a constant problem',
-      'A few times a month — frustrating but manageable',
-      'Occasionally — we usually catch it',
-      'Rarely — we have it handled',
+      'Regularly, it is a constant problem',
+      'A few times a month, frustrating but manageable',
+      'Occasionally, we usually catch it',
+      'Rarely, we have it handled',
     ],
   },
 ]

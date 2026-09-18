@@ -3,7 +3,7 @@ import { Head } from 'vite-react-ssg'
 const SITE = 'https://yuiops.com'
 
 // ASSET PLACEHOLDER: replace with a real 1200x630 PNG at /og-image.png once it
-// exists — see public/ASSETS.md.
+// exists; see public/ASSETS.md.
 const OG_IMAGE = `${SITE}/placeholders/og-image.svg`
 
 // Every <head> tag that varies by page lives here, so index.html carries none of

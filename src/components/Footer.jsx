@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-14 sm:px-8">
         <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <Link to="/" aria-label="Yui — home">
+            <Link to="/" aria-label="Yui, home">
               <Wordmark tone="paper" />
             </Link>
             <ul className="mt-5 space-y-1.5 text-[0.9375rem] text-muted-dark">

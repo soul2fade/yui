@@ -17,7 +17,7 @@ export default function Nav() {
         aria-label="Primary"
         className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4 sm:px-8"
       >
-        <Link to="/" onClick={close} aria-label="Yui — home">
+        <Link to="/" onClick={close} aria-label="Yui, home">
           <Wordmark />
         </Link>
 

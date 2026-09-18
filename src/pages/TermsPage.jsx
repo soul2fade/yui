@@ -3,10 +3,10 @@ import { APP_URL, EMAIL, ENTITY, PHONE, POSTAL_ADDRESS } from '../site'
 
 // Ported from the prior brand's reviewed terms. Only the business name, domain,
 // app URL, and contact email changed. The EULA below describes a QuickBooks-
-// connected web application — if no Yui app is live yet, drop the EULA section.
+// connected web application. If no Yui app is live yet, drop the EULA section.
 const SECTIONS = [
   {
-    heading: `End User License Agreement (EULA) — Yui Software`,
+    heading: `End User License Agreement (EULA) for Yui Software`,
     content: [
       {
         type: 'p',
@@ -40,7 +40,7 @@ const SECTIONS = [
         type: 'p',
         text: 'OAuth tokens are encrypted at rest using AES-256-GCM with keys held in our application environment (never in the database). Report data may be cached for up to four hours to reduce API load and is deleted within 24 hours of disconnection.',
       },
-      { type: 'h3', text: 'E. AI-generated output — not professional advice' },
+      { type: 'h3', text: 'E. AI-generated output is not professional advice' },
       {
         type: 'p',
         text: 'The Software uses large language models (“LLMs”) to generate financial analysis, summaries, and recommendations based on data you provide and data retrieved from connected services such as QuickBooks Online. AI outputs may contain errors, omissions, or misinterpretations and must not be relied upon as the sole basis for any business, financial, accounting, tax, legal, or investment decision.',

@@ -41,7 +41,7 @@ export default function ContactPage() {
   return (
     <div data-testid="contact-page">
       <Meta
-        title="Contact — book a fit call with Yui"
+        title="Contact: book a fit call with Yui"
         description="Tell us what keeps breaking in your operation. Thirty-minute fit calls, no pitch deck. Based in Sacramento."
         path="/contact"
       />
@@ -54,7 +54,7 @@ export default function ContactPage() {
           </Headline>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
             Send this and we will come back with times for a thirty-minute fit call. No
-            deck, no pressure — if we are not the right help, we will say so.
+            deck, no pressure. If we are not the right help, we will say so.
           </p>
 
           <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,260px)] lg:gap-12">
@@ -66,7 +66,7 @@ export default function ContactPage() {
                     className="mt-4 text-2xl text-ink"
                     style={{ fontWeight: 600, letterSpacing: '-0.03em' }}
                   >
-                    Got it — thank you
+                    Got it, thank you
                   </h2>
                   <p className="mt-3.5 leading-relaxed text-muted">
                     We read everything that comes in and reply within one business day. If

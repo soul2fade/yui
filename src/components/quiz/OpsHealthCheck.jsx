@@ -56,10 +56,10 @@ const QUESTIONS = [
     label: 'How often do invoices get paid late?',
     type: 'choice',
     options: [
-      'Rarely — most customers pay on time',
-      'Sometimes — a handful each month',
-      'Often — late payments are a constant problem',
-      'Most invoices — chasing payment is part of the job',
+      'Rarely, most customers pay on time',
+      'Sometimes, a handful each month',
+      'Often, late payments are a constant problem',
+      'Most invoices. Chasing payment is part of the job',
     ],
   },
   {
@@ -73,10 +73,10 @@ const QUESTIONS = [
     label: 'Do you know your actual margin per job or per customer?',
     type: 'choice',
     options: [
-      'No — I only see the overall picture at year-end',
+      'No, I only see the overall picture at year-end',
       'A rough estimate based on gut feel',
       'I calculate it manually after the fact',
-      'Yes — it is tracked automatically',
+      'Yes, it is tracked automatically',
     ],
   },
   {
@@ -219,7 +219,7 @@ function IntroCard({ onStart }) {
         See where your operations stand
       </h2>
       <p className="mt-4 leading-relaxed text-muted">
-        Answer honestly — the score is only useful if the inputs are. Results come back in
+        Answer honestly. The score is only useful if the inputs are. Results come back in
         about ten seconds.
       </p>
       <button type="button" onClick={onStart} className="btn btn-accent mt-8">
@@ -431,7 +431,7 @@ function ResultsCard({ result, onReset }) {
         </h2>
         <p className="mt-4 leading-relaxed text-muted-dark">
           Book a fit call. We will walk through your gaps and tell you what it takes to
-          close them — or tell you honestly that you do not need us.
+          close them, or tell you honestly that you do not need us.
         </p>
         <BookingLink className="mt-7">Book a fit call</BookingLink>
       </div>

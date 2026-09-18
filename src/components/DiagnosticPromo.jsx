@@ -13,7 +13,7 @@ const TOOLS = [
     href: '/bottleneck',
     name: 'Find My Bottleneck',
     body:
-      'Five questions, and we name the one constraint holding everything else up — plus one concrete thing you can do about it this week.',
+      'Five questions, and we name the one constraint holding everything else up, plus one concrete thing you can do about it this week.',
     cta: 'Find my bottleneck',
   },
 ]

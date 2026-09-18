@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Eyebrow, Headline } from './ui'
 
-// Both images are labeled placeholders — see public/ASSETS.md. The alt text is
+// Both images are labeled placeholders; see public/ASSETS.md. The alt text is
 // written for the final asset so it survives the swap.
 const PROJECTS = [
   {

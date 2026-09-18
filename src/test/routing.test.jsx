@@ -45,7 +45,7 @@ describe('routes', () => {
 
 describe('booking CTAs', () => {
   // BOOKING_HREF is an external scheduler, so these must be real anchors that
-  // open off-site — a react-router Link cannot navigate away from the app.
+  // open off-site, because a react-router Link cannot navigate away from the app.
   it.each([
     ['/', 'home'],
     ['/about', 'about'],

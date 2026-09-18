@@ -10,7 +10,7 @@ const SECTIONS = [
     content: [
       {
         type: 'p',
-        text: 'We collect your phone number only when you voluntarily provide it to us — for example, by calling our business phone number, texting us first, submitting a contact or scheduling form on our website, or otherwise opting in to receive messages from us. We may also collect your name, email address, and any details you choose to share about your business or project.',
+        text: 'We collect your phone number only when you voluntarily provide it to us, for example by calling our business phone number, texting us first, submitting a contact or scheduling form on our website, or otherwise opting in to receive messages from us. We may also collect your name, email address, and any details you choose to share about your business or project.',
       },
     ],
   },
@@ -44,7 +44,7 @@ const SECTIONS = [
     content: [
       {
         type: 'p',
-        text: 'Our website offers two free self-serve diagnostics — the Operations Health Check and Find My Bottleneck. Neither asks for your name, email address, or phone number, and neither requires an account.',
+        text: 'Our website offers two free self-serve diagnostics: the Operations Health Check and Find My Bottleneck. Neither asks for your name, email address, or phone number, and neither requires an account.',
       },
       {
         type: 'p',
@@ -52,7 +52,7 @@ const SECTIONS = [
       },
       {
         type: 'p',
-        text: 'We do not save your answers once the result has been returned to your browser — there is no database behind either tool — and because we never ask who you are, the answers are not linked to you or to any contact record we hold.',
+        text: 'We do not save your answers once the result has been returned to your browser (there is no database behind either tool), and because we never ask who you are, the answers are not linked to you or to any contact record we hold.',
       },
     ],
   },
@@ -61,7 +61,7 @@ const SECTIONS = [
     content: [
       {
         type: 'p',
-        text: 'We do not sell, rent, transfer, or share your personal information — including your mobile number and other contact details — with any external organizations or third parties for any purpose. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. All categories of data described above exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.',
+        text: 'We do not sell, rent, transfer, or share your personal information, including your mobile number and other contact details, with any external organizations or third parties for any purpose. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. All categories of data described above exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.',
       },
     ],
   },
@@ -98,7 +98,7 @@ const SECTIONS = [
     content: [
       {
         type: 'p',
-        text: 'We maintain internal access controls, employee confidentiality requirements, and administrative, technical, and physical safeguards to prevent unauthorized access, use, sharing, or disclosure of personal information. These protections include internal policies, role-based access controls, secure transmission and storage practices, and written staff handling policies. Only authorized personnel may access user data — including consumer data — and only for approved business purposes related to the services described in this policy.',
+        text: 'We maintain internal access controls, employee confidentiality requirements, and administrative, technical, and physical safeguards to prevent unauthorized access, use, sharing, or disclosure of personal information. These protections include internal policies, role-based access controls, secure transmission and storage practices, and written staff handling policies. Only authorized personnel may access user data, including consumer data, and only for approved business purposes related to the services described in this policy.',
       },
     ],
   },

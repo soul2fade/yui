@@ -54,8 +54,8 @@ html, body {
   flex-direction: column;
 }
 
-/* Component classes live in Tailwind's components layer so that utilities —
-   `hidden`, `md:hidden`, `text-lg` and friends — still override them. */
+/* Component classes live in Tailwind's components layer so that utilities
+   (`hidden`, `md:hidden`, `text-lg` and friends) still override them. */
 @layer components {
   /* ── Type primitives ──────────────────────────────────────────────────────── */
 
