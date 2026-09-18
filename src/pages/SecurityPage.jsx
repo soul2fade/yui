@@ -45,7 +45,6 @@ const SECTIONS = [
         items: [
           `The app at https://${APP_URL} and its API endpoints`,
           'The marketing site at https://yuiops.com',
-          'The demo experience at https://demo.yuiops.com',
           'OAuth integration code (QuickBooks, HubSpot, Square, Jobber, Gusto, and any future connectors)',
           'Webhook handlers and write-back endpoints',
         ],
