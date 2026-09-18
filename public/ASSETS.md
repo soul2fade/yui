@@ -1,12 +1,14 @@
 # Assets still needed
 
+The founder photo is **done** — `public/daniel.jpg`, 700×700, EXIF and GPS
+stripped before committing. Everything below is still a placeholder.
+
 Every item below is currently a **labeled placeholder**. Nothing here is final
 artwork — each file says "ASSET PLACEHOLDER" on its face so a missing asset is
 obvious in review rather than silently shipping.
 
 | Asset | Placeholder in repo | Referenced from | Needed spec |
 | --- | --- | --- | --- |
-| Founder photo | `public/placeholders/founder-photo.svg` | `src/components/AboutSection.jsx`, `src/pages/AboutPage.jsx` | 4:5 portrait, min 800×1000, JPG or WebP |
 | Missed-Call Rescue demo screenshot | `public/placeholders/missed-call-rescue.svg` | `src/components/Work.jsx` | 3:2, min 1200×800, PNG |
 | Sacramento Ballet screenshot | `public/placeholders/sacramento-ballet.svg` | `src/components/Work.jsx` | 3:2, min 1200×800, PNG |
 | Favicon | `public/favicon.svg` | `index.html` | Final mark as SVG + 180×180 `apple-touch-icon.png` |

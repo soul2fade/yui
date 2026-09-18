@@ -8,14 +8,13 @@ export default function AboutSection() {
     <section id="about" className="border-b border-line bg-paper">
       <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] lg:gap-16">
-          {/* ASSET PLACEHOLDER: founder photo — see public/ASSETS.md. */}
           <img
-            src="/placeholders/founder-photo.svg"
-            alt="Daniel, founder of Yui, photographed in Sacramento."
-            width="800"
-            height="1000"
+            src="/daniel.jpg"
+            alt="Daniel, the founder of Yui, in a studio headshot."
+            width="700"
+            height="700"
             loading="lazy"
-            className="aspect-[4/5] w-full max-w-xs rounded-[20px] border border-line object-cover"
+            className="aspect-square w-full max-w-xs rounded-[20px] border border-line object-cover"
           />
 
           <div>

@@ -20,13 +20,12 @@ export default function AboutPage() {
           </Headline>
 
           <div className="mt-12 grid gap-10 sm:grid-cols-[minmax(0,260px)_minmax(0,1fr)] sm:gap-12">
-            {/* ASSET PLACEHOLDER: founder photo — see public/ASSETS.md. */}
             <img
-              src="/placeholders/founder-photo.svg"
-              alt="Daniel, founder of Yui, photographed in Sacramento."
-              width="800"
-              height="1000"
-              className="aspect-[4/5] w-full rounded-[20px] border border-line object-cover"
+              src="/daniel.jpg"
+              alt="Daniel, the founder of Yui, in a studio headshot."
+              width="700"
+              height="700"
+              className="aspect-square w-full rounded-[20px] border border-line object-cover"
             />
             <div className="space-y-5 text-lg leading-relaxed text-muted">
               <p>
