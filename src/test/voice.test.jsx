@@ -17,7 +17,7 @@ describe('voice', () => {
 
   it('uses "we" in the homepage sections outside About', () => {
     renderRoute('/')
-    for (const id of ['problem', 'diagnostics', 'services', 'how-it-works', 'work', 'pricing']) {
+    for (const id of ['name', 'problem', 'diagnostics', 'services', 'how-it-works', 'work', 'pricing']) {
       const section = document.getElementById(id)
       expect(
         stripProductNames(section.textContent),

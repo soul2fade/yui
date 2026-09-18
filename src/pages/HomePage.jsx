@@ -1,5 +1,6 @@
 import Meta from '../components/Meta'
 import Hero from '../components/Hero'
+import NameStory from '../components/NameStory'
 import Problem from '../components/Problem'
 import DiagnosticPromo from '../components/DiagnosticPromo'
 import Services from '../components/Services'
@@ -18,6 +19,7 @@ export default function HomePage() {
         path="/"
       />
       <Hero />
+      <NameStory />
       <Problem />
       <DiagnosticPromo />
       <Services />

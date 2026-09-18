@@ -15,6 +15,7 @@ describe('homepage', () => {
     const { container } = renderRoute('/')
     const ids = [...container.querySelectorAll('section[id]')].map((el) => el.id)
     expect(ids).toEqual([
+      'name',
       'problem',
       'diagnostics',
       'services',
