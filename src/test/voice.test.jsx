@@ -9,6 +9,12 @@ const FIRST_PERSON_SINGULAR = /\b(I|I'm|I’m|I've|I’ve|my)\b/
 const stripProductNames = (text) => text.replace(/find my bottleneck/gi, '')
 
 describe('voice', () => {
+  it('uses "I" in the homepage name card, which is the founder speaking', () => {
+    renderRoute('/')
+    const name = document.getElementById('name')
+    expect(name.textContent).toMatch(FIRST_PERSON_SINGULAR)
+  })
+
   it('uses "I" in the homepage About section', () => {
     renderRoute('/')
     const about = document.getElementById('about')
@@ -17,7 +23,7 @@ describe('voice', () => {
 
   it('uses "we" in the homepage sections outside About', () => {
     renderRoute('/')
-    for (const id of ['name', 'problem', 'diagnostics', 'services', 'how-it-works', 'work', 'pricing']) {
+    for (const id of ['problem', 'diagnostics', 'services', 'how-it-works', 'work', 'pricing']) {
       const section = document.getElementById(id)
       expect(
         stripProductNames(section.textContent),
