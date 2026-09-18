@@ -9,13 +9,13 @@ const QUESTIONS = [
     id: 'revenue',
     label: 'What is your approximate annual revenue?',
     type: 'choice',
-    options: ['Under $500k', '$500k – $1M', '$1M – $3M', '$3M – $10M', 'Over $10M'],
+    options: ['Under $500k', '$500k to $1M', '$1M to $3M', '$3M to $10M', 'Over $10M'],
   },
   {
     id: 'team_size',
     label: 'How many people are on your team (including you)?',
     type: 'choice',
-    options: ['1 – 5', '6 – 15', '16 – 50', '51 – 150', '150+'],
+    options: ['1 to 5', '6 to 15', '16 to 50', '51 to 150', '150 or more'],
   },
   {
     id: 'scheduling',
@@ -66,7 +66,7 @@ const QUESTIONS = [
     id: 'admin_hours',
     label: 'How many hours a week do you personally spend on admin and paperwork?',
     type: 'choice',
-    options: ['Under 5 hours', '5 – 10 hours', '10 – 20 hours', 'Over 20 hours'],
+    options: ['Under 5 hours', '5 to 10 hours', '10 to 20 hours', 'Over 20 hours'],
   },
   {
     id: 'profit_visibility',

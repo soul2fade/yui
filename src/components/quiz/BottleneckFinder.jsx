@@ -26,7 +26,7 @@ const QUESTIONS = [
   },
   {
     q: 'How many people are on your team?',
-    opts: ['Just me (or me + 1 other)', '2 – 5 people', '6 – 15 people', '16 or more'],
+    opts: ['Just me (or me plus one other)', '2 to 5 people', '6 to 15 people', '16 or more'],
   },
   {
     q: 'How do you track operations day to day?',
