@@ -12,10 +12,6 @@ const SECTIONS = [
         type: 'p',
         text: `If you believe you have found a security issue in our app, website, or any connected integration, please email ${SECURITY_EMAIL} with a description of the issue and steps to reproduce. The address forwards directly to the founder.`,
       },
-      {
-        type: 'p',
-        text: `A machine-readable version of this contact lives at https://${APP_URL}/.well-known/security.txt per RFC 9116.`,
-      },
     ],
   },
   {
@@ -161,7 +157,7 @@ const SECTIONS = [
     content: [
       {
         type: 'p',
-        text: 'All traffic between customers, our application, and our subprocessors uses TLS 1.2 or higher. The app and marketing site enforce HTTPS via HTTP Strict Transport Security with a two-year max-age, includeSubDomains, and preload directives.',
+        text: 'All traffic between customers, our application, and our subprocessors uses TLS 1.2 or higher. The marketing site redirects all HTTP requests to HTTPS and sends an HTTP Strict Transport Security header.',
       },
     ],
   },
