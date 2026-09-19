@@ -21,7 +21,7 @@ export const APP_URL = 'app.yuiops.com'
 // Fit-call destination. External URLs are fine here: <BookingLink> renders an
 // anchor for them and a router link for internal paths. Swap this one constant
 // and every CTA on the site follows.
-export const BOOKING_HREF = 'https://cal.com/benchcoo/fit-call'
+export const BOOKING_HREF = 'https://cal.com/yuiops/fit-call'
 
 export const NAV_LINKS = [
   { label: 'Services', href: '/#services' },
