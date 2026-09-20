@@ -105,7 +105,7 @@ const SECTIONS = [
             'Sentry',
             'Application error monitoring (with sensitive headers and OAuth-shaped query parameters scrubbed before transmission)',
           ],
-          ['Plausible', 'Privacy-respecting product analytics (no individual user tracking)'],
+          ['Google Analytics', 'Website traffic analytics for the marketing site (see our Privacy Policy)'],
           ['Google Workspace', 'Operational email (hello@, daniel@, security@)'],
           ['Intuit (QuickBooks)', 'Customer-authorized accounting data access via OAuth'],
           ['HubSpot', 'Customer-authorized CRM data access via OAuth'],

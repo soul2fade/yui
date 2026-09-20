@@ -57,7 +57,20 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '4. Third-Party Sharing',
+    heading: '4. Website Analytics',
+    content: [
+      {
+        type: 'p',
+        text: 'We use Google Analytics, a web analytics service provided by Google, to understand how visitors use our website, such as which pages are viewed and how visitors arrive at the site. Google Analytics uses cookies and similar technologies to collect information such as the pages you visit, the time you spend on them, the website that referred you, and general information about your device, browser, and approximate location.',
+      },
+      {
+        type: 'p',
+        text: 'To learn how Google collects and processes this data, see “How Google uses information from sites or apps that use our services” at https://policies.google.com/technologies/partner-sites. You can prevent Google Analytics from collecting data about your visits by installing the Google Analytics Opt-out Browser Add-on at https://tools.google.com/dlpage/gaoptout, or by blocking cookies in your browser settings.',
+      },
+    ],
+  },
+  {
+    heading: '5. Third-Party Sharing',
     content: [
       {
         type: 'p',
@@ -66,7 +79,7 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '5. Opt-Out & Help',
+    heading: '6. Opt-Out & Help',
     content: [
       {
         type: 'p',
@@ -79,7 +92,7 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '6. Message Frequency & Costs',
+    heading: '7. Message Frequency & Costs',
     content: [
       {
         type: 'p',
@@ -88,13 +101,13 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '7. Carriers',
+    heading: '8. Carriers',
     content: [
       { type: 'p', text: 'Carriers are not liable for delayed or undelivered messages.' },
     ],
   },
   {
-    heading: '8. Data Safeguards',
+    heading: '9. Data Safeguards',
     content: [
       {
         type: 'p',
@@ -103,7 +116,7 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '9. Changes to This Policy',
+    heading: '10. Changes to This Policy',
     content: [
       {
         type: 'p',
@@ -121,7 +134,7 @@ const SECTIONS = [
     ],
   },
   {
-    heading: '10. Contact Us',
+    heading: '11. Contact Us',
     content: [
       {
         type: 'p',
