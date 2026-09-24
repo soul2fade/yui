@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="8 8 84 84" width="100%" height="100%" role="img" aria-label="Yui">
+  <title>Yui</title>
+  <g fill="none" stroke-linecap="round" stroke-width="13">
+    <path d="M 40 62 A 22 22 0 1 1 62 40" stroke="#187D6D"/>
+    <path d="M 60 38 A 22 22 0 1 1 38 60" stroke="#F6F6F4"/>
+  </g>
+</svg>
