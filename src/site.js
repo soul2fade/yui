@@ -31,6 +31,30 @@ export const NAV_LINKS = [
   { label: 'About', href: '/about' },
 ]
 
+// Credentials, shown on the homepage About section, the About page and the
+// footer. Two rules for anything added here.
+//
+// 1. Use the credential's own title, not a paraphrase. The Google one is a
+//    "Professional Certificate" from Google Career Certificates, delivered via
+//    Coursera. It is not a "professional certification" and the certificate's
+//    own fine print says so, so it must not be written that way.
+// 2. `verify` is the issuer's public verification page and nothing else. If a
+//    credential has no public verification URL, leave the field out rather than
+//    linking somewhere that merely looks official.
+export const CREDENTIALS = [
+  {
+    name: 'Google AI Professional Certificate',
+    issuer: 'Google Career Certificates',
+    short: 'Google AI Professional Certificate',
+    verify: 'https://coursera.org/verify/professional-cert/E9VPWGEXULZ9',
+  },
+  {
+    name: 'Proud member of the Claude Partner Network',
+    issuer: 'Anthropic',
+    short: 'Claude Partner Network member',
+  },
+]
+
 // Shown on the homepage About section and again on the About page.
 export const STATS = [
   { figure: '$3.2B', label: 'Assets managed', detail: 'Folio Dynamix' },

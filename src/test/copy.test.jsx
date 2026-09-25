@@ -51,3 +51,49 @@ describe('source copy', () => {
     expect(offenders, offenders.join('\n')).toHaveLength(0)
   })
 })
+
+// Credentials are the one place on the site where a wording slip becomes a
+// false claim about a third party's programme. The Google credential is a
+// "Professional Certificate" from Google Career Certificates. Calling it a
+// certification, or calling Daniel a "certified Google AI professional",
+// overstates what the certificate says on its face, so the wrong shape is
+// asserted against rather than left to review.
+describe('credentials', () => {
+  const SURFACES = [
+    ['/', 'home-page'],
+    ['/about', 'about-page'],
+  ]
+
+  it.each(SURFACES)('%s states both credentials', (path, testId) => {
+    renderRoute(path)
+    const text = screen.getByTestId(testId).textContent
+    expect(text).toMatch(/Google AI Professional Certificate, Google Career Certificates/)
+    expect(text).toMatch(/member of the Claude Partner Network, Anthropic/)
+  })
+
+  it.each(SURFACES)('%s never calls it a certification', (path, testId) => {
+    renderRoute(path)
+    const text = screen.getByTestId(testId).textContent
+    expect(text).not.toMatch(/certified Google/i)
+    expect(text).not.toMatch(/Google AI (Professional )?Certification/i)
+  })
+
+  it('links the Google certificate to Google’s own verification page', () => {
+    renderRoute('/about')
+    const verify = screen.getAllByRole('link', { name: /^verify$/i })
+    expect(verify.length).toBeGreaterThan(0)
+    expect(verify[0]).toHaveAttribute(
+      'href',
+      'https://coursera.org/verify/professional-cert/E9VPWGEXULZ9'
+    )
+    expect(verify[0]).toHaveAttribute('target', '_blank')
+    expect(verify[0].getAttribute('rel')).toContain('noopener')
+  })
+
+  it('carries the short form in the footer', () => {
+    renderRoute('/')
+    const footer = screen.getByRole('contentinfo')
+    expect(footer).toHaveTextContent('Google AI Professional Certificate')
+    expect(footer).toHaveTextContent('Claude Partner Network member')
+  })
+})

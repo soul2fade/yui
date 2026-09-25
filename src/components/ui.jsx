@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { BOOKING_HREF } from '../site'
+import { BOOKING_HREF, CREDENTIALS } from '../site'
 
 // Mono eyebrow: Geist Mono, uppercase, 0.12em tracking, 11px.
 export function Eyebrow({ children, tone = 'accent', className = '' }) {
@@ -29,6 +29,58 @@ export function Stat({ figure, label, detail }) {
       </div>
       <p className="mt-3 text-[0.9375rem] text-ink leading-snug">{label}</p>
       <p className="mono text-muted mt-2">{detail}</p>
+    </div>
+  )
+}
+
+// Credentials, read from CREDENTIALS in site.js so the wording lives in one
+// place. Two shapes:
+//
+// variant="list" is the About block: each credential on its own line with its
+// issuer and, where one exists, a link to the issuer's verification page. A
+// claim a visitor can check is worth far more than a claim they cannot.
+//
+// variant="inline" is the footer: the short names on one quiet mono line, no
+// links, so it reads as a signature rather than a second pitch.
+//
+// tone="paper" is for dark surfaces (the footer); the default is for light.
+export function Credentials({ variant = 'list', tone = 'ink', className = '' }) {
+  const dark = tone === 'paper'
+
+  if (variant === 'inline') {
+    return (
+      <p className={`mono ${dark ? 'text-muted-dark' : 'text-muted'} ${className}`}>
+        {CREDENTIALS.map((c) => c.short).join(' · ')}
+      </p>
+    )
+  }
+
+  return (
+    <div className={className}>
+      <Eyebrow tone={dark ? 'paper' : 'accent'}>Credentials</Eyebrow>
+      <ul className="mt-4 space-y-2.5">
+        {CREDENTIALS.map((c) => (
+          <li
+            key={c.name}
+            className={`text-[0.9375rem] leading-relaxed ${dark ? 'text-muted-dark' : 'text-muted'}`}
+          >
+            {c.name}, {c.issuer}
+            {c.verify && (
+              <>
+                {'. '}
+                <a
+                  href={c.verify}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
+                >
+                  Verify
+                </a>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

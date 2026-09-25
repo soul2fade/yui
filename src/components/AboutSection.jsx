@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Eyebrow, Headline, Stat } from './ui'
+import { Credentials, Eyebrow, Headline, Stat } from './ui'
 import { STATS } from '../site'
 
 // Voice note: the About section speaks as "I". Everywhere else on the site is "we".
@@ -46,6 +46,8 @@ export default function AboutSection() {
                 </li>
               ))}
             </ul>
+
+            <Credentials className="mt-10 border-t border-line pt-8" />
 
             <Link
               to="/about"

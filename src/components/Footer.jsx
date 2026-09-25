@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Wordmark from './Wordmark'
+import { Credentials } from './ui'
 import { EMAIL, LOCATION } from '../site'
 
 const FOOTER_LINKS = [
@@ -44,9 +45,10 @@ export default function Footer() {
           </nav>
         </div>
 
-        <p className="mono mt-12 border-t border-white/10 pt-6 text-muted-dark">
-          © 2026 Yui
-        </p>
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="mono text-muted-dark">© 2026 Yui</p>
+          <Credentials variant="inline" tone="paper" />
+        </div>
       </div>
     </footer>
   )
