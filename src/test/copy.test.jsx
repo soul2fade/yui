@@ -64,10 +64,10 @@ describe('credentials', () => {
     ['/about', 'about-page'],
   ]
 
-  it.each(SURFACES)('%s states the Google certificate', (path, testId) => {
+  it.each(SURFACES)('%s states the Google credential with its issuer', (path, testId) => {
     renderRoute(path)
     const text = screen.getByTestId(testId).textContent
-    expect(text).toMatch(/Google AI Professional Certificate, Google Career Certificates/)
+    expect(text).toMatch(/Google AI Professional, Google Career Certificates/)
   })
 
   // The Claude Partner Network application has cleared initial review only. The
@@ -103,7 +103,7 @@ describe('credentials', () => {
   it('carries the short form in the footer', () => {
     renderRoute('/')
     const footer = screen.getByRole('contentinfo')
-    expect(footer).toHaveTextContent('Google AI Professional Certificate')
+    expect(footer).toHaveTextContent('Google AI Professional')
     expect(footer.textContent).not.toMatch(/partner/i)
   })
 })

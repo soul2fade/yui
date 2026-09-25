@@ -50,9 +50,14 @@ export const NAV_LINKS = [
 // so in writing, and not before.
 export const CREDENTIALS = [
   {
-    name: 'Google AI Professional Certificate',
+    // Daniel's call, 2026-09-25: the line reads "Google AI Professional", not
+    // "Google AI Professional Certificate", which is the credential's full
+    // issued title. Naming the issuer and keeping the verify link is what holds
+    // this honest, because a reader who clicks sees exactly what it is. Do not
+    // drop `issuer` or `verify` from this entry.
+    name: 'Google AI Professional',
     issuer: 'Google Career Certificates',
-    short: 'Google AI Professional Certificate',
+    short: 'Google AI Professional',
     verify: 'https://coursera.org/verify/professional-cert/E9VPWGEXULZ9',
   },
 ]
