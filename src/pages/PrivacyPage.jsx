@@ -74,7 +74,15 @@ const SECTIONS = [
     content: [
       {
         type: 'p',
-        text: 'We do not sell, rent, transfer, or share your personal information, including your mobile number and other contact details, with any external organizations or third parties for any purpose. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. All categories of data described above exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.',
+        text: 'We do not sell or rent your personal information.',
+      },
+      {
+        type: 'p',
+        text: 'The only third parties that receive information are service providers who process it on our behalf and on our instructions: Anthropic, for the diagnostics described in Section 3, and Google Analytics, for the traffic data described in Section 4, along with the providers that host this website and deliver our email. They may use that information only to provide those services to us.',
+      },
+      {
+        type: 'p',
+        text: 'We do not share your mobile number or other contact details with any external organization or third party for their own purposes. No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. All categories of data described above exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.',
       },
     ],
   },
