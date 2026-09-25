@@ -9,15 +9,8 @@ import { Eyebrow } from './ui'
 // tone="paper" is the card sitting on a light background, so it supplies its own
 // ink fill. tone="ink" is the card sitting on the dark hero, where a solid ink
 // fill would be invisible, so it uses the lifted card-dark surface instead.
-// layout="wide" runs the two paragraphs side by side, so the card reads as a
-// landscape band rather than a tall column. Used in the hero, where it sits full
-// width under the headline.
-export default function NameCard({ className = '', tone = 'paper', layout = 'stacked' }) {
+export default function NameCard({ className = '', tone = 'paper' }) {
   const surface = tone === 'ink' ? 'card-dark' : 'rounded-[20px] bg-ink'
-  const body =
-    layout === 'wide'
-      ? 'mt-5 grid gap-x-10 gap-y-4 text-lg leading-relaxed text-muted-dark md:grid-cols-2'
-      : 'mt-5 space-y-4 text-lg leading-relaxed text-muted-dark'
   return (
     <div className={`${surface} p-8 text-white sm:p-10 ${className}`}>
       <Eyebrow tone="paper">The name</Eyebrow>
@@ -27,7 +20,7 @@ export default function NameCard({ className = '', tone = 'paper', layout = 'sta
       >
         Yui <span className="text-muted-dark">(YOO-ee)</span>
       </h2>
-      <div className={body}>
+      <div className="mt-5 space-y-4 text-lg leading-relaxed text-muted-dark">
         <p>
           Yui is an old Japanese practice where neighbors traded labor: a roof to mend,
           a field to harvest, a house to build. Nobody invoiced anybody. You showed up
