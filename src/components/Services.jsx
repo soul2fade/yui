@@ -4,8 +4,8 @@ const SERVICES = [
   {
     name: 'AI integrations',
     body:
-      'We put AI where it does real work: answering the calls you cannot get to, drafting the follow-up, reading the inbox, pulling the numbers you keep asking someone for. Connected to the tools you already pay for, not bolted on beside them.',
-    points: ['Missed-call and inbox coverage', 'Quote and proposal drafting', 'Reporting that writes itself'],
+      'Your job software, your books and your payroll each hold a piece of the answer. Nobody has time to assemble it, so the question goes unasked. We put AI across all three and give you the whole picture, built on the tools you already pay for.',
+    points: ['One answer, without the hunt', 'Quote and proposal drafting', 'Reporting that writes itself'],
   },
   {
     name: 'Operations management',
@@ -30,9 +30,15 @@ export default function Services() {
           Three ways we take work off your plate
         </Headline>
 
-        <ol className="mt-14 grid gap-5 md:grid-cols-3">
+        {/* Subgrid keeps the number, heading, body and bullet block on shared row
+            tracks, so the divider above the bullets lands at the same height in
+            every card regardless of how long the body copy runs. */}
+        <ol className="mt-14 grid gap-5 md:grid-cols-3 md:grid-rows-[auto_auto_1fr_auto]">
           {SERVICES.map((service, i) => (
-            <li key={service.name} className="card flex flex-col p-7 sm:p-8">
+            <li
+              key={service.name}
+              className="card flex flex-col p-7 sm:p-8 md:grid md:grid-rows-subgrid md:row-span-4 md:gap-y-0"
+            >
               <span className="mono text-accent">{String(i + 1).padStart(2, '0')}</span>
               <h3
                 className="mt-4 text-2xl text-ink"
