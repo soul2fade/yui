@@ -60,14 +60,28 @@ describe('homepage', () => {
     expect(screen.getByText(/custom engagements/i)).toBeInTheDocument()
   })
 
-  it('shows the work cards and points the ballet case study at /#contact', () => {
+  it('shows the work cards', () => {
     renderRoute('/')
-    expect(screen.getByRole('heading', { name: 'Missed-Call Rescue' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Sacramento Ballet' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /read the case study/i })).toHaveAttribute(
-      'href',
-      '/#contact'
-    )
+    expect(screen.getByRole('heading', { name: 'Budget Stress Test' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Automated Invoicing' })).toBeInTheDocument()
+  })
+
+  // Both demos live off-site. react-router's Link renders a relative href and
+  // cannot navigate away, so these have to be plain anchors that open in a new
+  // tab. This guards against a regression back to <Link>.
+  it('links both demos off-site, in a new tab', () => {
+    renderRoute('/')
+    const links = screen.getAllByRole('link', { name: /open the demo/i })
+    expect(links).toHaveLength(2)
+    const hrefs = links.map((a) => a.getAttribute('href')).sort()
+    expect(hrefs).toEqual([
+      'https://automatedinvoicedemo.netlify.app',
+      'https://budget-stress-test.netlify.app',
+    ])
+    for (const a of links) {
+      expect(a).toHaveAttribute('target', '_blank')
+      expect(a.getAttribute('rel')).toContain('noopener')
+    }
   })
 
   it('carries no testimonial block', () => {

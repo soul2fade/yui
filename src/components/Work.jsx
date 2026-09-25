@@ -1,32 +1,51 @@
 import { Link } from 'react-router-dom'
 import { Eyebrow, Headline } from './ui'
 
-// Both images are labeled placeholders; see public/ASSETS.md. The alt text is
-// written for the final asset so it survives the swap.
+// Screenshots are captured from the live demos at 1200x800.
 const PROJECTS = [
   {
-    kicker: 'Product',
-    name: 'Missed-Call Rescue',
+    kicker: 'Demo',
+    name: 'Budget Stress Test',
     body:
-      'Every call a small business misses gets answered anyway: caller identified, reason captured, text sent back inside a minute, and the job written into the queue before anyone picks up a phone.',
-    facts: ['Answers in under 60 seconds', 'Texts back automatically', 'Writes the lead into the queue'],
-    image: '/placeholders/missed-call-rescue.svg',
-    alt: 'The Missed-Call Rescue dashboard showing a missed call captured, the caller identified, and the automatic text reply that was sent back.',
-    linkHref: '/contact',
-    linkLabel: 'See it live',
+      'Sixteen budget lines, each with a probability of blowing past plan and by how much. It shows the expected shortfall before the year starts, and whether the contingency actually covers it. Demo build. The real one stress tested a university athletics budget.',
+    facts: ['Probability-weighted, not a best guess', 'Ranks lines by expected loss', 'Shows the gap before it happens'],
+    image: '/work/budget-stress-test.png',
+    alt: 'The Budget Stress Test dashboard showing sixteen budget categories ranked by expected loss, with base, moderate and severe scenarios.',
+    linkHref: 'https://budget-stress-test.netlify.app',
+    linkLabel: 'Open the demo',
   },
   {
-    kicker: 'Client work',
-    name: 'Sacramento Ballet',
+    kicker: 'Demo',
+    name: 'Automated Invoicing',
     body:
-      'We rebuilt how a working arts organization handles registration, scheduling, and the reporting that used to be assembled by hand every month.',
-    facts: ['Registration and scheduling in one place', 'Monthly reporting automated', 'Staff hours returned to the season'],
-    image: '/placeholders/sacramento-ballet.svg',
-    alt: 'The Sacramento Ballet scheduling and registration screen rebuilt by Yui, showing classes, rosters, and enrollment status.',
-    linkHref: '/#contact',
-    linkLabel: 'Read the case study',
+      'A tech types what they finished in plain language. It comes back as a customer-ready invoice with line items and pricing, without anyone opening a template. Demo build, running sample jobs.',
+    facts: ['Plain text in, invoice out', 'Built for trades work', 'No double entry'],
+    image: '/work/automated-invoice.png',
+    alt: 'The automated invoice generator showing a plain-language description of finished work converted into a formatted customer invoice.',
+    linkHref: 'https://automatedinvoicedemo.netlify.app',
+    linkLabel: 'Open the demo',
   },
 ]
+
+const LINK_CLASS =
+  'mt-7 self-start text-[0.9375rem] text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent'
+
+// react-router's Link cannot navigate off-site, so an absolute URL has to render
+// as a plain anchor. Same split as ButtonLink in ui.jsx.
+function ProjectLink({ href, children }) {
+  if (/^https?:\/\//.test(href)) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={LINK_CLASS}>
+        {children}
+      </a>
+    )
+  }
+  return (
+    <Link to={href} className={LINK_CLASS}>
+      {children}
+    </Link>
+  )
+}
 
 export default function Work() {
   return (
@@ -36,6 +55,9 @@ export default function Work() {
         <Headline as="h2" className="mt-5 max-w-2xl text-4xl text-ink sm:text-5xl">
           Things we have actually shipped
         </Headline>
+        <p className="mt-5 max-w-xl leading-relaxed text-muted">
+          Demo versions running sample data. Open either one and click around.
+        </p>
 
         <div className="mt-14 grid gap-5 md:grid-cols-2">
           {PROJECTS.map((project) => (
@@ -56,7 +78,9 @@ export default function Work() {
                 >
                   {project.name}
                 </h3>
-                <p className="mt-3.5 leading-relaxed text-muted">{project.body}</p>
+                {/* flex-1 pushes the divider to a common line, so the two cards
+                    stay aligned even though the body copy differs in length. */}
+                <p className="mt-3.5 flex-1 leading-relaxed text-muted">{project.body}</p>
                 <ul className="mt-6 space-y-2.5 border-t border-line pt-6">
                   {project.facts.map((fact) => (
                     <li key={fact} className="mono text-muted">
@@ -64,12 +88,9 @@ export default function Work() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  to={project.linkHref}
-                  className="mt-7 self-start text-[0.9375rem] text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
-                >
+                <ProjectLink href={project.linkHref}>
                   {project.linkLabel} &rarr;
-                </Link>
+                </ProjectLink>
               </div>
             </article>
           ))}

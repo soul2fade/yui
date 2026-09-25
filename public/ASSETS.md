@@ -9,8 +9,8 @@ obvious in review rather than silently shipping.
 
 | Asset | Placeholder in repo | Referenced from | Needed spec |
 | --- | --- | --- | --- |
-| Missed-Call Rescue demo screenshot | `public/placeholders/missed-call-rescue.svg` | `src/components/Work.jsx` | 3:2, min 1200×800, PNG |
-| Sacramento Ballet screenshot | `public/placeholders/sacramento-ballet.svg` | `src/components/Work.jsx` | 3:2, min 1200×800, PNG |
+| ~~Missed-Call Rescue demo screenshot~~ | closed | retired with the old work card | |
+| ~~Sacramento Ballet screenshot~~ | closed | retired with the old work card | |
 | ~~Favicon~~ **DONE** | public/favicon.svg, public/apple-touch-icon.png | index.html | Final ring mark, SVG + 180x180 PNG |
 | ~~OG image~~ **DONE** | `public/og-image.png` | `src/components/Meta.jsx` (`og:image`, `twitter:image`) | 1200x630 PNG, shipped |
 
