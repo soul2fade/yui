@@ -5,9 +5,14 @@ import { Eyebrow } from './ui'
 // wording exists in exactly one place.
 //
 // Voice: this speaks as "I", like the About section it sits alongside.
-export default function NameCard({ className = '' }) {
+//
+// tone="paper" is the card sitting on a light background, so it supplies its own
+// ink fill. tone="ink" is the card sitting on the dark hero, where a solid ink
+// fill would be invisible, so it uses the lifted card-dark surface instead.
+export default function NameCard({ className = '', tone = 'paper' }) {
+  const surface = tone === 'ink' ? 'card-dark' : 'rounded-[20px] bg-ink'
   return (
-    <div className={`rounded-[20px] bg-ink p-8 text-white sm:p-10 ${className}`}>
+    <div className={`${surface} p-8 text-white sm:p-10 ${className}`}>
       <Eyebrow tone="paper">The name</Eyebrow>
       <h2
         className="mt-5 text-2xl text-white sm:text-3xl"

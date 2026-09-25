@@ -11,11 +11,22 @@ describe('homepage', () => {
     expect(screen.getByRole('link', { name: /see how it works/i })).toBeInTheDocument()
   })
 
+  // The name story is no longer its own section. It moved into the hero so the
+  // pronunciation is read above the fold, so it is a div inside the hero rather
+  // than a sibling section. Its presence and voice are covered by voice.test.jsx,
+  // and the anchor target is asserted below.
+  it('keeps the name story in the hero, above the first section', () => {
+    const { container } = renderRoute('/')
+    const name = container.querySelector('#name')
+    expect(name).toBeTruthy()
+    expect(name.closest('section')).toBe(container.querySelector('section'))
+    expect(name.textContent).toMatch(/YOO-ee/)
+  })
+
   it('renders the sections in order', () => {
     const { container } = renderRoute('/')
     const ids = [...container.querySelectorAll('section[id]')].map((el) => el.id)
     expect(ids).toEqual([
-      'name',
       'problem',
       'diagnostics',
       'services',
