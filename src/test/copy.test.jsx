@@ -88,16 +88,18 @@ describe('credentials', () => {
     expect(text).not.toMatch(/Google AI (Professional )?Certification/i)
   })
 
-  it('links the Google certificate to Google’s own verification page', () => {
+  // The credential's own name is the link. A separate "Verify" call to action
+  // reads as though the claim expects to be doubted, so it is asserted against.
+  it('links the credential name itself to the verification page', () => {
     renderRoute('/about')
-    const verify = screen.getAllByRole('link', { name: /^verify$/i })
-    expect(verify.length).toBeGreaterThan(0)
-    expect(verify[0]).toHaveAttribute(
+    const link = screen.getByRole('link', { name: /^Google AI Professional$/ })
+    expect(link).toHaveAttribute(
       'href',
       'https://coursera.org/verify/professional-cert/E9VPWGEXULZ9'
     )
-    expect(verify[0]).toHaveAttribute('target', '_blank')
-    expect(verify[0].getAttribute('rel')).toContain('noopener')
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(link.getAttribute('rel')).toContain('noopener')
+    expect(screen.queryByRole('link', { name: /^verify$/i })).toBeNull()
   })
 
   it('carries the short form in the footer', () => {

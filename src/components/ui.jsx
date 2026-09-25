@@ -37,8 +37,10 @@ export function Stat({ figure, label, detail }) {
 // place. Two shapes:
 //
 // variant="list" is the About block: each credential on its own line with its
-// issuer and, where one exists, a link to the issuer's verification page. A
-// claim a visitor can check is worth far more than a claim they cannot.
+// issuer. Where a verification page exists, the credential's own name is the
+// link to it, rather than a separate "Verify" call to action, which reads as
+// though the claim expects to be doubted. A claim a visitor can check is worth
+// far more than a claim they cannot, so the link itself stays.
 //
 // variant="inline" is the footer: the short names on one quiet mono line, no
 // links, so it reads as a signature rather than a second pitch.
@@ -64,20 +66,19 @@ export function Credentials({ variant = 'list', tone = 'ink', className = '' }) 
             key={c.name}
             className={`text-[0.9375rem] leading-relaxed ${dark ? 'text-muted-dark' : 'text-muted'}`}
           >
-            {c.name}, {c.issuer}
-            {c.verify && (
-              <>
-                {'. '}
-                <a
-                  href={c.verify}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
-                >
-                  Verify
-                </a>
-              </>
+            {c.verify ? (
+              <a
+                href={c.verify}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
+              >
+                {c.name}
+              </a>
+            ) : (
+              c.name
             )}
+            , {c.issuer}
           </li>
         ))}
       </ul>
