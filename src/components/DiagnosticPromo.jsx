@@ -47,8 +47,12 @@ export default function DiagnosticPromo() {
           ))}
         </div>
 
+        {/* This line describes both tools, so it cannot name one tool's length.
+            The health check is ten questions and the bottleneck finder is five,
+            and the counts are set in TOOLS above, so keep the range in step with
+            them if either tool changes. */}
         <p className="mono mt-10 text-muted-dark">
-          10 questions · No email required · About 2 minutes
+          5 or 10 questions · No email required · About 2 minutes
         </p>
       </div>
     </section>
