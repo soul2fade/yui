@@ -17,15 +17,14 @@ export default function NameCard({ className = '' }) {
       </h2>
       <div className="mt-5 space-y-4 text-lg leading-relaxed text-muted-dark">
         <p>
-          Yui is an old Japanese practice where neighbors pitched in on each
-          other&rsquo;s work: a roof to re-thatch, a field to harvest, a house to raise.
-          Nobody invoiced anybody. You showed up because the help would come back around
-          when it was your turn.
+          Yui is an old Japanese practice where neighbors traded labor: a roof to
+          re-thatch, a field to harvest, a house to raise. Nobody invoiced anybody. You
+          showed up because the help would come back around when it was your turn.
         </p>
         <p>
           That is the standard I am trying to hold. Not a vendor relationship, and not
-          charity either. It is showing up on someone else&rsquo;s work like the outcome is
-          partly mine, because in practice it is.
+          charity either. It is showing up like the outcome is partly mine, because in
+          practice it is.
         </p>
       </div>
     </div>
