@@ -41,17 +41,19 @@ export const NAV_LINKS = [
 // 2. `verify` is the issuer's public verification page and nothing else. If a
 //    credential has no public verification URL, leave the field out rather than
 //    linking somewhere that merely looks official.
+//
+// Do not add a Claude Partner Network or Anthropic partnership line here. As of
+// 2026-09-25 the application has cleared initial review only, the status is "on
+// the path to partnership" rather than membership, and the programme's own
+// email asks applicants to hold off on any public announcement of partnership
+// until they are told otherwise. It goes back on the site when Anthropic says
+// so in writing, and not before.
 export const CREDENTIALS = [
   {
     name: 'Google AI Professional Certificate',
     issuer: 'Google Career Certificates',
     short: 'Google AI Professional Certificate',
     verify: 'https://coursera.org/verify/professional-cert/E9VPWGEXULZ9',
-  },
-  {
-    name: 'Proud member of the Claude Partner Network',
-    issuer: 'Anthropic',
-    short: 'Claude Partner Network member',
   },
 ]
 

@@ -64,11 +64,21 @@ describe('credentials', () => {
     ['/about', 'about-page'],
   ]
 
-  it.each(SURFACES)('%s states both credentials', (path, testId) => {
+  it.each(SURFACES)('%s states the Google certificate', (path, testId) => {
     renderRoute(path)
     const text = screen.getByTestId(testId).textContent
     expect(text).toMatch(/Google AI Professional Certificate, Google Career Certificates/)
-    expect(text).toMatch(/member of the Claude Partner Network, Anthropic/)
+  })
+
+  // The Claude Partner Network application has cleared initial review only. The
+  // programme asked that no partnership be announced publicly until it says so,
+  // so any partner or partnership claim is a breach of that request as well as
+  // an overstatement of where things stand. Asserted, not left to review.
+  it.each(SURFACES)('%s claims no Anthropic partnership', (path, testId) => {
+    renderRoute(path)
+    const text = screen.getByTestId(testId).textContent
+    expect(text).not.toMatch(/partner/i)
+    expect(text).not.toMatch(/Anthropic/i)
   })
 
   it.each(SURFACES)('%s never calls it a certification', (path, testId) => {
@@ -94,6 +104,6 @@ describe('credentials', () => {
     renderRoute('/')
     const footer = screen.getByRole('contentinfo')
     expect(footer).toHaveTextContent('Google AI Professional Certificate')
-    expect(footer).toHaveTextContent('Claude Partner Network member')
+    expect(footer.textContent).not.toMatch(/partner/i)
   })
 })
