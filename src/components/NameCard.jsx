@@ -22,9 +22,9 @@ export default function NameCard({ className = '', tone = 'paper' }) {
       </h2>
       <div className="mt-5 space-y-4 text-lg leading-relaxed text-muted-dark">
         <p>
-          Yui is an old Japanese practice where neighbors traded labor: a roof to
-          re-thatch, a field to harvest, a house to raise. Nobody invoiced anybody. You
-          showed up because the help would come back around when it was your turn.
+          Yui is an old Japanese practice where neighbors traded labor: a roof to mend,
+          a field to harvest, a house to build. Nobody invoiced anybody. You showed up
+          because the help would come back around when it was your turn.
         </p>
         <p>
           That is the standard I am trying to hold. Not a vendor relationship, and not
