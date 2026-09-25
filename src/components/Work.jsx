@@ -7,7 +7,7 @@ const PROJECTS = [
     kicker: 'Demo',
     name: 'Budget Stress Test',
     body:
-      'Sixteen budget lines, each with a probability of blowing past plan and by how much. It shows the expected shortfall before the year starts, and whether the contingency actually covers it. Demo build. The real one stress tested a university athletics budget.',
+      'Sixteen budget lines, each with a probability of blowing past plan and by how much. It shows the expected shortfall before the year starts, and whether the contingency actually covers it. The real one stress tested the athletics budget at William Jessup University. This demo runs invented numbers for a fictional contractor.',
     facts: ['Probability-weighted, not a best guess', 'Ranks lines by expected loss', 'Shows the gap before it happens'],
     image: '/work/budget-stress-test.png',
     alt: 'The Budget Stress Test dashboard showing sixteen budget categories ranked by expected loss, with base, moderate and severe scenarios.',

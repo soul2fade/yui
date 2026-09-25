@@ -66,6 +66,17 @@ describe('homepage', () => {
     expect(screen.getByRole('heading', { name: 'Automated Invoicing' })).toBeInTheDocument()
   })
 
+  // The budget demo names a real client, so the card has to say plainly that the
+  // figures in the demo are not that client's. Removing this sentence would turn
+  // an honest attribution into an implied claim about William Jessup University's
+  // actual budget, so it is asserted rather than left to review.
+  it('names the client but disclaims the demo data', () => {
+    renderRoute('/')
+    const work = document.getElementById('work')
+    expect(work.textContent).toMatch(/William Jessup University/)
+    expect(work.textContent).toMatch(/invented numbers for a fictional contractor/i)
+  })
+
   // Both demos live off-site. react-router's Link renders a relative href and
   // cannot navigate away, so these have to be plain anchors that open in a new
   // tab. This guards against a regression back to <Link>.
