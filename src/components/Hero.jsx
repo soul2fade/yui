@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { BookingLink, Eyebrow, Headline } from './ui'
 import NameCard from './NameCard'
 
-const TAGS = ['Based in Sacramento', 'Any small business', 'Builds, not decks']
+const TAGS = ['Based in Sacramento', '$3M to $10M businesses', 'Builds, not decks']
 
 export default function Hero() {
   return (

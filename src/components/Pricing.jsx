@@ -4,52 +4,56 @@ import { EMAIL } from '../site'
 const TIERS = [
   {
     name: 'Ops + AI Assessment',
-    price: '$495',
-    cadence: 'solo operators',
-    secondary: '$995 for teams',
-    body: 'A fixed-scope look at how the business runs today and what to fix first.',
+    price: '$1,500',
+    cadence: 'one day, on-site',
+    secondary: 'First call is free',
+    body: 'We spend a day at your business with your ops lead. You tell us what to fix, and we map out where to start.',
     points: [
-      'Full review of your current operations',
-      'Where the hours and the money are going',
-      'A prioritized fix list you can run yourself',
-      'Credited toward your first month if you continue',
+      'A full day on-site with your operations manager',
+      'Where your time and money actually go',
+      'A ranked to-do list you can work through yourself',
+      'The full $1,500 counts toward your first month if you sign on',
     ],
   },
   {
     name: 'AI Implementation Sprint',
     price: '$3,500',
     cadence: 'one-time',
-    body: 'One real system, built and running, start to finish.',
+    body: 'Pick one task that eats your week. We build a tool that handles it for you.',
     points: [
-      'Scoped in week one, live by week four',
+      'Planned in week one, working by week four',
       'Built on the tools you already own',
-      'Your team trained on it',
-      'Documentation and handover included',
+      'We show your team how to use it',
+      'Written instructions, so you never depend on us',
     ],
   },
   {
     name: 'Ops + AI Essential',
-    price: '$2,500',
+    price: '$4,000',
     cadence: 'per month',
-    body: 'Ongoing operations coverage for a business that needs the basics held.',
+    secondary: '1 tool in progress',
+    body: 'Ongoing help keeping the day-to-day running smoothly.',
     points: [
-      'Weekly operating cadence',
-      'One build or improvement per month',
-      'Processes documented as we go',
-      'Month to month, cancel anytime',
+      'A weekly check-in on what is working and what is stuck',
+      'One tool in progress at a time',
+      'Your processes written down so anyone can follow them',
+      'A monthly report on what we built and the hours it saved',
+      'Month to month, 30 days notice to cancel',
     ],
   },
   {
     name: 'Ops + AI Growth',
-    price: '$4,000',
+    price: '$8,000',
     cadence: 'per month',
-    badge: 'Most popular',
-    body: 'The full operator seat for a business that is moving.',
+    secondary: '2 tools in progress',
+    badge: 'Best value',
+    body: 'Hands-on operations help for a business that is growing fast.',
     points: [
       'Everything in Essential',
-      'Multiple builds in flight each month',
-      'Direct line for the day-to-day calls',
-      'Quarterly plan built and reviewed with you',
+      'Two tools in progress at a time',
+      'A monthly review of your numbers',
+      'Monthly AI training for your team',
+      'Every 3 months: a plan for what is next and a software review',
     ],
   },
 ]
@@ -67,11 +71,14 @@ export default function Pricing() {
           to month. We would rather earn them than lock you in.
         </p>
 
+        {/* Subgrid puts every card's label, title, price, team price, body, list and
+            button on shared row tracks, so the prices line up across a row even
+            when a title wraps or only one card has a team price. */}
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {TIERS.map((tier) => (
             <div
               key={tier.name}
-              className={`card flex flex-col p-7 ${tier.badge ? 'ring-1 ring-accent' : ''}`}
+              className={`card flex flex-col p-7 sm:grid sm:grid-rows-subgrid sm:row-span-7 sm:gap-y-0 ${tier.badge ? 'ring-1 ring-accent' : ''}`}
             >
               <div className="flex min-h-6 items-start justify-between gap-2">
                 <span className="mono text-muted">{tier.cadence}</span>
@@ -93,7 +100,10 @@ export default function Pricing() {
               >
                 {tier.price}
               </div>
-              {tier.secondary && <p className="mono mt-2 text-accent">{tier.secondary}</p>}
+              {/* Always rendered so every card keeps the same row count for the subgrid. */}
+              <p className="mono mt-2 text-accent" aria-hidden={tier.secondary ? undefined : true}>
+                {tier.secondary}
+              </p>
               <p className="mt-4 leading-relaxed text-muted">{tier.body}</p>
               <ul className="mt-6 flex-1 space-y-2.5 border-t border-line pt-6">
                 {tier.points.map((point) => (
