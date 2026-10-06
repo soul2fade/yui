@@ -53,10 +53,10 @@ describe('homepage', () => {
 
   it('shows all four price points and the custom-engagement callout', () => {
     renderRoute('/')
-    for (const price of ['$495', '$995 for teams', '$3,500', '$2,500', '$4,000']) {
+    for (const price of ['$1,500', 'First call is free', '$3,500', '$4,000', '$8,000']) {
       expect(screen.getByText(price)).toBeInTheDocument()
     }
-    expect(screen.getByText(/most popular/i)).toBeInTheDocument()
+    expect(screen.getByText(/best value/i)).toBeInTheDocument()
     expect(screen.getByText(/custom engagements/i)).toBeInTheDocument()
   })
 
