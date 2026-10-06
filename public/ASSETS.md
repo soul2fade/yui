@@ -43,7 +43,7 @@ for the non-accent arc.
 
 `public/og-image.png`, 1200x630. Ink `#0B0B0C` background, the inverse ring mark
 and "Yui" top left, the site's own hero headline with the accent period, and the
-"Based in Sacramento / Any small business / Builds, not decks" strip along the
+"Based in Sacramento / $3M to $10M businesses / Builds, not decks" strip along the
 bottom. Geist and Geist Mono, matching the site.
 
 It is generated, not hand-drawn, so it can be regenerated when the headline
