@@ -15,7 +15,7 @@ businesses, based in Sacramento.
 ```bash
 npm install
 npm run dev        # local dev server on :5173
-npm run build      # prerenders all 9 routes into dist/
+npm run build      # prerenders all 10 routes into dist/
 npm run preview    # serve the built output
 npm run test:run   # vitest, one pass
 npm run lint       # eslint
@@ -31,6 +31,7 @@ npm run lint       # eslint
 | `/bottleneck` | Find My Bottleneck — 5-question diagnostic |
 | `/free-audit` | Landing page pointing at both diagnostics |
 | `/contact` | Contact form (Netlify Forms) |
+| `/webinar` | Stop-Doing List webinar registration (Netlify Forms, form `webinar`). Reveals `public/yui-stop-doing-list.pdf` after submit |
 | `/privacy`, `/terms`, `/security` | Legal and security pages |
 
 `/med-spas` and `/spa` 301 to `/` — retired pages whose URLs may have been shared

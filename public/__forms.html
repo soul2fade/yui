@@ -1,8 +1,9 @@
 <!doctype html>
 <!--
   Netlify Forms detection file. Netlify parses this static HTML at deploy time to
-  register the "contact" form; the React page at /contact posts to it. Keep the
-  field names here in sync with src/pages/ContactPage.jsx.
+  register the "contact" and "webinar" forms; the React pages at /contact and
+  /webinar post to them. Keep the field names here in sync with
+  src/pages/ContactPage.jsx and src/pages/WebinarPage.jsx.
 -->
 <html lang="en">
   <head>
@@ -17,6 +18,16 @@
       <input type="email" name="email" />
       <input type="text" name="business" />
       <textarea name="message"></textarea>
+    </form>
+    <form name="webinar" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="webinar" />
+      <input type="text" name="bot-field" />
+      <input type="radio" name="session" value="Wed Nov 4, 11:45am PT" />
+      <input type="radio" name="session" value="Thu Nov 5, 11:45am PT" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="business" />
+      <input type="text" name="city" />
     </form>
   </body>
 </html>

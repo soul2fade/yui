@@ -16,6 +16,7 @@ const ROUTES = [
   ['/privacy', 'privacy-page'],
   ['/terms', 'terms-page'],
   ['/security', 'security-page'],
+  ['/webinar', 'webinar-page'],
 ]
 
 describe('copy style', () => {

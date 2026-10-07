@@ -9,6 +9,7 @@ import ContactPage from './pages/ContactPage'
 import PrivacyPage from './pages/PrivacyPage'
 import TermsPage from './pages/TermsPage'
 import SecurityPage from './pages/SecurityPage'
+import WebinarPage from './pages/WebinarPage'
 
 // Route table in vite-react-ssg's data-router format. Every static path here is
 // crawled and prerendered at build time. The catch-all is client-only.
@@ -26,6 +27,7 @@ export const routes = [
       { path: 'privacy', element: <PrivacyPage /> },
       { path: 'terms', element: <TermsPage /> },
       { path: 'security', element: <SecurityPage /> },
+      { path: 'webinar', element: <WebinarPage /> },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },
