@@ -15,7 +15,7 @@ businesses, based in Sacramento.
 ```bash
 npm install
 npm run dev        # local dev server on :5173
-npm run build      # prerenders all 10 routes into dist/
+npm run build      # prerenders all 11 routes into dist/
 npm run preview    # serve the built output
 npm run test:run   # vitest, one pass
 npm run lint       # eslint
@@ -31,7 +31,8 @@ npm run lint       # eslint
 | `/bottleneck` | Find My Bottleneck — 5-question diagnostic |
 | `/free-audit` | Landing page pointing at both diagnostics |
 | `/contact` | Contact form (Netlify Forms) |
-| `/webinar` | Stop-Doing List webinar registration (Netlify Forms, form `webinar`). Reveals the worksheet after submit: `public/yui-stop-doing-list.pdf` and the online version |
+| `/webinar` | Stop-Doing List webinar. Each date links to its Cal.com event (`cal.com/stop-lists`, `cal.com/stop-lists2`) |
+| `/webinar/registered` | Where both Cal.com events redirect after booking. Hands out the worksheet; noindex, not in the sitemap |
 | `/stop-doing-list/` | Stop-Doing List worksheet: static, self-contained page in `public/stop-doing-list/` |
 | `/privacy`, `/terms`, `/security` | Legal and security pages |
 
@@ -84,7 +85,7 @@ lists what is still needed, the spec for each, and where it is referenced.
 
 ## Forms
 
-The contact and webinar forms are Netlify Forms. `public/__forms.html` is the static file
+The contact form is a Netlify Form. `public/__forms.html` is the static file
 Netlify parses at deploy time to register the form; `src/pages/ContactPage.jsx`
 posts to it. Keep the field names in the two files in sync.
 

@@ -12,6 +12,7 @@ const PAGES = [
   ['/terms', 'terms-page'],
   ['/security', 'security-page'],
   ['/webinar', 'webinar-page'],
+  ['/webinar/registered', 'webinar-registered-page'],
 ]
 
 describe('routes', () => {

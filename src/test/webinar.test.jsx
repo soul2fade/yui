@@ -1,47 +1,45 @@
-import { screen, fireEvent, waitFor } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { renderRoute } from './renderRoute'
-import { WORKSHEET_HREF, WORKSHEET_ONLINE_HREF } from '../pages/WebinarPage'
+import { SESSIONS } from '../pages/WebinarPage'
+import { WORKSHEET_HREF, WORKSHEET_ONLINE_HREF } from '../pages/WebinarRegisteredPage'
 
-describe('webinar registration', () => {
-  afterEach(() => vi.restoreAllMocks())
-
-  it('shows both dates and asks where the business is based', () => {
+describe('webinar', () => {
+  it('shows both dates with their times', () => {
     renderRoute('/webinar')
     const page = screen.getByTestId('webinar-page')
     expect(page).toHaveTextContent('November 4')
-    expect(page).toHaveTextContent('November 5')
     expect(page).toHaveTextContent('11:00 to 11:45am PT')
+    expect(page).toHaveTextContent('November 5')
     expect(page).toHaveTextContent('1:00 to 1:45pm PT')
-    expect(screen.getByLabelText(/city where your business is based/i)).toBeRequired()
   })
 
-  it('does not show the worksheet link before registering', () => {
+  it('sends each date to its own Cal.com event', () => {
+    renderRoute('/webinar')
+    expect(screen.getByRole('link', { name: /register for wed, nov 4/i })).toHaveAttribute(
+      'href',
+      'https://cal.com/stop-lists',
+    )
+    expect(screen.getByRole('link', { name: /register for thu, nov 5/i })).toHaveAttribute(
+      'href',
+      'https://cal.com/stop-lists2',
+    )
+    expect(SESSIONS).toHaveLength(2)
+  })
+
+  it('does not hand out the worksheet before registering', () => {
     renderRoute('/webinar')
     expect(screen.queryByRole('link', { name: /download the worksheet/i })).toBeNull()
   })
 
-  it('posts to Netlify Forms and then reveals the worksheet', async () => {
-    const fetchMock = vi.fn().mockResolvedValue({ ok: true })
-    vi.stubGlobal('fetch', fetchMock)
-    renderRoute('/webinar')
-    fireEvent.click(screen.getByLabelText(/Thursday, November 5/))
-    fireEvent.change(screen.getByLabelText(/your name/i), { target: { value: 'Pat' } })
-    fireEvent.change(screen.getByLabelText(/^email/i), { target: { value: 'pat@example.com' } })
-    fireEvent.change(screen.getByLabelText(/business name/i), { target: { value: 'Pat HVAC' } })
-    fireEvent.change(screen.getByLabelText(/city/i), { target: { value: 'Elk Grove' } })
-    fireEvent.click(screen.getByRole('button', { name: /save my seat/i }))
-
-    const link = await screen.findByRole('link', { name: /download the worksheet/i })
-    expect(link).toHaveAttribute('href', WORKSHEET_HREF)
+  it('hands out the worksheet both ways after registering', () => {
+    renderRoute('/webinar/registered')
+    expect(screen.getByRole('link', { name: /download the worksheet/i })).toHaveAttribute(
+      'href',
+      WORKSHEET_HREF,
+    )
     expect(screen.getByRole('link', { name: /fill it in online/i })).toHaveAttribute(
       'href',
       WORKSHEET_ONLINE_HREF,
     )
-    const body = new URLSearchParams(fetchMock.mock.calls[0][1].body)
-    expect(body.get('form-name')).toBe('webinar')
-    expect(body.getAll('form-name')).toHaveLength(1)
-    expect(body.get('session')).toBe('Thu Nov 5, 1:00pm PT')
-    expect(body.get('city')).toBe('Elk Grove')
-    await waitFor(() => expect(screen.getByText(/See you Thu Nov 5/)).toBeInTheDocument())
   })
 })
