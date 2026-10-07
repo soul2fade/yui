@@ -10,7 +10,8 @@ describe('webinar registration', () => {
     const page = screen.getByTestId('webinar-page')
     expect(page).toHaveTextContent('November 4')
     expect(page).toHaveTextContent('November 5')
-    expect(page).toHaveTextContent('11:45am to 12:30pm PT')
+    expect(page).toHaveTextContent('11:00 to 11:45am PT')
+    expect(page).toHaveTextContent('1:00 to 1:45pm PT')
     expect(screen.getByLabelText(/city where your business is based/i)).toBeRequired()
   })
 
@@ -39,7 +40,7 @@ describe('webinar registration', () => {
     const body = new URLSearchParams(fetchMock.mock.calls[0][1].body)
     expect(body.get('form-name')).toBe('webinar')
     expect(body.getAll('form-name')).toHaveLength(1)
-    expect(body.get('session')).toBe('Thu Nov 5, 11:45am PT')
+    expect(body.get('session')).toBe('Thu Nov 5, 1:00pm PT')
     expect(body.get('city')).toBe('Elk Grove')
     await waitFor(() => expect(screen.getByText(/See you Thu Nov 5/)).toBeInTheDocument())
   })

@@ -17,11 +17,14 @@ export const WORKSHEET_HREF = '/yui-stop-doing-list.pdf'
 export const WORKSHEET_ONLINE_HREF = '/stop-doing-list/'
 
 export const SESSIONS = [
-  { value: 'Wed Nov 4, 11:45am PT', day: 'Wednesday', date: 'November 4' },
-  { value: 'Thu Nov 5, 11:45am PT', day: 'Thursday', date: 'November 5' },
+  {
+    value: 'Wed Nov 4, 11:00am PT',
+    day: 'Wednesday',
+    date: 'November 4',
+    time: '11:00 to 11:45am PT',
+  },
+  { value: 'Thu Nov 5, 1:00pm PT', day: 'Thursday', date: 'November 5', time: '1:00 to 1:45pm PT' },
 ]
-
-const TIME = '11:45am to 12:30pm PT'
 
 const FIELDS = [
   { name: 'name', label: 'Your name', type: 'text', autoComplete: 'name' },
@@ -79,7 +82,7 @@ export default function WebinarPage() {
     <div data-testid="webinar-page">
       <Meta
         title="Free webinar: build your stop-doing list | Yui"
-        description="A free 45-minute working session for Sacramento-area business owners. List, count, and sort the tasks eating your week. Nov 4 or Nov 5, 11:45am PT, online."
+        description="A free 45-minute working session for Sacramento-area business owners. List, count, and sort the tasks eating your week. Wed Nov 4 at 11am PT or Thu Nov 5 at 1pm PT, online."
         path="/webinar"
       />
 
@@ -112,7 +115,7 @@ export default function WebinarPage() {
                       >
                         {s.date}
                       </p>
-                      <p className="mt-2 text-[0.9375rem] text-muted">{TIME}</p>
+                      <p className="mt-2 text-[0.9375rem] text-muted">{s.time}</p>
                     </div>
                   ))}
                 </div>
@@ -216,7 +219,7 @@ export default function WebinarPage() {
                             required
                             className="accent-[#187D6D]"
                           />
-                          {s.day}, {s.date}
+                          {s.day}, {s.date} · {s.time}
                         </label>
                       ))}
                     </div>
@@ -252,8 +255,7 @@ export default function WebinarPage() {
                     {status === 'sending' ? 'Saving your seat…' : 'Save my seat'}
                   </button>
                   <p className="text-[0.8125rem] leading-relaxed text-muted">
-                    Free. {TIME}, online. We will email your join link and reminders, and add
-                    you to the Yui email list. Unsubscribe anytime.
+                    Free and online. We will email your join link before the session.
                   </p>
                 </form>
               )}

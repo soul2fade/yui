@@ -77,21 +77,6 @@ ANTHROPIC_API_KEY=sk-ant-...
 Set it in Netlify (Site configuration → Environment variables) and locally in
 `.env` — see `.env.example`.
 
-`netlify/functions/submission-created.js` copies `/webinar` registrations into
-Mailchimp. Netlify runs it after every verified form submission; it ignores
-every form except `webinar`. Each registrant is added to the audience (new
-contacts as subscribed; anyone who unsubscribed stays unsubscribed) and tagged
-with their session, e.g. `Webinar: Thu Nov 5`. It needs:
-
-```
-MAILCHIMP_API_KEY=...-us21      # the suffix is the Mailchimp data center
-MAILCHIMP_AUDIENCE_ID=...
-```
-
-The audience also needs two text fields with merge tags `BUSINESS` and `CITY`.
-If they are missing, contacts are still added without those values. A Mailchimp
-failure never loses a registration: Netlify Forms keeps every submission.
-
 ## Assets
 
 Every image on the site is currently a labeled placeholder. `public/ASSETS.md`
