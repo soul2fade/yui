@@ -31,7 +31,8 @@ npm run lint       # eslint
 | `/bottleneck` | Find My Bottleneck — 5-question diagnostic |
 | `/free-audit` | Landing page pointing at both diagnostics |
 | `/contact` | Contact form (Netlify Forms) |
-| `/webinar` | Stop-Doing List webinar registration (Netlify Forms, form `webinar`). Reveals `public/yui-stop-doing-list.pdf` after submit |
+| `/webinar` | Stop-Doing List webinar registration (Netlify Forms, form `webinar`). Reveals the worksheet after submit: `public/yui-stop-doing-list.pdf` and the online version |
+| `/stop-doing-list/` | Stop-Doing List worksheet: static, self-contained page in `public/stop-doing-list/` |
 | `/privacy`, `/terms`, `/security` | Legal and security pages |
 
 `/med-spas` and `/spa` 301 to `/` — retired pages whose URLs may have been shared
@@ -76,6 +77,21 @@ ANTHROPIC_API_KEY=sk-ant-...
 Set it in Netlify (Site configuration → Environment variables) and locally in
 `.env` — see `.env.example`.
 
+`netlify/functions/submission-created.js` copies `/webinar` registrations into
+Mailchimp. Netlify runs it after every verified form submission; it ignores
+every form except `webinar`. Each registrant is added to the audience (new
+contacts as subscribed; anyone who unsubscribed stays unsubscribed) and tagged
+with their session, e.g. `Webinar: Thu Nov 5`. It needs:
+
+```
+MAILCHIMP_API_KEY=...-us21      # the suffix is the Mailchimp data center
+MAILCHIMP_AUDIENCE_ID=...
+```
+
+The audience also needs two text fields with merge tags `BUSINESS` and `CITY`.
+If they are missing, contacts are still added without those values. A Mailchimp
+failure never loses a registration: Netlify Forms keeps every submission.
+
 ## Assets
 
 Every image on the site is currently a labeled placeholder. `public/ASSETS.md`
@@ -83,7 +99,7 @@ lists what is still needed, the spec for each, and where it is referenced.
 
 ## Forms
 
-The contact form is a Netlify Form. `public/__forms.html` is the static file
+The contact and webinar forms are Netlify Forms. `public/__forms.html` is the static file
 Netlify parses at deploy time to register the form; `src/pages/ContactPage.jsx`
 posts to it. Keep the field names in the two files in sync.
 

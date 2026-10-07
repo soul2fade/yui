@@ -1,6 +1,6 @@
 import { screen, fireEvent, waitFor } from '@testing-library/react'
 import { renderRoute } from './renderRoute'
-import { WORKSHEET_HREF } from '../pages/WebinarPage'
+import { WORKSHEET_HREF, WORKSHEET_ONLINE_HREF } from '../pages/WebinarPage'
 
 describe('webinar registration', () => {
   afterEach(() => vi.restoreAllMocks())
@@ -32,6 +32,10 @@ describe('webinar registration', () => {
 
     const link = await screen.findByRole('link', { name: /download the worksheet/i })
     expect(link).toHaveAttribute('href', WORKSHEET_HREF)
+    expect(screen.getByRole('link', { name: /fill it in online/i })).toHaveAttribute(
+      'href',
+      WORKSHEET_ONLINE_HREF,
+    )
     const body = new URLSearchParams(fetchMock.mock.calls[0][1].body)
     expect(body.get('form-name')).toBe('webinar')
     expect(body.getAll('form-name')).toHaveLength(1)

@@ -8,10 +8,13 @@ import { EMAIL } from '../site'
 // registered by public/__forms.html as "webinar". Keep the field names and the
 // session values here in sync with that file.
 //
-// The worksheet is a static file in public/. It is revealed after a successful
-// registration, which matches the LinkedIn copy ("You'll get it when you
-// register"). It is not truly gated: anyone with the URL can open it.
+// The worksheet comes two ways, both static files in public/: a printable PDF,
+// and an interactive page that fills in on screen at /stop-doing-list/. Both
+// are revealed after a successful registration, which matches the LinkedIn copy
+// ("You'll get it when you register"). Neither is truly gated: anyone with the
+// URL can open them.
 export const WORKSHEET_HREF = '/yui-stop-doing-list.pdf'
+export const WORKSHEET_ONLINE_HREF = '/stop-doing-list/'
 
 export const SESSIONS = [
   { value: 'Wed Nov 4, 11:45am PT', day: 'Wednesday', date: 'November 4' },
@@ -162,6 +165,16 @@ export default function WebinarPage() {
                   <a href={WORKSHEET_HREF} download className="btn btn-accent mt-6 w-full sm:w-auto">
                     Download the worksheet (PDF)
                   </a>
+                  <p className="mt-3 text-[0.9375rem] text-muted">
+                    Or{' '}
+                    <a
+                      href={WORKSHEET_ONLINE_HREF}
+                      className="text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent"
+                    >
+                      fill it in online
+                    </a>
+                    . It adds up your hours as you go.
+                  </p>
                   <p className="mt-8 text-[0.9375rem] leading-relaxed text-muted">
                     While you wait, the{' '}
                     <Link
@@ -239,7 +252,8 @@ export default function WebinarPage() {
                     {status === 'sending' ? 'Saving your seat…' : 'Save my seat'}
                   </button>
                   <p className="text-[0.8125rem] leading-relaxed text-muted">
-                    Free. {TIME}, online.
+                    Free. {TIME}, online. We will email your join link and reminders, and add
+                    you to the Yui email list. Unsubscribe anytime.
                   </p>
                 </form>
               )}

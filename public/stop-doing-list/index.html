@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<!--
+  The Stop-Doing List worksheet, served as a static page at /stop-doing-list/.
+  The /webinar page links here after registration. It lives outside the React
+  app on purpose: it is self-contained and keeps its state in localStorage.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Stop-Doing List · Yui</title>
+<meta name="description" content="List the tasks that eat your week, count the hours, and sort each one: drop it, delegate it or automate it.">
+<link rel="canonical" href="https://yuiops.com/stop-doing-list/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F6F4; --surface:#FFFFFF; --ink:#0B0B0C; --muted:#5A5A60; --muted-l:#8A8A90;
+  --hair:#E4E4E7; --accent:#187D6D; --accent-ink:#FFFFFF; --accent-soft:#E3F1EE;
+  --drop:#8A8A90; --delegate:#0B0B0C; --automate:#187D6D; --field:#FFFFFF;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0B0B0C; --surface:#151518; --ink:#F6F6F4; --muted:#A6A6AC; --muted-l:#7A7A80;
+    --hair:#2A2A2F; --accent:#2FA08E; --accent-ink:#0B0B0C; --accent-soft:#12302B;
+    --drop:#7A7A80; --delegate:#F6F6F4; --automate:#2FA08E; --field:#1C1C20;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0B0B0C; --surface:#151518; --ink:#F6F6F4; --muted:#A6A6AC; --muted-l:#7A7A80;
+  --hair:#2A2A2F; --accent:#2FA08E; --accent-ink:#0B0B0C; --accent-soft:#12302B;
+  --drop:#7A7A80; --delegate:#F6F6F4; --automate:#2FA08E; --field:#1C1C20;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Geist",Inter,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:24px 0}
+.lockup{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.375rem;letter-spacing:-0.03em;color:var(--ink);text-decoration:none}
+.lockup svg{width:26px;height:26px}
+.mono{font-family:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.hero{padding:40px 0 32px;max-width:760px}
+.hero .mono{color:var(--accent)}
+h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1.02;letter-spacing:-0.035em;font-weight:700;margin:14px 0 18px}
+h1 .mark{color:var(--accent)}
+.lede{color:var(--muted);font-size:1.125rem;max-width:60ch;margin:0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:32px 0 0;padding:0;list-style:none;max-width:860px}
+.steps li{border-top:1px solid var(--hair);padding-top:14px}
+.steps b{display:block;font-weight:600;margin:6px 0 4px}
+.steps span{color:var(--muted);font-size:.92rem}
+.steps .mono{color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;align-items:start;padding:24px 0 64px}
+.list-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;gap:12px}
+.list-head h2{font-size:1.25rem;letter-spacing:-0.02em;margin:0;font-weight:600}
+.link-btn{background:none;border:0;padding:4px 0;color:var(--muted);font:inherit;font-size:.9rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.link-btn:hover{color:var(--ink)}
+
+.task{background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:16px 16px 14px;margin-bottom:12px;position:relative}
+.task.s-drop{border-left:4px solid var(--drop)}
+.task.s-delegate{border-left:4px solid var(--delegate)}
+.task.s-automate{border-left:4px solid var(--automate)}
+.task.s-keep{opacity:.72}
+.row1{display:flex;gap:10px;align-items:center}
+.row1 input{flex:1;min-width:0}
+input[type=text],input[type=number]{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--hair);border-radius:10px;padding:10px 12px;width:100%}
+input::placeholder{color:var(--muted-l)}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.task-name{font-weight:500}
+.del{background:none;border:0;color:var(--muted-l);cursor:pointer;font-size:1.3rem;line-height:1;width:36px;height:36px;border-radius:8px;flex:none}
+.del:hover{color:var(--ink);background:var(--paper)}
+.row2{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin-top:12px}
+.num{display:flex;flex-direction:column;gap:4px;width:110px}
+.num label{font-size:.78rem;color:var(--muted)}
+.hrs{display:flex;flex-direction:column;gap:4px;min-width:90px}
+.hrs .lab{font-size:.78rem;color:var(--muted)}
+.hrs output{font-weight:600;font-size:1.15rem;padding:9px 0;font-variant-numeric:tabular-nums}
+.sort{display:flex;gap:0;margin-left:auto;border:1px solid var(--hair);border-radius:10px;overflow:hidden;background:var(--field)}
+.sort button{font:inherit;font-size:.88rem;font-weight:500;background:none;border:0;color:var(--muted);padding:10px 12px;cursor:pointer;border-right:1px solid var(--hair)}
+.sort button:last-child{border-right:0}
+.sort button:hover{color:var(--ink)}
+.sort button[aria-pressed="true"][data-v="drop"]{background:var(--drop);color:#fff}
+.sort button[aria-pressed="true"][data-v="delegate"]{background:var(--delegate);color:var(--paper)}
+.sort button[aria-pressed="true"][data-v="automate"]{background:var(--automate);color:var(--accent-ink)}
+.row3{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:10px;font-size:.88rem}
+.who{display:flex;align-items:center;gap:8px;flex:1;min-width:220px}
+.who label{color:var(--muted);white-space:nowrap}
+.who input{padding:7px 10px}
+.status-keep{color:var(--muted)}
+.helper{margin-top:12px;background:var(--accent-soft);border-radius:10px;padding:14px}
+.helper p{margin:0 0 10px;font-weight:600}
+.helper .qn{display:block;color:var(--accent);margin-bottom:6px}
+.helper .btns{display:flex;gap:8px}
+.helper .btns button{font:inherit;font-size:.9rem;font-weight:500;border-radius:8px;padding:8px 16px;cursor:pointer;border:1px solid var(--ink);background:var(--ink);color:var(--paper)}
+.helper .btns button.no{background:transparent;color:var(--ink)}
+.add{width:100%;font:inherit;font-weight:500;color:var(--ink);background:transparent;border:1.5px dashed var(--hair);border-radius:14px;padding:14px;cursor:pointer}
+.add:hover{border-color:var(--muted-l)}
+
+aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px)}
+.panel{background:#0B0B0C;color:#F6F6F4;border-radius:18px;padding:24px;border:1px solid var(--hair)}
+.panel .mono,.yr,.big small,.unsorted{color:#8A8A90}
+.panel .mono{color:var(--muted-l)}
+.big{font-size:3.4rem;font-weight:700;letter-spacing:-0.04em;line-height:1;margin:10px 0 2px;font-variant-numeric:tabular-nums}
+.big small{font-size:1rem;font-weight:500;letter-spacing:0;color:var(--muted-l);margin-left:6px}
+.yr{color:var(--muted-l);font-size:.9rem;margin:0 0 18px}
+.bar{display:flex;height:10px;border-radius:5px;overflow:hidden;background:#2A2A2F;margin-bottom:14px}
+.bar i{display:block;height:100%;transition:width .3s ease}
+.bar .b-drop{background:#8A8A90}.bar .b-delegate{background:#F6F6F4}.bar .b-automate{background:#2FA08E}
+.split{list-style:none;margin:0;padding:0}
+.split li{display:flex;justify-content:space-between;padding:7px 0;border-top:1px solid #2A2A2F;font-size:.95rem}
+.split li span:last-child{font-variant-numeric:tabular-nums;font-weight:600}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:1px}
+.unsorted{color:var(--muted-l);font-size:.85rem;margin:12px 0 0}
+.week{background:var(--surface);border:1px solid var(--hair);border-radius:18px;padding:20px 24px;margin-top:14px}
+.week h3{font-size:1rem;margin:0 0 4px;font-weight:600;letter-spacing:-0.01em}
+.week .sub{color:var(--muted);font-size:.88rem;margin:0 0 12px}
+.week ul{list-style:none;margin:0;padding:0}
+.week li{padding:8px 0;border-top:1px solid var(--hair);font-size:.92rem}
+.week li .k{display:block;font-size:.78rem;color:var(--muted)}
+.week li.empty{color:var(--muted-l)}
+.cta{margin-top:14px;padding:18px 24px;border-radius:18px;border:1px solid var(--accent)}
+.cta b{display:block;margin-bottom:4px}
+.cta p{margin:0 0 10px;color:var(--muted);font-size:.9rem}
+.cta a{color:var(--accent);font-weight:600;text-decoration:none;font-size:.92rem}
+.cta a:hover{text-decoration:underline}
+footer{border-top:1px solid var(--hair);padding:20px 0 28px;color:var(--muted-l);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer p{margin:0;font-size:.85rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr;gap:28px}
+  aside{position:static}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .steps{grid-template-columns:1fr;gap:12px}
+  .sort{margin-left:0;width:100%}
+  .sort button{flex:1;padding:10px 6px}
+  .num{width:calc(50% - 6px)}
+}
+@media (prefers-reduced-motion: reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="lockup" href="/">
+      <svg viewBox="8 8 84 84" fill="none" aria-hidden="true"><path d="M 40 62 A 22 22 0 1 1 62 40" stroke="#187D6D" stroke-width="13" stroke-linecap="round"/><path d="M 60 38 A 22 22 0 1 1 38 60" stroke="currentColor" stroke-width="13" stroke-linecap="round"/></svg>
+      Yui
+    </a>
+  </header>
+
+  <section class="hero">
+    <span class="mono">The stop-doing list</span>
+    <h1>What are you done doing<span class="mark">?</span></h1>
+    <p class="lede">List the tasks that eat your week. Count what each one costs you. Then decide where it goes. Nothing stays on your plate by default.</p>
+    <ol class="steps">
+      <li><span class="mono">01</span><b>List it</b><span>Every recurring task you'd hand off tomorrow if you could.</span></li>
+      <li><span class="mono">02</span><b>Count it</b><span>Times a month and minutes each. The hours add up for you.</span></li>
+      <li><span class="mono">03</span><b>Sort it</b><span>Drop, delegate or automate. Not sure? Answer three questions.</span></li>
+    </ol>
+  </section>
+
+  <div class="grid">
+    <main>
+      <div class="list-head">
+        <h2>Your list</h2>
+        <button class="link-btn" id="reset" type="button">Clear list</button>
+      </div>
+      <div id="tasks"></div>
+      <button class="add" id="add" type="button">+ Add a task</button>
+    </main>
+
+    <aside aria-live="polite">
+      <div class="panel">
+        <span class="mono">Hours a month back</span>
+        <div class="big" id="total">0<small>hrs</small></div>
+        <p class="yr" id="year">That's 0 hours a year.</p>
+        <div class="bar" aria-hidden="true"><i class="b-drop" id="bd"></i><i class="b-delegate" id="bg"></i><i class="b-automate" id="ba"></i></div>
+        <ul class="split">
+          <li><span><span class="dot" style="background:#8A8A90"></span>Drop</span><span id="t-drop">0 hrs</span></li>
+          <li><span><span class="dot" style="background:#F6F6F4"></span>Delegate</span><span id="t-delegate">0 hrs</span></li>
+          <li><span><span class="dot" style="background:#2FA08E"></span>Automate</span><span id="t-automate">0 hrs</span></li>
+        </ul>
+        <p class="unsorted" id="unsorted"></p>
+      </div>
+
+      <div class="week">
+        <h3>This week</h3>
+        <p class="sub">Move one task out of each column. Start with the biggest.</p>
+        <ul id="week"></ul>
+      </div>
+
+      <div class="cta" id="cta" hidden>
+        <b>Long Automate column?</b>
+        <p>That's the work we build. Bring your list to a fit call and we'll go through it with you.</p>
+        <a href="https://cal.com/yuiops/fit-call" target="_blank" rel="noopener">Book a fit call</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <p>Your list stays in this browser. Nobody else can see it.</p>
+    <p><a href="/" style="color:inherit">yuiops.com</a></p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var KEY='yui-stop-doing-v1';
+  var QS=[
+    {q:'Could it stop without anyone noticing?',yes:'drop',hint:'If no customer, employee or bank would miss it for a month.'},
+    {q:'Does it need judgment, just not yours?',yes:'delegate',hint:'It takes a person, but that person doesn\'t have to be you.'},
+    {q:'Is it the same steps every time?',yes:'automate',hint:'Same trigger, same steps, same result.'}
+  ];
+  var LABEL={drop:'Drop',delegate:'Delegate',automate:'Automate'};
+  var tasks=[], uid=0;
+
+  function blank(){return {id:++uid,name:'',times:'',mins:'',sort:'',who:'',helper:-1};}
+  function load(){
+    try{
+      var raw=localStorage.getItem(KEY);
+      if(raw){var d=JSON.parse(raw); if(Array.isArray(d)&&d.length){tasks=d.map(function(t){t.id=++uid;t.helper=-1;return t;});return;}}
+    }catch(e){}
+    tasks=[blank(),blank(),blank()];
+  }
+  function save(){
+    try{localStorage.setItem(KEY,JSON.stringify(tasks.map(function(t){return {name:t.name,times:t.times,mins:t.mins,sort:t.sort,who:t.who};})));}catch(e){}
+  }
+  function hrs(t){var a=parseFloat(t.times),b=parseFloat(t.mins);if(!(a>0)||!(b>0))return 0;return a*b/60;}
+  function fmt(n){return (Math.round(n*10)/10).toLocaleString(undefined,{maximumFractionDigits:1});}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+  var list=document.getElementById('tasks');
+
+  function renderTask(t,i){
+    var el=document.createElement('div');
+    el.className='task'+(t.sort?' s-'+t.sort:'');
+    el.dataset.id=t.id;
+    var ph=i===0?'e.g. retyping invoices into a spreadsheet':'Another task';
+    var h='<div class="row1"><label class="sr" for="n'+t.id+'">Task</label>'+
+      '<input type="text" class="task-name" id="n'+t.id+'" data-f="name" placeholder="'+ph+'" value="'+esc(t.name)+'">'+
+      '<button class="del" type="button" data-act="del" aria-label="Remove task">&times;</button></div>'+
+      '<div class="row2">'+
+        '<div class="num"><label for="t'+t.id+'">Times a month</label><input type="number" inputmode="decimal" min="0" id="t'+t.id+'" data-f="times" value="'+esc(t.times)+'"></div>'+
+        '<div class="num"><label for="m'+t.id+'">Minutes each</label><input type="number" inputmode="decimal" min="0" id="m'+t.id+'" data-f="mins" value="'+esc(t.mins)+'"></div>'+
+        '<div class="hrs"><span class="lab">Hours a month</span><output data-o="hrs">'+fmt(hrs(t))+'</output></div>'+
+        '<div class="sort" role="group" aria-label="Sort this task">'+
+          ['drop','delegate','automate'].map(function(v){return '<button type="button" data-v="'+v+'" aria-pressed="'+(t.sort===v)+'">'+LABEL[v]+'</button>';}).join('')+
+        '</div></div>';
+    var r3='';
+    if(t.sort==='delegate'){
+      r3+='<div class="who"><label for="w'+t.id+'">Hand it to</label><input type="text" id="w'+t.id+'" data-f="who" placeholder="One name, not a team" value="'+esc(t.who)+'"></div>';
+    }
+    if(t.sort==='keep'){
+      r3+='<span class="status-keep">It\'s yours. It stays on your plate, on purpose.</span>';
+    }
+    if(t.helper<0){
+      r3+='<button class="link-btn" type="button" data-act="help">'+(t.sort?'Run the questions again':'Not sure? Answer three questions')+'</button>';
+    }
+    if(r3) h+='<div class="row3">'+r3+'</div>';
+    if(t.helper>=0){
+      var q=QS[t.helper];
+      h+='<div class="helper"><span class="mono qn">Question '+(t.helper+1)+' of 3</span><p>'+q.q+'</p>'+
+        '<div style="color:var(--muted);font-size:.88rem;margin:-4px 0 12px">'+q.hint+'</div>'+
+        '<div class="btns"><button type="button" data-act="yes">Yes</button><button type="button" class="no" data-act="no">No</button></div></div>';
+    }
+    el.innerHTML=h;
+    return el;
+  }
+
+  function render(focusId,focusField){
+    list.innerHTML='';
+    tasks.forEach(function(t,i){list.appendChild(renderTask(t,i));});
+    if(focusId){var f=list.querySelector('[data-id="'+focusId+'"] [data-f="'+(focusField||'name')+'"]');if(f)f.focus();}
+    summary();
+  }
+
+  function summary(){
+    var tot={drop:0,delegate:0,automate:0},uns=0;
+    tasks.forEach(function(t){
+      var h=hrs(t);
+      if(tot.hasOwnProperty(t.sort))tot[t.sort]+=h;
+      else if(!t.sort&&t.name.trim())uns++;
+    });
+    var all=tot.drop+tot.delegate+tot.automate;
+    document.getElementById('total').innerHTML=fmt(all)+'<small>hrs</small>';
+    document.getElementById('year').textContent="That's "+fmt(all*12)+' hours a year.';
+    ['drop','delegate','automate'].forEach(function(k){document.getElementById('t-'+k).textContent=fmt(tot[k])+' hrs';});
+    var p=function(v){return all>0?(v/all*100)+'%':'0%';};
+    document.getElementById('bd').style.width=p(tot.drop);
+    document.getElementById('bg').style.width=p(tot.delegate);
+    document.getElementById('ba').style.width=p(tot.automate);
+    document.getElementById('unsorted').textContent=uns?(uns+(uns===1?' task isn\'t':' tasks aren\'t')+' sorted yet.'):'';
+    var w='';
+    ['drop','delegate','automate'].forEach(function(k){
+      var best=null;
+      tasks.forEach(function(t){if(t.sort===k&&t.name.trim()&&(!best||hrs(t)>hrs(best)))best=t;});
+      if(best){
+        var extra=k==='delegate'&&best.who.trim()?' to '+esc(best.who.trim()):'';
+        w+='<li><span class="k">'+LABEL[k]+extra+'</span>'+esc(best.name.trim())+(hrs(best)?' · '+fmt(hrs(best))+' hrs/mo':'')+'</li>';
+      }else{
+        w+='<li class="empty"><span class="k">'+LABEL[k]+'</span>Nothing here yet</li>';
+      }
+    });
+    document.getElementById('week').innerHTML=w;
+    document.getElementById('cta').hidden=!(tot.automate>0||tasks.some(function(t){return t.sort==='automate'&&t.name.trim();}));
+    save();
+  }
+
+  function find(el){var c=el.closest('.task');if(!c)return null;var id=+c.dataset.id;for(var i=0;i<tasks.length;i++)if(tasks[i].id===id)return tasks[i];return null;}
+
+  list.addEventListener('input',function(e){
+    var f=e.target.dataset.f;if(!f)return;
+    var t=find(e.target);if(!t)return;
+    t[f]=e.target.value;
+    if(f==='times'||f==='mins'){e.target.closest('.task').querySelector('[data-o="hrs"]').textContent=fmt(hrs(t));}
+    summary();
+  });
+
+  list.addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    var t=find(b);if(!t)return;
+    var act=b.dataset.act;
+    if(b.dataset.v){t.sort=(t.sort===b.dataset.v)?'':b.dataset.v;t.helper=-1;render(t.id,t.sort==='delegate'?'who':null);var s=list.querySelector('[data-id="'+t.id+'"] [data-v="'+b.dataset.v+'"]');if(s&&t.sort!=='delegate')s.focus();return;}
+    if(act==='del'){tasks=tasks.filter(function(x){return x!==t;});if(!tasks.length)tasks=[blank()];render();return;}
+    if(act==='help'){t.helper=0;render();var y=list.querySelector('[data-id="'+t.id+'"] [data-act="yes"]');if(y)y.focus();return;}
+    if(act==='yes'){t.sort=QS[t.helper].yes;t.helper=-1;render(t.id,t.sort==='delegate'?'who':null);return;}
+    if(act==='no'){
+      if(t.helper<2){t.helper++;render();var y2=list.querySelector('[data-id="'+t.id+'"] [data-act="yes"]');if(y2)y2.focus();}
+      else{t.sort='keep';t.helper=-1;render();}
+      return;
+    }
+  });
+
+  document.getElementById('add').addEventListener('click',function(){var t=blank();tasks.push(t);render(t.id);});
+  var rb=document.getElementById('reset'),armed=null;
+  rb.addEventListener('click',function(){
+    if(armed){clearTimeout(armed);armed=null;rb.textContent='Clear list';tasks=[blank(),blank(),blank()];render();return;}
+    rb.textContent='Tap again to clear';
+    armed=setTimeout(function(){armed=null;rb.textContent='Clear list';},4000);
+  });
+
+  load();render();
+})();
+</script>
+</body>
+</html>
