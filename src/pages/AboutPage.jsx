@@ -99,10 +99,9 @@ export default function AboutPage() {
               How I work
             </h2>
             <p>
-              I work with a small number of businesses at a time, because the work is
-              hands-on and there is no version of it that scales by adding slides. I am
-              based in Sacramento and most of my clients are here, though the work travels
-              fine.
+              The work is hands-on: I’m inside your operation, not sending reports from
+              a distance. I’m based in Sacramento and work with clients locally and
+              remotely.
             </p>
             <p>
               If your operation is mostly fine and you need one automation built, say so.
