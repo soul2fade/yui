@@ -17,7 +17,7 @@ const STEPS = [
     name: 'Build',
     detail: 'Weeks two to four',
     body:
-      'We fix the first process and build the system that runs it, then put it in front of your team. Working software, not a recommendation to go buy some.',
+      'We build the first working system and put it in front of your team. Working software, not a recommendation to go buy some.',
   },
   {
     name: 'Ongoing support',

@@ -13,7 +13,7 @@ export default function Hero() {
           side of the hero and is read at the same time as the headline. */}
       <div className="mx-auto grid max-w-6xl gap-14 px-6 py-24 sm:px-8 sm:py-32 lg:grid-cols-[minmax(0,1fr)_21rem] lg:items-center lg:gap-16">
         <div>
-          <Eyebrow tone="paper">Ops management + AI integrations</Eyebrow>
+          <Eyebrow tone="paper">AI integrations + ops management</Eyebrow>
 
           <Headline
             as="h1"

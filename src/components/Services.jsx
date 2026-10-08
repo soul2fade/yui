@@ -2,6 +2,12 @@ import { Eyebrow, Headline } from './ui'
 
 const SERVICES = [
   {
+    name: 'AI integrations',
+    body:
+      'Your job software, your books and your payroll each hold a piece of the answer. Nobody has time to assemble it, so the question goes unasked. We put AI across all three and give you the whole picture, built on the tools you already pay for.',
+    points: ['One answer, without the hunt', 'Quote and proposal drafting', 'Reporting that writes itself'],
+  },
+  {
     name: 'Operations management',
     body:
       'We take the operating work off your plate and run it on a cadence: scheduling, receivables, vendors, the weekly numbers. Your processes get written down once, so they stop living in one person’s head.',
@@ -12,12 +18,6 @@ const SERVICES = [
     body:
       'The handoffs between your tools become automatic. Intake to job, job to invoice, invoice to paid, paid to the report you actually read. We build it, we maintain it, and we hand you the keys.',
     points: ['Intake to invoice, end to end', 'No more double entry', 'Built on tools you own'],
-  },
-  {
-    name: 'AI integrations',
-    body:
-      'Your job software, your books and your payroll each hold a piece of the answer. Nobody has time to assemble it, so the question goes unasked. We put AI across all three and give you the whole picture, built on the tools you already pay for.',
-    points: ['One answer, without the hunt', 'Quote and proposal drafting', 'Reporting that writes itself'],
   },
 ]
 
