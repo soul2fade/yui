@@ -7,21 +7,24 @@ const TIERS = [
     price: '$1,500',
     cadence: 'one day, on-site',
     secondary: 'First call is free',
-    body: 'We spend a day at your business with your ops lead. You tell us what to fix, and we map out where to start.',
+    body: 'A full day inside your operation. We find where time, margin, and capacity are leaking, and leave you a ranked plan to fix it.',
     points: [
       'A full day on-site with your operations manager',
       'Where your time and money actually go',
+      'A software audit: duplicate seats, overlapping tools, and shelfware to retire',
       'A ranked to-do list you can work through yourself',
       'The full $1,500 counts toward your first month if you sign on',
     ],
   },
   {
-    name: 'AI Implementation Sprint',
+    name: 'AI + Workflow Sprint',
     price: '$3,500',
     cadence: 'one-time',
-    body: 'Pick one task that eats your week. We build a tool that handles it for you.',
+    body: 'Pick the one bottleneck eating your week. We fix the process first, then build the system that runs it.',
     points: [
       'Planned in week one, working by week four',
+      'Repetitive admin taken off your team: reporting, billing reminders, lead intake',
+      'Connected systems: one dashboard for multiple platforms',
       'Built on the tools you already own',
       'We show your team how to use it',
       'Written instructions, so you never depend on us',
@@ -31,29 +34,31 @@ const TIERS = [
     name: 'Ops + AI Essential',
     price: '$4,000',
     cadence: 'per month',
-    secondary: '1 tool in progress',
-    body: 'Ongoing help keeping the day-to-day running smoothly.',
+    secondary: '1 Active Ops Sprint*',
+    body: 'A steady hand on operations. Clear processes, smoother handoffs, and one improvement always in progress.',
     points: [
       'A weekly check-in on what is working and what is stuck',
-      'One tool in progress at a time',
-      'Your processes written down so anyone can follow them',
+      'One ops sprint in progress at a time',
+      'Clear handoffs between teams, so work never stalls',
+      'SOPs your team can follow without you stepping in',
+      'A simple scorecard that shows trouble early: at-risk clients, stalled deals, late jobs',
       'A monthly report on what we built and the hours it saved',
-      'Month to month, 30 days notice to cancel',
     ],
   },
   {
     name: 'Ops + AI Growth',
     price: '$8,000',
     cadence: 'per month',
-    secondary: '2 tools in progress',
+    secondary: '2 Active Ops Sprints*',
     badge: 'Best value',
-    body: 'Hands-on operations help for a business that is growing fast.',
+    body: 'Hands-on operations help for a business growing fast.',
     points: [
       'Everything in Essential',
-      'Two tools in progress at a time',
-      'A monthly review of your numbers',
-      'Monthly AI training for your team',
-      'Every 3 months: a plan for what is next and a software review',
+      'Two ops sprints in progress at a time',
+      'We review vendor and overhead spend and show you where it runs heavy',
+      'AI workflows for your frontline team, with monthly training',
+      'A monthly review of your chosen KPIs',
+      'A quarterly report on what we did, next quarter’s plan, and a process review',
     ],
   },
 ]
@@ -123,6 +128,11 @@ export default function Pricing() {
             </div>
           ))}
         </div>
+
+        <p className="mt-5 text-sm text-muted">
+          Both monthly plans are a month-to-month subscription, with 30 days’ notice to
+          cancel. *Up to 5 ops sprints per quarter on Essential, and up to 10 on Growth.
+        </p>
 
         <div className="card mt-5 flex flex-col gap-5 p-7 sm:flex-row sm:items-center sm:justify-between sm:p-8">
           <div>
