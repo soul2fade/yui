@@ -1,5 +1,21 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Eyebrow, Headline } from './ui'
+
+// A custom client-style build, shown as a silent screen recording rather than a
+// clickable demo. The recording is cropped to the chat column so the product's own
+// branding and the account name in the sidebar stay out of frame.
+const FEATURED = {
+  kicker: 'Custom build',
+  name: 'AI Operations Assistant',
+  body:
+    'Built for a business running five platforms: Jobber, QuickBooks, Gusto, HubSpot, and Square. We connected them into one hub the owner directs from a chat. Here the owner asks which finished jobs still need an invoice, and it finds $14,600 sitting unbilled across ten jobs and drafts every invoice for one-click approval. Shown with a fictional business and invented customers.',
+  facts: ['Five platforms, one hub', 'Directed by chat, in plain language', 'It drafts the work, you approve it'],
+  video: '/work/ai-operations-assistant.mp4',
+  poster: '/work/ai-operations-assistant.jpg',
+  label:
+    'Screen recording: the owner asks which completed jobs still need invoicing, the assistant lists ten unbilled jobs totaling $14,600, then drafts an invoice for each one.',
+}
 
 // Screenshots are captured from the live demos at 1200x800.
 const PROJECTS = [
@@ -47,6 +63,36 @@ function ProjectLink({ href, children }) {
   )
 }
 
+// Loops silently like a GIF, except for visitors who ask for reduced motion, who
+// get the poster frame and the player controls instead.
+function FeaturedVideo({ src, poster, label }) {
+  const ref = useRef(null)
+  useEffect(() => {
+    const video = ref.current
+    if (!video || typeof window.matchMedia !== 'function') return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.pause()
+      video.controls = true
+    }
+  }, [])
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={poster}
+      width="1120"
+      height="1030"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      aria-label={label}
+      className="aspect-[1120/1030] w-full border-b border-line bg-paper object-cover lg:border-r lg:border-b-0"
+    />
+  )
+}
+
 export default function Work() {
   return (
     <section id="work" className="border-b border-line bg-paper">
@@ -56,10 +102,32 @@ export default function Work() {
           Things we have actually shipped
         </Headline>
         <p className="mt-5 max-w-xl leading-relaxed text-muted">
-          Demo versions running sample data. Open either one and click around.
+          Everything here runs on sample data. Watch the custom build, or open either
+          demo and click around.
         </p>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
+        <article className="card mt-14 grid overflow-hidden lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+          <FeaturedVideo src={FEATURED.video} poster={FEATURED.poster} label={FEATURED.label} />
+          <div className="flex flex-col p-7 sm:p-8 lg:p-10">
+            <span className="mono text-accent">{FEATURED.kicker}</span>
+            <h3
+              className="mt-4 text-2xl text-ink sm:text-3xl"
+              style={{ fontWeight: 600, letterSpacing: '-0.03em' }}
+            >
+              {FEATURED.name}
+            </h3>
+            <p className="mt-3.5 leading-relaxed text-muted">{FEATURED.body}</p>
+            <ul className="mt-6 space-y-2.5 border-t border-line pt-6">
+              {FEATURED.facts.map((fact) => (
+                <li key={fact} className="mono text-muted">
+                  {fact}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
           {PROJECTS.map((project) => (
             <article key={project.name} className="card flex flex-col overflow-hidden">
               <img

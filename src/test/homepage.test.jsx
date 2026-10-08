@@ -64,6 +64,16 @@ describe('homepage', () => {
     renderRoute('/')
     expect(screen.getByRole('heading', { name: 'Budget Stress Test' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Automated Invoicing' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'AI Operations Assistant' })).toBeInTheDocument()
+  })
+
+  // The custom-build recording shows a business name and customer names on screen,
+  // so the card has to say they are invented.
+  it('labels the custom build as fictional data', () => {
+    renderRoute('/')
+    const work = document.getElementById('work')
+    expect(work.textContent).toMatch(/fictional business and invented customers/i)
+    expect(work.querySelector('video')).toHaveAttribute('src', '/work/ai-operations-assistant.mp4')
   })
 
   // The budget demo names a real client, so the card has to say plainly that the
