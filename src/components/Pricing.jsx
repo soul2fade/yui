@@ -37,7 +37,7 @@ const TIERS = [
     secondary: '1 Active Ops Sprint*',
     body: 'A steady hand on operations. Clear processes, smoother handoffs, and one improvement always in progress.',
     points: [
-      'A weekly leadership meeting to keep teams aligned and clear what’s stuck',
+      'A weekly operations meeting to set priorities and clear what’s stuck',
       'One ops sprint in progress at a time',
       'Clear handoffs between teams, so work never stalls',
       'SOPs your team can follow without you stepping in',
