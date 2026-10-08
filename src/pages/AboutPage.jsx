@@ -35,13 +35,12 @@ export default function AboutPage() {
                 breaks, or nobody can find the file.
               </p>
               <p>
-                At Folio Dynamix I worked on operations behind $3.2B in managed assets,
-                where a small process gap is not an inconvenience, it is a reportable
-                problem. At Greenhaven Soccer Club I ran the operation for 900 players
-                across 88 teams: registration, scheduling, volunteers, fields, and a
-                hundred parents who needed an answer that evening. At William Jessup
-                University I delivered $2M in cost reductions, which in practice meant
-                reading every contract and every workflow until the waste was obvious.
+                Whether managing operations behind $3.2B in institutional assets,
+                coordinating logistics for 900 athletes across 88 teams, or cutting $2M of
+                waste out of a university’s athletics operations by auditing every contract
+                and workflow line by line, my focus has always been the same: finding
+                what’s broken, tightening the handoffs, and making the machine run
+                reliably.
               </p>
             </div>
           </div>

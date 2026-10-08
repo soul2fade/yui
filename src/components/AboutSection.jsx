@@ -26,10 +26,10 @@ export default function AboutSection() {
             <div className="mt-7 max-w-xl space-y-5 text-lg leading-relaxed text-muted">
               <p>
                 I am Daniel. I have spent my career inside operations, managing $3.2B in
-                assets at Folio Dynamix, running a youth soccer club of 900 players and 88
-                teams, and cutting $2M of cost out of a university&rsquo;s back office. Different
-                worlds, same job: figure out what is actually broken, then build the thing
-                that fixes it.
+                assets at Folio Dynamix, running a soccer club of 900 players and 88
+                teams, and cutting $2M of cost as operations director of a Division II
+                athletics department. Different worlds, same job: figure out what is
+                actually broken, then build the thing that fixes it.
               </p>
               <p>
                 I started Yui because small businesses get the worst version of this help:
