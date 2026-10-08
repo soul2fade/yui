@@ -112,6 +112,26 @@ export default function AboutPage() {
             </p>
           </div>
 
+          <div className="mt-16 space-y-6 text-lg leading-relaxed text-muted">
+            <h2
+              className="text-2xl text-ink sm:text-3xl"
+              style={{ fontWeight: 600, letterSpacing: '-0.03em' }}
+            >
+              Outside work
+            </h2>
+            <p>
+              I’ve lived in Sacramento for 25 years. I came from St. Louis to go to UC
+              Davis, met my wife there, and we settled here near her family. Our son and
+              daughter keep us running between soccer, ballet, volleyball, and flag
+              football, and somewhere in there homework, dinner, and cleaning happen.
+              I’ve coached youth soccer for six years, mostly on my son’s teams, and
+              coach in the Sac Republic youth program. I’ve also served on a youth
+              soccer club board and helped with the Easter egg hunts at Garcia Bend. When
+              I get a free hour, it goes to running, reading, art, getting outside, or
+              whatever video game my kids are into.
+            </p>
+          </div>
+
           <div className="card mt-16 flex flex-col gap-6 p-8 sm:p-10">
             <div>
               <Headline as="h2" className="text-3xl text-ink sm:text-4xl">
