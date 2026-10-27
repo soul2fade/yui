@@ -3,7 +3,7 @@ import { EMAIL } from '../site'
 
 const TIERS = [
   {
-    name: 'Ops + AI Assessment',
+    name: 'Ops Assessment',
     price: '$1,500',
     cadence: 'one day, on-site',
     secondary: 'First call is free',
@@ -17,7 +17,7 @@ const TIERS = [
     ],
   },
   {
-    name: 'AI + Workflow Sprint',
+    name: 'Workflow Sprint',
     price: '$3,500',
     cadence: 'one-time',
     body: 'Pick the one bottleneck eating your week. We fix the process first, then build the system that runs it.',
@@ -31,7 +31,7 @@ const TIERS = [
     ],
   },
   {
-    name: 'Ops + AI Essential',
+    name: 'Ops Essential',
     price: '$4,000',
     cadence: 'per month',
     secondary: '1 Active Ops Sprint*',
@@ -47,7 +47,7 @@ const TIERS = [
     ],
   },
   {
-    name: 'Ops + AI Growth',
+    name: 'Ops Growth',
     price: '$8,000',
     cadence: 'per month',
     secondary: '2 Active Ops Sprints*',
@@ -57,11 +57,33 @@ const TIERS = [
       'Everything in Essential',
       'Two ops sprints in progress at a time',
       'Vendor, contractor, and OpEx optimization to protect EBITDA',
-      'AI workflows for your frontline team, with monthly training',
+      'Automated workflows for your frontline team, with monthly training',
       'A delegation plan to get you out of the day-to-day',
       'Predictive capacity modeling & gross margin defense per service line as volume scales',
       'A quarterly report on what we did, next quarter’s plan, and a process review',
     ],
+  },
+]
+
+// Sacramento-Roseville-Folsom metro medians, BLS OEWS May 2025, checked on
+// 2026-10-26 in the BLS OEWS query system (data.bls.gov/oes, area 0040900).
+// Medians, not means, because they are the conservative number. Update each
+// spring when BLS publishes the next May release.
+const HIRE_COSTS = [
+  {
+    option: 'Hire an ops manager',
+    cost: '$118,460',
+    note: 'One person, still depending on staff or vendors to build anything',
+  },
+  {
+    option: 'Hire an office supervisor',
+    cost: '$77,350',
+    note: 'More management capacity, but the manual steps stay manual',
+  },
+  {
+    option: 'Hire another admin',
+    cost: '$55,020',
+    note: 'More payroll, and the broken process stays broken',
   },
 ]
 
@@ -135,6 +157,40 @@ export default function Pricing() {
           Both monthly plans are a month-to-month subscription, with 30 days’ notice to
           cancel. *Up to 5 ops sprints per quarter on Essential, and up to 10 on Growth.
         </p>
+
+
+        <div className="card mt-5 p-7 sm:p-8">
+          <span className="mono text-accent">What the alternative costs in Sacramento</span>
+          <dl className="mt-5 divide-y divide-line border-y border-line">
+            {HIRE_COSTS.map((row) => (
+              <div
+                key={row.option}
+                className="grid gap-1 py-4 sm:grid-cols-[14rem_9rem_minmax(0,1fr)] sm:items-baseline sm:gap-6"
+              >
+                <dt className="text-ink" style={{ fontWeight: 600 }}>
+                  {row.option}
+                </dt>
+                <dd className="text-ink">{`${row.cost}/yr`}</dd>
+                <dd className="text-muted">{row.note}</dd>
+              </div>
+            ))}
+            <div className="grid gap-1 py-4 sm:grid-cols-[14rem_9rem_minmax(0,1fr)] sm:items-baseline sm:gap-6">
+              <dt className="text-accent" style={{ fontWeight: 600 }}>
+                Ops Essential
+              </dt>
+              <dd className="text-ink">$4,000/mo</dd>
+              <dd className="text-muted">
+                Senior ops leadership plus hands-on builds. No payroll tax, no benefits,
+                month to month.
+              </dd>
+            </div>
+          </dl>
+          <p className="mt-4 text-sm text-muted">
+            Salaries are median base pay before benefits, Sacramento-Roseville-Folsom metro,
+            U.S. Bureau of Labor Statistics (OEWS, May 2025). Nationally, benefits add about
+            30% on top of wages for private employers (BLS, June 2026).
+          </p>
+        </div>
 
         <div className="card mt-5 flex flex-col gap-5 p-7 sm:flex-row sm:items-center sm:justify-between sm:p-8">
           <div>

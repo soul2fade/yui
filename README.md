@@ -1,6 +1,6 @@
 # Yui — marketing site
 
-Marketing site for **Yui** — AI integrations and operations management for small
+Marketing site for **Yui** — operations management and workflow builds for small
 businesses, based in Sacramento.
 
 ## Stack

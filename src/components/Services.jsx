@@ -2,9 +2,9 @@ import { Eyebrow, Headline } from './ui'
 
 const SERVICES = [
   {
-    name: 'AI integrations',
+    name: 'Connected systems',
     body:
-      'Your job software, your books and your payroll each hold a piece of the answer. Nobody has time to assemble it, so the question goes unasked. We put AI across all three and give you the whole picture, built on the tools you already pay for.',
+      'Your job software, your books and your payroll each hold a piece of the answer. Nobody has time to assemble it, so the question goes unasked. We connect all three and give you the whole picture, built on the tools you already pay for.',
     points: ['One answer, without the hunt', 'Quote and proposal drafting', 'Reporting that writes itself'],
   },
   {

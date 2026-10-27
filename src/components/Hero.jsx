@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { BookingLink, Eyebrow, Headline } from './ui'
 import NameCard from './NameCard'
 
-const TAGS = ['Based in Sacramento', 'Ops + AI Management', 'Builds, not decks']
+const TAGS = ['Based in Sacramento', 'Ops management', 'Builds, not decks']
 
 export default function Hero() {
   return (
@@ -13,19 +13,22 @@ export default function Hero() {
           side of the hero and is read at the same time as the headline. */}
       <div className="mx-auto grid max-w-6xl gap-14 px-6 py-24 sm:px-8 sm:py-32 lg:grid-cols-[minmax(0,1fr)_21rem] lg:items-center lg:gap-16">
         <div>
-          <Eyebrow tone="paper">AI integrations + ops management</Eyebrow>
+          <Eyebrow tone="paper">Ops management + workflow builds</Eyebrow>
 
           <Headline
             as="h1"
             className="mt-6 max-w-3xl text-[2.75rem] text-white sm:text-6xl lg:text-[4rem]"
           >
-            The operator your business is missing
+            Keep your tools.{' '}
+            <br className="hidden sm:block" />
+            Lose the busywork
           </Headline>
 
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-dark">
-            We run the operations you do not have time for, and we put AI to work where
-            it actually pays off. No dashboards nobody opens. No strategy decks. Systems
-            that run your business when you are not looking at them.
+            The operator your business is missing. We fix the admin bottlenecks capping
+            your growth, without adding headcount or new software. No dashboards nobody
+            opens. No strategy decks. Systems that run your business when you are not
+            looking at them.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">

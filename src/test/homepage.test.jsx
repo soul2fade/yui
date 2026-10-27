@@ -5,7 +5,7 @@ describe('homepage', () => {
   it('leads with the hero headline and both CTAs', () => {
     renderRoute('/')
     expect(
-      screen.getByRole('heading', { level: 1, name: /the operator your business is missing/i })
+      screen.getByRole('heading', { level: 1, name: /keep your tools\. lose the busywork/i })
     ).toBeInTheDocument()
     expect(screen.getAllByRole('link', { name: /book a fit call/i }).length).toBeGreaterThan(0)
     expect(screen.getByRole('link', { name: /see how it works/i })).toBeInTheDocument()
