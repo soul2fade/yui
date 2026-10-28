@@ -35,6 +35,30 @@ const STATS = [
     label: 'feel overwhelmed by too many business tools.',
     detail: 'Salesforce, 2024',
   },
+  {
+    figure: '44%',
+    label: 'say there isn\u2019t time to master all the technology their company uses.',
+    detail: 'Salesforce, 2024',
+  },
+]
+
+// Slack small business productivity survey, conducted online by Talker Research
+// for Slack, June 28 to July 3, 2024. 2,000 U.S. small business owners; small
+// business defined as 2,000 or fewer employees. Read in full on 2026-10-28:
+// salesforce.com/news/stories/small-business-productivity-trends-2024/
+// The 96 minutes covers all wasted time, including non-work distractions, so the
+// copy never says tools cause all of it. The list below is only the tool-related
+// reasons owners gave; "about 3 in 10" is the survey's own wording.
+const TIME_LOST = {
+  figure: '96 min',
+  label: 'Small business owners lose 96 minutes of productivity a day, about three weeks a year.',
+}
+
+const TOOL_REASONS = [
+  { figure: '3 in 10', label: 'lose time searching for information in the wrong places' },
+  { figure: '29%', label: 'repeat the same messages across platforms' },
+  { figure: '28%', label: 'wait on status updates from multiple tools and people' },
+  { figure: '17%', label: 'lose time switching between apps and tools' },
 ]
 
 export default function Problem() {
@@ -62,9 +86,9 @@ export default function Problem() {
           ))}
         </ul>
 
-        <ul className="mt-5 grid gap-5 sm:grid-cols-2">
+        <ul className="mt-5 grid gap-5 md:grid-cols-3">
           {STATS.map((stat) => (
-            <li key={stat.figure}>
+            <li key={stat.figure} className="*:h-full">
               <Stat {...stat} />
             </li>
           ))}
@@ -72,6 +96,37 @@ export default function Problem() {
         <p className="mt-4 text-sm text-muted">
           Salesforce, Small and Medium Business Trends Report, 6th edition. Survey of 3,350
           leaders at companies with 200 or fewer employees, 2024.
+        </p>
+
+        <div className="card mt-10 grid gap-8 p-7 sm:p-8 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:items-center">
+          <div>
+            <div
+              className="text-4xl text-ink sm:text-5xl"
+              style={{ fontWeight: 600, letterSpacing: '-0.04em' }}
+            >
+              {TIME_LOST.figure}
+            </div>
+            <p className="mt-3 leading-snug text-ink">{TIME_LOST.label}</p>
+          </div>
+          <div>
+            <p className="mono text-accent">Tool-related reasons owners gave</p>
+            <ul className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+              {TOOL_REASONS.map((reason) => (
+                <li key={reason.label} className="flex items-baseline gap-3">
+                  <span
+                    className="w-[4.75rem] shrink-0 text-xl text-ink"
+                    style={{ fontWeight: 600, letterSpacing: '-0.02em' }}
+                  >
+                    {reason.figure}
+                  </span>
+                  <span className="leading-snug text-muted">{reason.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p className="mt-4 text-sm text-muted">
+          Slack survey of 2,000 U.S. small business owners, conducted by Talker Research, 2024.
         </p>
       </div>
     </section>
