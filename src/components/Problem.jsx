@@ -49,9 +49,12 @@ const STATS = [
 // The 96 minutes covers all wasted time, including non-work distractions, so the
 // copy never says tools cause all of it. The list below is only the tool-related
 // reasons owners gave; "about 3 in 10" is the survey's own wording.
+// "8 hours" is 96 minutes x 5 workdays. Slack's own "three weeks a year" counts
+// 24-hour days (96 min x 365), so it is not used. Never present the 8 hours as
+// time Yui saves: the survey does not split the minutes by cause.
 const TIME_LOST = {
   figure: '96 min',
-  label: 'Small business owners lose 96 minutes of productivity a day, about three weeks a year.',
+  label: 'Small business owners lose 96 minutes of productivity a day. Over a five-day week, that\u2019s 8 hours.',
 }
 
 const TOOL_REASONS = [
