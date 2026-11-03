@@ -303,7 +303,7 @@ export default function Pricing() {
           <p className="mt-3 max-w-2xl leading-relaxed text-muted">
             We’re based in Sacramento and work on-site across the area. Further out, we
             run the same plans remotely. The ops sprints, the weekly meeting, and the
-            reporting don’t change. Only where the work happens does.
+            reporting don’t change. What changes is where we work, not what you get.
           </p>
           <div className="mt-6 border-t border-line pt-6">
             <h4 className="mono text-muted">Included either way</h4>
