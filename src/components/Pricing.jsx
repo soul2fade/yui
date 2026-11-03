@@ -99,6 +99,32 @@ const REMOTE_DAY = [
   },
 ]
 
+// Local vs remote monthly plans. The price pays for sprint capacity, which is
+// identical either way; only how we show up changes. Keep the sprint caps in
+// step with TIERS and the footnote below.
+const LOCAL_VS_REMOTE = [
+  {
+    what: 'Price',
+    local: 'Same',
+    remote: 'Same',
+  },
+  {
+    what: 'Ops sprints',
+    local: '1 at a time on Essential, 2 on Growth',
+    remote: '1 at a time on Essential, 2 on Growth',
+  },
+  {
+    what: 'Weekly operations meeting',
+    local: 'In person or over video',
+    remote: 'Over video',
+  },
+  {
+    what: 'Between meetings',
+    local: 'Site visits when the work calls for it',
+    remote: 'Set weekly office hours you book into, in place of site visits',
+  },
+]
+
 // Sacramento-Roseville-Folsom metro medians, BLS OEWS May 2025, checked on
 // 2026-10-26 in the BLS OEWS query system (data.bls.gov/oes, area 0040900).
 // Medians, not means, because they are the conservative number. Update each
@@ -248,6 +274,49 @@ export default function Pricing() {
           </div>
         </div>
 
+        <div id="remote-plans" className="card mt-5 p-7 sm:p-8">
+          <span className="mono text-accent">Outside Sacramento?</span>
+          <h3
+            className="mt-3 text-2xl text-ink"
+            style={{ fontWeight: 600, letterSpacing: '-0.02em' }}
+          >
+            Same plans, same price, wherever you are
+          </h3>
+          <p className="mt-3 max-w-2xl leading-relaxed text-muted">
+            Sacramento comes first, and clients here get us on-site. We also take on a
+            limited number of remote clients. The monthly price pays for the ops sprints,
+            and those are the same either way. What changes is how we show up.
+          </p>
+          <dl className="mt-6 divide-y divide-line border-y border-line">
+            <div className="hidden py-3 sm:grid sm:grid-cols-[11rem_minmax(0,1fr)_minmax(0,1fr)] sm:gap-6">
+              <span aria-hidden="true" />
+              <span className="mono text-muted">Sacramento area</span>
+              <span className="mono text-muted">Remote</span>
+            </div>
+            {LOCAL_VS_REMOTE.map((row) => (
+              <div
+                key={row.what}
+                className="grid gap-1 py-4 sm:grid-cols-[11rem_minmax(0,1fr)_minmax(0,1fr)] sm:items-baseline sm:gap-6"
+              >
+                <dt className="text-ink" style={{ fontWeight: 600 }}>
+                  {row.what}
+                </dt>
+                <dd className="text-muted">
+                  <span className="mono text-muted sm:hidden">Sacramento area: </span>
+                  {row.local}
+                </dd>
+                <dd className="text-muted">
+                  <span className="mono text-muted sm:hidden">Remote: </span>
+                  {row.remote}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-4 text-sm text-muted">
+            Office hours run in Pacific time. Everything you get is written into your
+            Statement of Work before you start.
+          </p>
+        </div>
 
         <div className="card mt-5 p-7 sm:p-8">
           <span className="mono text-accent">What the alternative costs in Sacramento</span>

@@ -144,3 +144,15 @@ describe('remote assessment', () => {
     expect(card.querySelector('a[href="https://cal.com/yuiops/fit-call"]')).toBeTruthy()
   })
 })
+
+describe('remote monthly plans', () => {
+  it('states the same price and sprints, with office hours in place of site visits', () => {
+    renderRoute('/')
+    const card = document.getElementById('remote-plans')
+    expect(card).toBeTruthy()
+    expect(card.textContent).toMatch(/same plans, same price/i)
+    expect(card.textContent).toMatch(/1 at a time on Essential, 2 on Growth/)
+    expect(card.textContent).toMatch(/office hours/i)
+    expect(card.textContent).toMatch(/site visits/i)
+  })
+})
