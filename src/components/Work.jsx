@@ -7,7 +7,7 @@ import { Eyebrow, Headline } from './ui'
 // branding and the account name in the sidebar stay out of frame.
 const FEATURED = {
   kicker: 'Custom build',
-  name: 'AI Operations Assistant',
+  name: 'Connected Operations Hub',
   body:
     'Built for a business running five platforms: Jobber, QuickBooks, Gusto, HubSpot, and Square. We connected them into one hub the owner directs from a chat. Here the owner asks which finished jobs still need an invoice, and it finds $14,600 sitting unbilled across ten jobs and drafts every invoice for one-click approval. Shown with a fictional business and invented customers.',
   facts: ['Five platforms, one hub', 'Directed by chat, in plain language', 'It drafts the work, you approve it'],

@@ -34,6 +34,7 @@ describe('homepage', () => {
       'work',
       'pricing',
       'about',
+      'faq',
       'contact',
     ])
   })
@@ -64,7 +65,7 @@ describe('homepage', () => {
     renderRoute('/')
     expect(screen.getByRole('heading', { name: 'Budget Stress Test' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Automated Invoicing' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'AI Operations Assistant' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Connected Operations Hub' })).toBeInTheDocument()
   })
 
   // The custom-build recording shows a business name and customer names on screen,

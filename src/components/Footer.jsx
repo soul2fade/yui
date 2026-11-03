@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Wordmark from './Wordmark'
 import { Credentials } from './ui'
-import { EMAIL, LOCATION } from '../site'
+import { EMAIL, LOCATION, PHONE, PHONE_HREF } from '../site'
 
 const FOOTER_LINKS = [
   { label: 'Privacy', href: '/privacy' },
@@ -23,6 +23,11 @@ export default function Footer() {
               <li>
                 <a href={`mailto:${EMAIL}`} className="transition-colors hover:text-white">
                   {EMAIL}
+                </a>
+              </li>
+              <li>
+                <a href={PHONE_HREF} className="transition-colors hover:text-white">
+                  {PHONE}
                 </a>
               </li>
               <li>{LOCATION}</li>

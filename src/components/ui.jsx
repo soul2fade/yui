@@ -78,7 +78,7 @@ export function Credentials({ variant = 'list', tone = 'ink', className = '' }) 
             ) : (
               c.name
             )}
-            , {c.issuer}
+            {c.issuer && `, ${c.issuer}`}
           </li>
         ))}
       </ul>

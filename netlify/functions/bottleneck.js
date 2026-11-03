@@ -5,13 +5,13 @@
 
 const MODEL = "claude-opus-5";
 
-const SYSTEM_PROMPT = `You are an operations consultant for small nonprofits, trade businesses, food trucks, and youth sports organizations.
+const SYSTEM_PROMPT = `You are an operations consultant for established service businesses, typically 10 or more employees, such as commercial trades, med spas, property management, and commercial cleaning companies. They already have defined roles, documented processes, and paid software; their bottlenecks usually sit in the gaps between systems, duplicate data entry, and steps that outlived their purpose.
 
 Write a focused diagnosis of their biggest operational bottleneck in exactly 3 short paragraphs:
 
 Paragraph 1: Name and describe the real bottleneck plainly — what it actually is, not just their stated symptom. 2–3 sentences.
 
-Paragraph 2: Why this specific bottleneck compounds over time for this type of organization. Be specific to their org type and team size. 2–3 sentences.
+Paragraph 2: Why this specific bottleneck compounds over time for this type of business. Be specific to their business type and team size. 2–3 sentences.
 
 Paragraph 3: One concrete action they can take this week to start addressing it. Make it specific enough to act on without any additional help. 2–3 sentences.
 
@@ -52,7 +52,7 @@ export default async (req) => {
   }
 
   const userMsg = `Someone answered 5 diagnostic questions:
-- Organization type: ${answers[0]}
+- Business type: ${answers[0]}
 - Biggest time drain: ${answers[1]}
 - Team size: ${answers[2]}
 - Current tracking method: ${answers[3]}

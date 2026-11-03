@@ -5,13 +5,13 @@ import { BookingLink, Eyebrow, Headline } from '../ui'
 // `bottleneck` Netlify function, which keeps the API key off the client.
 const QUESTIONS = [
   {
-    q: 'What type of organization are you running?',
+    q: 'What type of business are you running?',
     opts: [
-      'Nonprofit or community organization',
-      'Trade or contractor business',
-      'Food truck or catering business',
-      'Youth sports club or athletic organization',
-      'Other small business or service provider',
+      'Commercial trades or contracting',
+      'Med spa or aesthetics practice',
+      'Property management',
+      'Commercial cleaning or janitorial',
+      'Another service business',
     ],
   },
   {
@@ -20,20 +20,20 @@ const QUESTIONS = [
       'Scheduling: juggling who does what and when',
       'Chasing payments or managing invoices',
       'Keeping my team organized and accountable',
-      'Client or member communication',
+      'Client communication and follow-up',
       'Staying on top of paperwork and compliance',
     ],
   },
   {
     q: 'How many people are on your team?',
-    opts: ['Just me (or me plus one other)', '2 to 5 people', '6 to 15 people', '16 or more'],
+    opts: ['Under 10 people', '10 to 25 people', '26 to 50 people', 'More than 50'],
   },
   {
     q: 'How do you track operations day to day?',
     opts: [
-      'Mostly in my head',
-      'Spreadsheets or a shared calendar',
-      'A mix of apps that do not talk to each other',
+      'Our main software, plus spreadsheets to fill the gaps',
+      'Several systems that do not share information',
+      'One main system, with manual workarounds around it',
       'One main system that mostly works',
     ],
   },
@@ -144,7 +144,7 @@ export default function BottleneckFinder() {
                   Want help clearing it<span className="period">?</span>
                 </h2>
                 <p className="mt-4 leading-relaxed text-muted-dark">
-                  Thirty minutes on the phone and we will tell you whether this is a fix you
+                  Fifteen minutes on a call and we will tell you whether this is a fix you
                   can run yourself or one worth handing over.
                 </p>
                 <BookingLink className="mt-7">Book a fit call</BookingLink>

@@ -138,7 +138,7 @@ export default function AboutPage() {
                 Let&rsquo;s talk about your operation
               </Headline>
               <p className="mt-4 max-w-xl leading-relaxed text-muted">
-                Thirty minutes, no pitch deck. Tell me what keeps breaking and I will tell
+                Fifteen minutes, no pitch deck. Tell me what keeps breaking and I will tell
                 you what it would take to fix it.
               </p>
             </div>
