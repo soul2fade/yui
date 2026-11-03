@@ -31,6 +31,19 @@
   to = "/"
   status = 301
 
+# Cancelled Nov 2026 webinar. Old links land on the worksheet it was built around.
+[[redirects]]
+  from = "/webinar"
+  to = "/stop-doing-list/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/webinar/*"
+  to = "/stop-doing-list/"
+  status = 301
+  force = true
+
 # SPA fallback for client-side routes not prerendered at build time.
 [[redirects]]
   from = "/*"

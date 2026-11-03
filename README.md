@@ -31,13 +31,12 @@ npm run lint       # eslint
 | `/bottleneck` | Find My Bottleneck — 5-question diagnostic |
 | `/free-audit` | Landing page pointing at both diagnostics |
 | `/contact` | Contact form (Netlify Forms) |
-| `/webinar` | Stop-Doing List webinar. Each date links to its Cal.com event (`cal.com/stop-lists`, `cal.com/stop-lists2`) |
-| `/webinar/registered` | Where both Cal.com events redirect after booking. Hands out the worksheet; noindex, not in the sitemap |
 | `/stop-doing-list/` | Stop-Doing List worksheet: static, self-contained page in `public/stop-doing-list/` |
 | `/privacy`, `/terms`, `/security` | Legal and security pages |
 
 `/med-spas` and `/spa` 301 to `/` — retired pages whose URLs may have been shared
-externally.
+externally. `/webinar` and `/webinar/registered` (the cancelled Nov 2026 Stop-Doing
+List webinar) 301 to the worksheet at `/stop-doing-list/`.
 
 ## Brand tokens
 
