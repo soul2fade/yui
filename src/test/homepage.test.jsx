@@ -131,3 +131,16 @@ describe('homepage', () => {
     }
   })
 })
+
+describe('remote assessment', () => {
+  it('links the remote card to the paid Cal.com event and offers the fit call', () => {
+    renderRoute('/')
+    const card = document.getElementById('remote-assessment')
+    expect(card).toBeTruthy()
+    const book = screen.getByRole('link', { name: /book a remote assessment/i })
+    expect(book).toHaveAttribute('href', 'https://cal.com/yuiops/remote-ops-assessment')
+    expect(card.textContent).toMatch(/\$1,500/)
+    expect(card.textContent).toMatch(/9:00 to 9:45/)
+    expect(card.querySelector('a[href="https://cal.com/yuiops/fit-call"]')).toBeTruthy()
+  })
+})

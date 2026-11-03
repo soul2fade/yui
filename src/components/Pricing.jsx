@@ -1,11 +1,11 @@
 import { BookingLink, Eyebrow, Headline } from './ui'
-import { EMAIL } from '../site'
+import { BOOKING_HREF, EMAIL, REMOTE_ASSESSMENT_HREF } from '../site'
 
 const TIERS = [
   {
     name: 'Ops Assessment',
     price: '$1,500',
-    cadence: 'one day, on-site',
+    cadence: 'one day, on-site or remote',
     secondary: 'First call is free',
     body: 'A full day inside your operation. We find where time, margin, and capacity are leaking, and leave you a ranked plan to fix it.',
     points: [
@@ -62,6 +62,40 @@ const TIERS = [
       'Predictive capacity modeling & gross margin defense per service line as volume scales',
       'A quarterly report on what we did, next quarter’s plan, and a process review',
     ],
+  },
+]
+
+// The remote assessment runs the same day as the on-site one, over video. These
+// times must match the Cal.com event (435 minutes from 9:00) and its
+// "Assessment Days" schedule.
+const REMOTE_DAY = [
+  {
+    time: 'Before the day',
+    what: 'View-only access',
+    detail: 'You grant read access to the systems you want reviewed. Nothing gets changed.',
+  },
+  {
+    time: '9:00 to 9:45',
+    what: 'Owner alignment',
+    detail: 'Your priorities and where you think time and money are leaking.',
+  },
+  {
+    time: '10:00 to 12:00',
+    what: 'Live walkthrough',
+    detail:
+      'Your team shares their screen while doing real job entry, invoicing and dispatch. We watch, we don’t interrupt.',
+  },
+  { time: '12:00 to 1:00', what: 'Lunch', detail: 'Cameras off.' },
+  {
+    time: '1:00 to 3:00',
+    what: 'Software review',
+    detail:
+      'Settings, duplicate seats, broken exports, and steps done twice. Your team only joins if we have questions.',
+  },
+  {
+    time: '3:30 to 4:15',
+    what: 'Findings briefing',
+    detail: 'The top 3 fixes we found, before we sign off.',
   },
 ]
 
@@ -157,6 +191,62 @@ export default function Pricing() {
           Both monthly plans are a month-to-month subscription, with 30 days’ notice to
           cancel. *Up to 5 ops sprints per quarter on Essential, and up to 10 on Growth.
         </p>
+
+        <div id="remote-assessment" className="card mt-5 p-7 sm:p-8">
+          <span className="mono text-accent">Prefer remote?</span>
+          <h3
+            className="mt-3 text-2xl text-ink"
+            style={{ fontWeight: 600, letterSpacing: '-0.02em' }}
+          >
+            Same assessment, over video
+          </h3>
+          <p className="mt-3 max-w-2xl leading-relaxed text-muted">
+            If a site visit doesn’t fit your schedule or your location, we run the same
+            one-day Ops Assessment online. One booking, one day, same report, same $1,500,
+            credited in full to your first month if you start a monthly plan within two
+            weeks of your results.
+          </p>
+          <dl className="mt-6 divide-y divide-line border-y border-line">
+            {REMOTE_DAY.map((row) => (
+              <div
+                key={row.time}
+                className="grid gap-1 py-4 sm:grid-cols-[9rem_11rem_minmax(0,1fr)] sm:items-baseline sm:gap-6"
+              >
+                <dt className="mono text-muted">{row.time}</dt>
+                <dd className="text-ink" style={{ fontWeight: 600 }}>
+                  {row.what}
+                </dd>
+                <dd className="text-muted">{row.detail}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-4 text-sm text-muted">
+            Written report within 3 business days, then a results meeting online. Paid when
+            you book.
+          </p>
+          <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <a
+              href={REMOTE_ASSESSMENT_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-accent shrink-0"
+            >
+              Book a remote assessment
+            </a>
+            <p className="text-sm text-muted">
+              Not sure yet?{' '}
+              <a
+                href={BOOKING_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ink underline underline-offset-4"
+              >
+                Book a fit call
+              </a>{' '}
+              first.
+            </p>
+          </div>
+        </div>
 
 
         <div className="card mt-5 p-7 sm:p-8">

@@ -23,6 +23,12 @@ export const APP_URL = 'app.yuiops.com'
 // and every CTA on the site follows.
 export const BOOKING_HREF = 'https://cal.com/yuiops/fit-call'
 
+// Paid booking for the remote Ops Assessment. The Cal.com event takes the
+// $1,500 through Stripe at booking and requires the view-only access agreement,
+// so this link skips the fit call on purpose. The card that uses it offers the
+// fit call alongside for anyone not ready to pay.
+export const REMOTE_ASSESSMENT_HREF = 'https://cal.com/yuiops/remote-ops-assessment'
+
 export const NAV_LINKS = [
   { label: 'Services', href: '/#services' },
   { label: 'How it works', href: '/#how-it-works' },
