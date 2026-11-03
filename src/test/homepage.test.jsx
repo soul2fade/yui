@@ -144,3 +144,17 @@ describe('remote assessment', () => {
     expect(card.querySelector('a[href="https://cal.com/yuiops/fit-call"]')).toBeTruthy()
   })
 })
+
+describe('remote monthly plans', () => {
+  it('presents on-site and remote as equal, with the same price and sprints', () => {
+    renderRoute('/')
+    const card = document.getElementById('remote-plans')
+    expect(card).toBeTruthy()
+    expect(card.textContent).toMatch(/two ways to work with us\. one price\./i)
+    expect(card.textContent).toMatch(/same monthly price/i)
+    expect(card.textContent).toMatch(/1 active ops sprint on Essential, 2 on Growth/)
+    expect(card.textContent).toMatch(/reserved working time/i)
+    // Remote is described by what it includes, never by what it lacks.
+    expect(card.textContent).not.toMatch(/in place of|outside sacramento|comes first/i)
+  })
+})

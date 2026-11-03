@@ -99,6 +99,50 @@ const REMOTE_DAY = [
   },
 ]
 
+// On-site vs remote monthly plans. Framed as two equal ways to work: what is
+// shared comes first, then each mode is described by what it includes, never by
+// what it lacks. Keep the sprint caps in step with TIERS and the footnote below.
+const INCLUDED_EITHER_WAY = [
+  'Same monthly price',
+  '1 active ops sprint on Essential, 2 on Growth',
+  'A weekly operations meeting to set priorities',
+  'The same reports on what we built and what it saved',
+]
+
+const WORK_MODES = [
+  {
+    name: 'On-site (Sacramento area)',
+    points: [
+      'We work inside your operation, at your location',
+      'Site visits whenever a sprint needs eyes on the work',
+    ],
+  },
+  {
+    name: 'Remote',
+    points: [
+      'Reserved working time with us every week, booked when it suits your team',
+      'Weekly operations meeting over video, so nothing waits for a drive',
+    ],
+  },
+]
+
+function Bullets({ items }) {
+  return (
+    <ul className="mt-4 space-y-2.5">
+      {items.map((item) => (
+        <li key={item} className="flex gap-3 text-[0.9375rem] text-ink">
+          <span
+            aria-hidden="true"
+            className="mt-[0.45rem] block shrink-0 bg-accent"
+            style={{ width: 7, height: 7, borderRadius: 2 }}
+          />
+          {item}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 // Sacramento-Roseville-Folsom metro medians, BLS OEWS May 2025, checked on
 // 2026-10-26 in the BLS OEWS query system (data.bls.gov/oes, area 0040900).
 // Medians, not means, because they are the conservative number. Update each
@@ -248,6 +292,37 @@ export default function Pricing() {
           </div>
         </div>
 
+        <div id="remote-plans" className="card mt-5 p-7 sm:p-8">
+          <span className="mono text-accent">On-site or remote</span>
+          <h3
+            className="mt-3 text-2xl text-ink"
+            style={{ fontWeight: 600, letterSpacing: '-0.02em' }}
+          >
+            Two ways to work with us. One price.
+          </h3>
+          <p className="mt-3 max-w-2xl leading-relaxed text-muted">
+            We’re based in Sacramento and work on-site across the area. Further out, we
+            run the same plans remotely. The ops sprints, the weekly meeting, and the
+            reporting don’t change. What changes is where we work, not what you get.
+          </p>
+          <div className="mt-6 border-t border-line pt-6">
+            <h4 className="mono text-muted">Included either way</h4>
+            <Bullets items={INCLUDED_EITHER_WAY} />
+          </div>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            {WORK_MODES.map((mode) => (
+              <div key={mode.name} className="rounded-xl border border-line p-6">
+                <h4 className="text-ink" style={{ fontWeight: 600 }}>
+                  {mode.name}
+                </h4>
+                <Bullets items={mode.points} />
+              </div>
+            ))}
+          </div>
+          <p className="mt-5 text-sm text-muted">
+            Everything you get is written into your Statement of Work before you start.
+          </p>
+        </div>
 
         <div className="card mt-5 p-7 sm:p-8">
           <span className="mono text-accent">What the alternative costs in Sacramento</span>

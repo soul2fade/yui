@@ -99,9 +99,9 @@ export default function AboutPage() {
               How I work
             </h2>
             <p>
-              The work is hands-on: I’m inside your operation, not sending reports from
-              a distance. I’m based in Sacramento and work with clients locally and
-              remotely.
+              The work is hands-on: I’m inside your operation, in person or on screen,
+              not sending reports and walking away. I’m based in Sacramento and work
+              with clients locally and remotely.
             </p>
             <p>
               If your operation is mostly fine and you need one automation built, say so.
