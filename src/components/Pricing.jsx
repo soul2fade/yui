@@ -237,7 +237,14 @@ export default function Pricing() {
         </p>
 
         <div id="remote-assessment" className="card mt-5 p-7 sm:p-8">
-          <span className="mono text-accent">Prefer remote?</span>
+          {/* Solid pill, larger than the standard eyebrow, so remote visitors spot
+              it while scanning the pricing section. */}
+          <span
+            className="mono inline-block rounded-full bg-accent px-3.5 py-1.5 text-white"
+            style={{ fontSize: 13 }}
+          >
+            Prefer remote?
+          </span>
           <h3
             className="mt-3 text-2xl text-ink"
             style={{ fontWeight: 600, letterSpacing: '-0.02em' }}
