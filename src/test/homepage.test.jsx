@@ -146,13 +146,15 @@ describe('remote assessment', () => {
 })
 
 describe('remote monthly plans', () => {
-  it('states the same price and sprints, with office hours in place of site visits', () => {
+  it('presents on-site and remote as equal, with the same price and sprints', () => {
     renderRoute('/')
     const card = document.getElementById('remote-plans')
     expect(card).toBeTruthy()
-    expect(card.textContent).toMatch(/same plans, same price/i)
-    expect(card.textContent).toMatch(/1 at a time on Essential, 2 on Growth/)
-    expect(card.textContent).toMatch(/office hours/i)
-    expect(card.textContent).toMatch(/site visits/i)
+    expect(card.textContent).toMatch(/two ways to work with us\. one price\./i)
+    expect(card.textContent).toMatch(/same monthly price/i)
+    expect(card.textContent).toMatch(/1 active ops sprint on Essential, 2 on Growth/)
+    expect(card.textContent).toMatch(/reserved working time/i)
+    // Remote is described by what it includes, never by what it lacks.
+    expect(card.textContent).not.toMatch(/in place of|outside sacramento|comes first/i)
   })
 })
