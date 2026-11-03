@@ -3,7 +3,7 @@ import { Eyebrow, Headline } from './ui'
 const STEPS = [
   {
     name: 'Fit call',
-    detail: '30 minutes',
+    detail: '15 minutes',
     body:
       'We ask what breaks most often and where your week goes. If we are not the right help, we say so on the call.',
   },
@@ -23,7 +23,7 @@ const STEPS = [
     name: 'Ongoing support',
     detail: 'Month to month',
     body:
-      'We keep it running, keep improving it, and keep taking the next thing off your plate. Cancel whenever it stops earning its keep.',
+      'We keep it running, keep improving it, and keep taking the next thing off your plate. Month to month, with 30 days’ notice to cancel.',
   },
 ]
 

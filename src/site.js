@@ -9,6 +9,7 @@ export const LOCATION = 'Sacramento, CA'
 // Legal-page facts. These carried over from the prior brand's reviewed policies
 // and describe the same operating entity. Confirm each before launch.
 export const PHONE = '916-775-7717'
+export const PHONE_HREF = 'tel:+19167757717'
 export const ENTITY = 'Man Up Mentality Project LLC'
 export const POSTAL_ADDRESS = [
   'Yui',
@@ -55,6 +56,12 @@ export const NAV_LINKS = [
 // until they are told otherwise. It goes back on the site when Anthropic says
 // so in writing, and not before.
 export const CREDENTIALS = [
+  // Daniel's call, 2026-11-03: the degree leads, with no school named. A degree
+  // has no public verification page, so `verify` and `issuer` stay out (rule 2).
+  {
+    name: 'M.S. in Finance',
+    short: 'M.S. in Finance',
+  },
   {
     // Daniel's call, 2026-09-25: the line reads "Google AI Professional", not
     // "Google AI Professional Certificate", which is the credential's full

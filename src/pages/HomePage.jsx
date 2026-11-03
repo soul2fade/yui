@@ -7,6 +7,7 @@ import HowItWorks from '../components/HowItWorks'
 import Work from '../components/Work'
 import Pricing from '../components/Pricing'
 import AboutSection from '../components/AboutSection'
+import FAQ from '../components/FAQ'
 import ClosingCTA from '../components/ClosingCTA'
 
 export default function HomePage() {
@@ -25,6 +26,7 @@ export default function HomePage() {
       <Work />
       <Pricing />
       <AboutSection />
+      <FAQ />
       <ClosingCTA />
     </div>
   )

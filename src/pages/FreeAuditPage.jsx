@@ -61,7 +61,7 @@ export default function FreeAuditPage() {
 
           <div className="card mt-5 flex flex-col gap-5 p-7 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <p className="max-w-xl leading-relaxed text-muted">
-              Would rather just talk it through? A fit call is thirty minutes and we will
+              Would rather just talk it through? A fit call is fifteen minutes and we will
               tell you straight whether this is something we can help with.
             </p>
             <BookingLink variant="outline-ink" className="shrink-0">

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Meta from '../components/Meta'
 import { Eyebrow, Headline } from '../components/ui'
-import { EMAIL, LOCATION } from '../site'
+import { EMAIL, LOCATION, PHONE, PHONE_HREF } from '../site'
 
 const FIELDS = [
   { name: 'name', label: 'Your name', type: 'text', required: true, autoComplete: 'name' },
@@ -42,7 +42,7 @@ export default function ContactPage() {
     <div data-testid="contact-page">
       <Meta
         title="Contact: book a fit call with Yui"
-        description="Tell us what keeps breaking in your operation. Thirty-minute fit calls, no pitch deck. Based in Sacramento."
+        description="Tell us what keeps breaking in your operation. Fifteen-minute fit calls, no pitch deck. Based in Sacramento."
         path="/contact"
       />
 
@@ -53,7 +53,7 @@ export default function ContactPage() {
             Tell us what keeps breaking
           </Headline>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            Send this and we will come back with times for a thirty-minute fit call. No
+            Send this and we will come back with times for a fifteen-minute fit call. No
             deck, no pressure. If we are not the right help, we will say so.
           </p>
 
@@ -145,6 +145,17 @@ export default function ContactPage() {
                     className="text-[0.9375rem] text-ink underline decoration-line underline-offset-4 hover:decoration-ink"
                   >
                     {EMAIL}
+                  </a>
+                </p>
+              </div>
+              <div>
+                <span className="mono text-accent">Phone</span>
+                <p className="mt-2">
+                  <a
+                    href={PHONE_HREF}
+                    className="text-[0.9375rem] text-ink underline decoration-line underline-offset-4 hover:decoration-ink"
+                  >
+                    {PHONE}
                   </a>
                 </p>
               </div>
