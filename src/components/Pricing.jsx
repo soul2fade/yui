@@ -56,7 +56,7 @@ const TIERS = [
     // price out of line with the others.
     price: '$10,000+',
     cadence: 'per month',
-    secondary: 'Starting price · 2 Workflow Sprints at a time*',
+    secondary: 'Starting price · 2 Sprints at a time*',
     body: 'Two builds at once plus hands-on operations leadership, priced to your locations, systems, and team.',
     points: [
       'Everything in Essential, with a weekly 45-minute priorities meeting',
