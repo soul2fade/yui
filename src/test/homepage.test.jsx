@@ -54,11 +54,25 @@ describe('homepage', () => {
 
   it('shows all four price points and the custom-engagement callout', () => {
     renderRoute('/')
-    for (const price of ['$1,500', 'First call is free', '$3,500', '$4,000', '$8,000']) {
+    for (const price of ['$1,500', 'First call is free', '$3,500', '$5,000', '$10,000+']) {
       expect(screen.getByText(price)).toBeInTheDocument()
     }
-    expect(screen.getByText(/best value/i)).toBeInTheDocument()
+    // Essential is the recommended plan; Growth is a starting price set by SOW.
+    expect(screen.getByText('Recommended')).toBeInTheDocument()
+    expect(screen.getByText(/starting price/i)).toBeInTheDocument()
+    expect(screen.queryByText(/best value/i)).toBeNull()
     expect(screen.getByText(/custom engagements/i)).toBeInTheDocument()
+  })
+
+  // The Sprint's system limit is what keeps one price from covering a 1-system
+  // job and a 5-system job alike. Guard it and the over-limit rule together.
+  it('defines the scope of one Workflow Sprint', () => {
+    renderRoute('/')
+    const pricing = document.getElementById('pricing')
+    expect(pricing.textContent).toMatch(/one process, connecting up to 2 of the systems/i)
+    expect(pricing.textContent).toMatch(/more than 2 systems\? we split it into phases/i)
+    // The quarterly caps were retired; the at-a-time limit is the only cap.
+    expect(pricing.textContent).not.toMatch(/per quarter/i)
   })
 
   it('shows the work cards', () => {
@@ -153,7 +167,8 @@ describe('remote monthly plans', () => {
     expect(card).toBeTruthy()
     expect(card.textContent).toMatch(/two ways to work with us\. one price\./i)
     expect(card.textContent).toMatch(/same monthly price/i)
-    expect(card.textContent).toMatch(/1 active ops sprint on Essential, 2 on Growth/)
+    expect(card.textContent).toMatch(/1 Workflow Sprint at a time on Essential, 2 on Growth/)
+    expect(card.textContent).toMatch(/every other week on Essential, weekly on Growth/)
     expect(card.textContent).toMatch(/reserved working time/i)
     // Remote is described by what it includes, never by what it lacks.
     expect(card.textContent).not.toMatch(/in place of|outside sacramento|comes first/i)

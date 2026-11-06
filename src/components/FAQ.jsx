@@ -23,7 +23,7 @@ const QUESTIONS = [
   },
   {
     q: 'Do you work with businesses outside Sacramento?',
-    a: 'Yes. Remote clients pay the same monthly price and get reserved working time with us every week, with the weekly operations meeting over video instead of site visits.',
+    a: 'Yes. Remote clients pay the same monthly price and get reserved working time with us every week, with priorities meetings over video instead of site visits.',
   },
   {
     q: 'What happens on the fit call?',

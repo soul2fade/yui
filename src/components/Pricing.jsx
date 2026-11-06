@@ -21,46 +21,51 @@ const TIERS = [
     price: '$3,500',
     cadence: 'one-time',
     body: 'Pick the one bottleneck eating your week. We fix the process first, then build the system that runs it.',
+    // The first point is the scope of one Sprint. Essential and Growth reuse it, so
+    // change all three cards together if the system limit changes.
     points: [
-      'Planned in week one, working by week four',
-      'Repetitive admin taken off your team: reporting, billing reminders, lead intake',
-      'Connected systems: one dashboard for multiple platforms',
-      'Built on the tools you already own',
-      'We show your team how to use it',
+      'One process, connecting up to 2 of the systems you already use',
+      'For example: a new inquiry becomes a scheduled job; a closed job sends its invoice; vendor bills land in QuickBooks matched to the PO',
+      'Scope signed off in week one, working by week four',
+      'More than 2 systems? We split it into phases and price each one before we start',
+      'A 1-hour handoff session with the people who will use it',
       'Written instructions, so you never depend on us',
+      'Fixes for 30 days after launch',
     ],
   },
   {
     name: 'Ops Essential',
-    price: '$4,000',
+    price: '$5,000',
     cadence: 'per month',
-    secondary: '1 Active Ops Sprint*',
-    body: 'A steady hand on operations. Clear processes, smoother handoffs, and one improvement always in progress.',
+    secondary: '1 Workflow Sprint at a time',
+    badge: 'Recommended',
+    body: 'One Workflow Sprint always in progress, and a monthly check that your numbers agree across systems.',
     points: [
-      'A weekly operations meeting to set priorities and clear what’s stuck',
-      'One ops sprint in progress at a time',
-      'Clear handoffs between teams, so work never stalls',
-      'Your SOPs updated as each sprint changes how the work runs',
-      'One owner for every handoff between systems, so nothing sits between two teams',
-      'A simple scorecard that shows trouble early: at-risk clients, stalled deals, late jobs',
-      'A monthly report on what we built and the hours it saved',
+      'One Workflow Sprint in progress at a time, same scope as a one-time Sprint',
+      'A 30-minute priorities meeting every other week',
+      'A monthly numbers review: whether your job, billing, and payroll numbers match across systems, and what to fix where they don’t',
+      'A monthly report: what we built, how often it ran, and the hours it saved',
+      'Every 3 months: your next 3 builds, ranked by what each one saves',
+      'Everything we build for you kept running while you’re on the plan',
     ],
   },
   {
     name: 'Ops Growth',
-    price: '$8,000',
+    // "Starting at" lives in the secondary row, not the price row: the full phrase
+    // at price size would wrap on a 4-column desktop row and push this card's
+    // price out of line with the others.
+    price: '$10,000+',
     cadence: 'per month',
-    secondary: '2 Active Ops Sprints*',
-    badge: 'Best value',
-    body: 'Hands-on operations help for a business growing fast.',
+    secondary: 'Starting price · 2 Workflow Sprints at a time*',
+    body: 'Two builds at once plus hands-on operations leadership, priced to your locations, systems, and team.',
     points: [
-      'Everything in Essential',
-      'Two ops sprints in progress at a time',
-      'Vendor, contractor, and OpEx optimization to protect EBITDA',
-      'Automated workflows for your frontline team, with monthly training',
-      'A delegation plan to get you out of the day-to-day',
-      'Predictive capacity modeling & gross margin defense per service line as volume scales',
-      'A quarterly report on what we did, next quarter’s plan, and a process review',
+      'Everything in Essential, with a weekly 45-minute priorities meeting',
+      'Two Workflow Sprints in progress at a time',
+      'Builds across more than 2 systems or several locations, scoped in your Statement of Work',
+      'Team training when each build goes live',
+      'A quarterly software and vendor review: duplicate seats, overlapping tools, and renewals coming due',
+      'Margin by service line each month, from your job and payroll numbers',
+      'A delegation plan: which decisions come off your plate, who takes them, and by when',
     ],
   },
 ]
@@ -101,11 +106,11 @@ const REMOTE_DAY = [
 
 // On-site vs remote monthly plans. Framed as two equal ways to work: what is
 // shared comes first, then each mode is described by what it includes, never by
-// what it lacks. Keep the sprint caps in step with TIERS and the footnote below.
+// what it lacks. Keep the Sprint counts and meeting cadence in step with TIERS.
 const INCLUDED_EITHER_WAY = [
   'Same monthly price',
-  '1 active ops sprint on Essential, 2 on Growth',
-  'A weekly operations meeting to set priorities',
+  '1 Workflow Sprint at a time on Essential, 2 on Growth',
+  'A priorities meeting every other week on Essential, weekly on Growth',
   'The same reports on what we built and what it saved',
 ]
 
@@ -114,14 +119,14 @@ const WORK_MODES = [
     name: 'On-site (Sacramento area)',
     points: [
       'We work inside your operation, at your location',
-      'Site visits whenever a sprint needs eyes on the work',
+      'Site visits whenever a Sprint needs eyes on the work',
     ],
   },
   {
     name: 'Remote',
     points: [
       'Reserved working time with us every week, booked when it suits your team',
-      'Weekly operations meeting over video, so nothing waits for a drive',
+      'Priorities meetings over video, so nothing waits for a drive',
     ],
   },
 ]
@@ -233,7 +238,8 @@ export default function Pricing() {
 
         <p className="mt-5 text-sm text-muted">
           Both monthly plans are a month-to-month subscription, with 30 days’ notice to
-          cancel. *Up to 5 ops sprints per quarter on Essential, and up to 10 on Growth.
+          cancel. *Growth starts at $10,000 a month and is priced in your Statement of
+          Work, based on your locations, systems, and team size.
         </p>
 
         <div id="remote-assessment" className="card mt-5 p-7 sm:p-8">
@@ -309,8 +315,8 @@ export default function Pricing() {
           </h3>
           <p className="mt-3 max-w-2xl leading-relaxed text-muted">
             We’re based in Sacramento and work on-site across the area. Further out, we
-            run the same plans remotely. The ops sprints, the weekly meeting, and the
-            reporting don’t change. What changes is where we work, not what you get.
+            run the same plans remotely. The Workflow Sprints, the priorities meetings, and
+            the reporting don’t change. What changes is where we work, not what you get.
           </p>
           <div className="mt-6 border-t border-line pt-6">
             <h4 className="mono text-muted">Included either way</h4>
@@ -350,10 +356,10 @@ export default function Pricing() {
               <dt className="text-accent" style={{ fontWeight: 600 }}>
                 Ops Essential
               </dt>
-              <dd className="text-ink">$4,000/mo</dd>
+              <dd className="text-ink">$5,000/mo</dd>
               <dd className="text-muted">
-                Senior ops leadership plus hands-on builds. No payroll tax, no benefits,
-                month to month.
+                One build always in progress plus a monthly numbers review. No payroll tax,
+                no benefits, month to month.
               </dd>
             </div>
           </dl>
