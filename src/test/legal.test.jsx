@@ -31,7 +31,8 @@ describe('legal pages', () => {
       const { unmount } = renderRoute(path)
       const text = document.body.textContent
       expect(text, `${path} lost the STOP keyword`).toMatch(/STOP/)
-      expect(text, `${path} lost the SMS number`).toMatch(/916-775-7717/)
+      expect(text, `${path} lost the SMS number`).toMatch(/916-619-0193/)
+      expect(text, `${path} still shows the retired number`).not.toMatch(/775-7717/)
       unmount()
     }
   })
