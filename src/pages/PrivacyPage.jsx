@@ -2,8 +2,9 @@ import LegalPage from '../components/LegalPage'
 import { EMAIL, ENTITY, PHONE, POSTAL_ADDRESS } from '../site'
 
 // Ported from the prior brand's reviewed policy. Only the business name, domain,
-// and contact email changed; the SMS-program language, entity, phone number and
-// mailing address describe the same operating entity and carried over as-is.
+// and contact email changed; the SMS-program language, entity and mailing
+// address describe the same operating entity and carried over as-is. The phone
+// number changed on 2026-11-09 (see PHONE in src/site.js).
 const SECTIONS = [
   {
     heading: '1. Information We Collect',

@@ -8,8 +8,14 @@ export const LOCATION = 'Sacramento, CA'
 
 // Legal-page facts. These carried over from the prior brand's reviewed policies
 // and describe the same operating entity. Confirm each before launch.
-export const PHONE = '916-775-7717'
-export const PHONE_HREF = 'tel:+19167757717'
+//
+// Daniel's call, 2026-11-09: 916-775-7717 is retired. PHONE is now the Twilio
+// number, which is the A2P 10DLC-registered texting number and the cold-call
+// caller ID, so the Privacy page's "text STOP to" line points at the number
+// that actually sends texts. Do not put a personal cell here: the legal pages
+// publish PHONE as the SMS program number.
+export const PHONE = '916-619-0193'
+export const PHONE_HREF = 'tel:+19166190193'
 export const ENTITY = 'Man Up Mentality Project LLC'
 export const POSTAL_ADDRESS = [
   'Yui',
