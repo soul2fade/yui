@@ -129,6 +129,19 @@ describe('homepage', () => {
     expect(work.querySelector('video')).toHaveAttribute('src', '/work/ai-operations-assistant.mp4')
   })
 
+  // The live test is a real call from a real person. Her details are blurred in
+  // the recording, and every other pipeline row is seeded. The card has to say
+  // both, or the clip reads as a customer result.
+  it('labels the live test as a real call with blurred caller details', () => {
+    renderRoute('/')
+    const work = document.getElementById('work')
+    expect(screen.getByRole('heading', { name: 'Missed-Call Follow-Up' })).toBeInTheDocument()
+    expect(work.textContent).toMatch(/caller's name, photo and number are blurred/i)
+    expect(work.textContent).toMatch(/other pipeline rows are sample data/i)
+    const srcs = [...work.querySelectorAll('video')].map((v) => v.getAttribute('src'))
+    expect(srcs).toContain('/work/missed-call-live-test.mp4')
+  })
+
   // The budget demo names a real client, so the card has to say plainly that the
   // figures in the demo are not that client's. Removing this sentence would turn
   // an honest attribution into an implied claim about William Jessup University's
