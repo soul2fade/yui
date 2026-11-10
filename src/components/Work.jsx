@@ -26,7 +26,7 @@ const LIVE_TEST = {
   kicker: 'Live test',
   name: 'Missed-Call Follow-Up',
   body:
-    "A call goes unanswered. The caller gets a text back, their reply lands in the lead pipeline, and the owner gets one text asking whether it is a real lead. One reply qualifies it and sends the caller a booking link. The pipeline is a spreadsheet-style view on purpose. It works like the spreadsheets most teams already use, so there is little to learn and you keep the tools you know. You can also customize it however you like. In this test the first call was missed at 8:38 PM and the appointment was booked by 8:42. The caller's name, photo and number are blurred. The other pipeline rows are sample data.",
+    "A call goes unanswered. The caller gets a text back, their reply lands in the lead pipeline, and the owner gets one text asking whether it is a real lead. One reply qualifies it and sends the caller a booking link. Here the pipeline is a spreadsheet-style view, but that is only one way to set it up. We build around the tools you already have, so it feels familiar and is easy to use. In this test the first call was missed at 8:38 PM and the appointment was booked by 8:42. The caller's name, photo and number are blurred. The other pipeline rows are sample data.",
   facts: ['Missed call to text back', 'One reply qualifies the lead', 'The caller picks the time'],
   video: '/work/missed-call-live-test.mp4',
   poster: '/work/missed-call-live-test.jpg',
