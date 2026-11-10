@@ -2,10 +2,14 @@ import { Eyebrow, Headline } from './ui'
 
 // Every answer here restates a term already published elsewhere on the site
 // (Pricing, How it works, the remote assessment card). If one of those terms
-// changes, change it here too. Do not add answers about who owns a build after
-// cancellation until the client agreement settles it.
-// Exception: the build-management answer is where its terms are published (the
-// Sprint card only names the price). Keep the $500 in step with the Sprint card.
+// changes, change it here too.
+// Two answers publish terms of their own:
+// - Build management: the Sprint card only names the price. Keep the $500 in
+//   step with the Sprint card.
+// - Ownership: settled Nov 2026. Every build runs on accounts in the client's
+//   name from day one, billed to them directly, so nothing moves when they
+//   leave. The client agreement must say the same thing.
+// Never name the underlying platforms here; say "accounts in your name".
 const QUESTIONS = [
   {
     q: 'Do we have to switch software?',
@@ -22,6 +26,10 @@ const QUESTIONS = [
   {
     q: 'What does build management cover?',
     a: 'It keeps a finished build working, for $500 a month per build. We watch for failed runs, fix what breaks, and update the build when one of your systems changes how it connects. We reply within 1 business day. Anything new, like another step, another system, or a new report, is a new Workflow Sprint.',
+  },
+  {
+    q: 'Who owns what you build, and what if we leave?',
+    a: 'You do. Everything we build runs on accounts in your name, and any new service a build needs is billed to you directly, with the cost listed in your Statement of Work before work starts. If you leave, you keep every build and its written instructions, and we remove our access. Or keep us on any build for $500 a month.',
   },
   {
     q: 'Can we cancel a monthly plan?',

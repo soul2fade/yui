@@ -99,6 +99,20 @@ describe('homepage', () => {
     expect(faq.textContent).toMatch(/reply within 1 business day/i)
   })
 
+  // Builds run on accounts in the client's name from day one, so leaving moves
+  // nothing. This is what keeps "so you never depend on us" on the Sprint card
+  // true, and it must match the client agreement.
+  it('says the client owns every build and its accounts', () => {
+    renderRoute('/')
+    const faq = document.getElementById('faq')
+    expect(faq.textContent).toMatch(/who owns what you build/i)
+    expect(faq.textContent).toMatch(/runs on accounts in your name/i)
+    expect(faq.textContent).toMatch(/billed to you directly/i)
+    expect(faq.textContent).toMatch(/we remove our access/i)
+    const pricing = document.getElementById('pricing')
+    expect(pricing.textContent).toMatch(/written instructions, so you never depend on us/i)
+  })
+
   it('shows the work cards', () => {
     renderRoute('/')
     expect(screen.getByRole('heading', { name: 'Budget Stress Test' })).toBeInTheDocument()
