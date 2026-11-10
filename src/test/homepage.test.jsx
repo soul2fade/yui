@@ -54,12 +54,13 @@ describe('homepage', () => {
 
   it('shows all four price points and the custom-engagement callout', () => {
     renderRoute('/')
-    for (const price of ['$1,500', 'First call is free', '$3,500', '$5,000', '$10,000+']) {
+    for (const price of ['$1,500', 'First call is free', '$3,500+', '$5,000', '$10,000+']) {
       expect(screen.getByText(price)).toBeInTheDocument()
     }
-    // Essential is the recommended plan; Growth is a starting price set by SOW.
+    // Essential is the recommended plan at a fixed price. The Sprint and Growth are
+    // starting prices: the Sprint is quoted before work starts, Growth set by SOW.
     expect(screen.getByText('Recommended')).toBeInTheDocument()
-    expect(screen.getByText(/starting price/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/starting price/i)).toHaveLength(2)
     expect(screen.queryByText(/best value/i)).toBeNull()
     expect(screen.getByText(/custom engagements/i)).toBeInTheDocument()
   })
@@ -73,6 +74,43 @@ describe('homepage', () => {
     expect(pricing.textContent).toMatch(/more than 2 systems\? we split it into phases/i)
     // The quarterly caps were retired; the at-a-time limit is the only cap.
     expect(pricing.textContent).not.toMatch(/per quarter/i)
+  })
+
+  // Essential is a fixed price, so its limits are on the card and anything past
+  // them points to Growth. The rate lock is scoped to the same plan, so adding
+  // locations or systems is a plan change, not a broken promise.
+  it('states the Essential limits and the rate lock', () => {
+    renderRoute('/')
+    const pricing = document.getElementById('pricing')
+    expect(pricing.textContent).toMatch(/one process, up to 2 systems, one location/i)
+    expect(pricing.textContent).toMatch(/more locations or systems than essential covers\? that’s growth/i)
+    expect(pricing.textContent).toMatch(/rate stays locked for as long as you stay on the same plan/i)
+  })
+
+  // Build management is optional: the Sprint card offers it after the 30 days of
+  // fixes, and the FAQ carries its terms. The price must agree in both places.
+  it('offers build management after a Sprint and states its terms', () => {
+    renderRoute('/')
+    const pricing = document.getElementById('pricing')
+    expect(pricing.textContent).toMatch(/run it yourself, or we’ll keep it running for \$500 a month/i)
+    const faq = document.getElementById('faq')
+    expect(faq.textContent).toMatch(/what does build management cover\?/i)
+    expect(faq.textContent).toMatch(/\$500 a month per build/i)
+    expect(faq.textContent).toMatch(/reply within 1 business day/i)
+  })
+
+  // Builds run on accounts in the client's name from day one, so leaving moves
+  // nothing. This is what keeps "so you never depend on us" on the Sprint card
+  // true, and it must match the client agreement.
+  it('says the client owns every build and its accounts', () => {
+    renderRoute('/')
+    const faq = document.getElementById('faq')
+    expect(faq.textContent).toMatch(/who owns what you build/i)
+    expect(faq.textContent).toMatch(/runs on accounts in your name/i)
+    expect(faq.textContent).toMatch(/billed to you directly/i)
+    expect(faq.textContent).toMatch(/we remove our access/i)
+    const pricing = document.getElementById('pricing')
+    expect(pricing.textContent).toMatch(/written instructions, so you never depend on us/i)
   })
 
   it('shows the work cards', () => {
