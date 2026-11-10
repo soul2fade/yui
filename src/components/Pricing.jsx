@@ -18,19 +18,25 @@ const TIERS = [
   },
   {
     name: 'Workflow Sprint',
-    price: '$3,500',
+    // A starting price: the quote is fixed before work starts. Same "+" format as
+    // Growth so the price row stays on one line.
+    price: '$3,500+',
     cadence: 'one-time',
+    secondary: 'Starting price · fixed before we start',
     body: 'Pick the one bottleneck eating your week. We fix the process first, then build the system that runs it.',
     // The first point is the scope of one Sprint. Essential and Growth reuse it, so
     // change all three cards together if the system limit changes.
+    // The last point is build management. Its terms (what it covers, the reply
+    // time) live in the FAQ; change both together.
     points: [
       'One process, connecting up to 2 of the systems you already use',
       'For example: a new inquiry becomes a scheduled job; a closed job sends its invoice; vendor bills land in QuickBooks matched to the PO',
       'Scope signed off in week one, working by week four',
       'More than 2 systems? We split it into phases and price each one before we start',
-      'A 1-hour handoff session with the people who will use it',
+      'A 1-hour handoff with the person on your team who’ll own it',
       'Written instructions, so you never depend on us',
       'Fixes for 30 days after launch',
+      'After that, run it yourself, or we’ll keep it running for $500 a month',
     ],
   },
   {
@@ -41,10 +47,14 @@ const TIERS = [
     badge: 'Recommended',
     body: 'One Workflow Sprint always in progress, and a monthly check that your numbers agree across systems.',
     points: [
-      'One Workflow Sprint in progress at a time, same scope as a one-time Sprint',
+      // Fixed price, so the limits are written here. Past them is Growth (see the
+      // footnote under the cards).
+      'One Workflow Sprint in progress at a time: one process, up to 2 systems, one location',
       'A 30-minute priorities meeting every other week',
       'A monthly numbers review: whether your job, billing, and payroll numbers match across systems, and what to fix where they don’t',
-      'A monthly report: what we built, how often it ran, and the hours it saved',
+      'Clean numbers all year, ready for your CPA at year-end and your workers’ comp audit',
+      // Dollars come from the client's own pay rates, never an estimate.
+      'A monthly report: what we built, how often it ran, and the hours and dollars it’s saved since you joined',
       'Every 3 months: your next 3 builds, ranked by what each one saves',
       'Everything we build for you kept running while you’re on the plan',
     ],
@@ -238,8 +248,10 @@ export default function Pricing() {
 
         <p className="mt-5 text-sm text-muted">
           Both monthly plans are a month-to-month subscription, with 30 days’ notice to
-          cancel. *Growth starts at $10,000 a month and is priced in your Statement of
-          Work, based on your locations, systems, and team size.
+          cancel. Your monthly rate stays locked for as long as you stay on the same plan.
+          Need more locations or systems than Essential covers? That’s Growth. *Growth
+          starts at $10,000 a month and is priced in your Statement of Work, based on your
+          locations, systems, and team size.
         </p>
 
         <div id="remote-assessment" className="card mt-5 p-7 sm:p-8">

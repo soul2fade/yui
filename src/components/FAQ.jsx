@@ -4,6 +4,8 @@ import { Eyebrow, Headline } from './ui'
 // (Pricing, How it works, the remote assessment card). If one of those terms
 // changes, change it here too. Do not add answers about who owns a build after
 // cancellation until the client agreement settles it.
+// Exception: the build-management answer is where its terms are published (the
+// Sprint card only names the price). Keep the $500 in step with the Sprint card.
 const QUESTIONS = [
   {
     q: 'Do we have to switch software?',
@@ -16,6 +18,10 @@ const QUESTIONS = [
   {
     q: 'How does the $1,500 assessment credit work?',
     a: 'The full $1,500 counts toward your first month if you start a monthly plan within two weeks of your results. On-site and remote work the same way.',
+  },
+  {
+    q: 'What does build management cover?',
+    a: 'It keeps a finished build working, for $500 a month per build. We watch for failed runs, fix what breaks, and update the build when one of your systems changes how it connects. We reply within 1 business day. Anything new, like another step, another system, or a new report, is a new Workflow Sprint.',
   },
   {
     q: 'Can we cancel a monthly plan?',
