@@ -17,6 +17,23 @@ const FEATURED = {
     'Screen recording: the owner asks which completed jobs still need invoicing, the assistant lists ten unbilled jobs totaling $14,600, then drafts an invoice for each one.',
 }
 
+// A real test call, recorded on the pipeline and the owner's phone at the same
+// time and cut into one synced clip. The caller was a real person, so her name,
+// photo and number are blurred in every frame, and the card has to say so. The
+// other pipeline rows are seeded sample data. Captions are burned in because
+// browsers only autoplay muted video.
+const LIVE_TEST = {
+  kicker: 'Live test',
+  name: 'Missed-Call Follow-Up',
+  body:
+    "A call goes unanswered. The caller gets a text back, their reply lands in the lead pipeline, and the owner gets one text asking whether it is a real lead. One reply qualifies it and sends the caller a booking link. In this test the first call was missed at 8:38 PM and the appointment was booked by 8:42. The caller's name, photo and number are blurred. The other pipeline rows are sample data.",
+  facts: ['Missed call to text back', 'One reply qualifies the lead', 'The caller picks the time'],
+  video: '/work/missed-call-live-test.mp4',
+  poster: '/work/missed-call-live-test.jpg',
+  label:
+    "Screen recording of a live test, with the lead pipeline on the left and the owner's phone on the right: a missed call, the caller's text reply landing in the pipeline, the owner replying 1 to qualify the lead, and the booking arriving at 8:42, four minutes after the first missed call at 8:38. The caller's name, photo and number are blurred.",
+}
+
 // Screenshots are captured from the live demos at 1200x800.
 const PROJECTS = [
   {
@@ -65,7 +82,14 @@ function ProjectLink({ href, children }) {
 
 // Loops silently like a GIF, except for visitors who ask for reduced motion, who
 // get the poster frame and the player controls instead.
-function FeaturedVideo({ src, poster, label }) {
+function FeaturedVideo({
+  src,
+  poster,
+  label,
+  width = '1120',
+  height = '1030',
+  className = 'aspect-[1120/1030] w-full border-b border-line bg-paper object-cover lg:border-r lg:border-b-0',
+}) {
   const ref = useRef(null)
   useEffect(() => {
     const video = ref.current
@@ -80,15 +104,15 @@ function FeaturedVideo({ src, poster, label }) {
       ref={ref}
       src={src}
       poster={poster}
-      width="1120"
-      height="1030"
+      width={width}
+      height={height}
       autoPlay
       muted
       loop
       playsInline
       preload="metadata"
       aria-label={label}
-      className="aspect-[1120/1030] w-full border-b border-line bg-paper object-cover lg:border-r lg:border-b-0"
+      className={className}
     />
   )
 }
@@ -102,8 +126,9 @@ export default function Work() {
           Things we have actually shipped
         </Headline>
         <p className="mt-5 max-w-xl leading-relaxed text-muted">
-          Everything here runs on sample data. Watch the custom build, or open either
-          demo and click around.
+          The custom build and both demos run on sample data. The live test is a real
+          call, with the caller&apos;s details blurred. Watch the recordings, or open
+          either demo and click around.
         </p>
 
         <article className="card mt-14 grid overflow-hidden lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
@@ -163,6 +188,38 @@ export default function Work() {
             </article>
           ))}
         </div>
+
+        {/* Full width, video on top: the clip is 16:9 with burned-in captions, and
+            a half-width column would shrink the captions past reading size. */}
+        <article className="card mt-5 overflow-hidden">
+          <FeaturedVideo
+            src={LIVE_TEST.video}
+            poster={LIVE_TEST.poster}
+            label={LIVE_TEST.label}
+            width="1920"
+            height="1080"
+            className="aspect-video w-full border-b border-line bg-paper object-cover"
+          />
+          <div className="grid gap-6 p-7 sm:p-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-10 lg:p-10">
+            <div>
+              <span className="mono text-accent">{LIVE_TEST.kicker}</span>
+              <h3
+                className="mt-4 text-2xl text-ink sm:text-3xl"
+                style={{ fontWeight: 600, letterSpacing: '-0.03em' }}
+              >
+                {LIVE_TEST.name}
+              </h3>
+              <p className="mt-3.5 leading-relaxed text-muted">{LIVE_TEST.body}</p>
+            </div>
+            <ul className="space-y-2.5 border-t border-line pt-6 lg:self-end lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
+              {LIVE_TEST.facts.map((fact) => (
+                <li key={fact} className="mono text-muted">
+                  {fact}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
       </div>
     </section>
   )
