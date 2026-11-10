@@ -126,12 +126,44 @@ export default function Work() {
           Things we have actually shipped
         </Headline>
         <p className="mt-5 max-w-xl leading-relaxed text-muted">
-          The custom build and both demos run on sample data. The live test is a real
-          call, with the caller&apos;s details blurred. Watch the recordings, or open
+          The live test is a real call, with the caller&apos;s details blurred. The
+          custom build and both demos run on sample data. Watch the recordings, or open
           either demo and click around.
         </p>
 
-        <article className="card mt-14 grid overflow-hidden lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+        {/* Leads the section: the strongest example. Full width, video on top: the clip is 16:9 with burned-in captions, and
+            a half-width column would shrink the captions past reading size. */}
+        <article className="card mt-14 overflow-hidden">
+          <FeaturedVideo
+            src={LIVE_TEST.video}
+            poster={LIVE_TEST.poster}
+            label={LIVE_TEST.label}
+            width="1920"
+            height="1080"
+            className="aspect-video w-full border-b border-line bg-paper object-cover"
+          />
+          <div className="grid gap-6 p-7 sm:p-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-10 lg:p-10">
+            <div>
+              <span className="mono text-accent">{LIVE_TEST.kicker}</span>
+              <h3
+                className="mt-4 text-2xl text-ink sm:text-3xl"
+                style={{ fontWeight: 600, letterSpacing: '-0.03em' }}
+              >
+                {LIVE_TEST.name}
+              </h3>
+              <p className="mt-3.5 leading-relaxed text-muted">{LIVE_TEST.body}</p>
+            </div>
+            <ul className="space-y-2.5 border-t border-line pt-6 lg:self-end lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
+              {LIVE_TEST.facts.map((fact) => (
+                <li key={fact} className="mono text-muted">
+                  {fact}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+
+        <article className="card mt-5 grid overflow-hidden lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
           <FeaturedVideo src={FEATURED.video} poster={FEATURED.poster} label={FEATURED.label} />
           <div className="flex flex-col p-7 sm:p-8 lg:p-10">
             <span className="mono text-accent">{FEATURED.kicker}</span>
@@ -188,38 +220,6 @@ export default function Work() {
             </article>
           ))}
         </div>
-
-        {/* Full width, video on top: the clip is 16:9 with burned-in captions, and
-            a half-width column would shrink the captions past reading size. */}
-        <article className="card mt-5 overflow-hidden">
-          <FeaturedVideo
-            src={LIVE_TEST.video}
-            poster={LIVE_TEST.poster}
-            label={LIVE_TEST.label}
-            width="1920"
-            height="1080"
-            className="aspect-video w-full border-b border-line bg-paper object-cover"
-          />
-          <div className="grid gap-6 p-7 sm:p-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-10 lg:p-10">
-            <div>
-              <span className="mono text-accent">{LIVE_TEST.kicker}</span>
-              <h3
-                className="mt-4 text-2xl text-ink sm:text-3xl"
-                style={{ fontWeight: 600, letterSpacing: '-0.03em' }}
-              >
-                {LIVE_TEST.name}
-              </h3>
-              <p className="mt-3.5 leading-relaxed text-muted">{LIVE_TEST.body}</p>
-            </div>
-            <ul className="space-y-2.5 border-t border-line pt-6 lg:self-end lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10">
-              {LIVE_TEST.facts.map((fact) => (
-                <li key={fact} className="mono text-muted">
-                  {fact}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </article>
       </div>
     </section>
   )

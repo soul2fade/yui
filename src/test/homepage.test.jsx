@@ -126,12 +126,22 @@ describe('homepage', () => {
     renderRoute('/')
     const work = document.getElementById('work')
     expect(work.textContent).toMatch(/fictional business and invented customers/i)
-    expect(work.querySelector('video')).toHaveAttribute('src', '/work/ai-operations-assistant.mp4')
+    const srcs = [...work.querySelectorAll('video')].map((v) => v.getAttribute('src'))
+    expect(srcs).toContain('/work/ai-operations-assistant.mp4')
   })
 
   // The live test is a real call from a real person. Her details are blurred in
   // the recording, and every other pipeline row is seeded. The card has to say
   // both, or the clip reads as a customer result.
+  // The live test leads the section: it is the strongest example.
+  it('shows the live test first in the work section', () => {
+    renderRoute('/')
+    const work = document.getElementById('work')
+    const headings = [...work.querySelectorAll('h3')].map((h) => h.textContent)
+    expect(headings[0]).toBe('Missed-Call Follow-Up')
+    expect(work.querySelector('video')).toHaveAttribute('src', '/work/missed-call-live-test.mp4')
+  })
+
   it('labels the live test as a real call with blurred caller details', () => {
     renderRoute('/')
     const work = document.getElementById('work')
