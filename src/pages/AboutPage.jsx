@@ -1,6 +1,6 @@
 import Meta from '../components/Meta'
 import NameCard from '../components/NameCard'
-import { BookingLink, Credentials, Eyebrow, Headline, Stat } from '../components/ui'
+import { BookingLink, Credentials, Eyebrow, Headline, Stat, Testimonial } from '../components/ui'
 import { EMAIL, STATS } from '../site'
 
 // Voice note: the About page speaks as "I" throughout. Every other page is "we".
@@ -87,6 +87,8 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
+
+            <Testimonial className="mt-5" />
 
             <Credentials className="mt-10" />
           </div>

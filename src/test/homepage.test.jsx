@@ -181,10 +181,36 @@ describe('homepage', () => {
     }
   })
 
-  it('carries no testimonial block', () => {
-    const { container } = renderRoute('/')
-    expect(container.querySelector('blockquote')).toBeNull()
-    expect(screen.queryByText(/testimonial/i)).toBeNull()
+  // The site used to assert that no testimonial existed, because there was no
+  // real one to show. Now there is one, from a named person, so the guard flips:
+  // the quote must match what he supplied word for word, carry his attribution,
+  // and sit in the About section, because it describes Daniel's work as a
+  // university employee rather than a Yui client engagement.
+  const QUOTE =
+    'Daniel took a fragmented budget and reporting process, spread across multiple disconnected systems, and transformed it into a streamlined, integrated solution. One of his most valuable contributions was developing a student-athlete financial aid tracker that provided coaches with real-time roster information and a clear understanding of available scholarship and academic aid dollars, allowing them to make informed recruiting offers. What impressed me most about Daniel was his ability to move beyond identifying problems and recommending solutions. He worked directly alongside the people involved, developed practical solutions, and ensured they were effective and sustainable. Daniel brings a rare combination of technical expertise, problem-solving ability, and a hands-on approach to his work. Any organization navigating complex processes and disconnected systems would be fortunate to have him on their team.'
+
+  it.each([
+    ['/', 'about'],
+    ['/about', 'about-page'],
+  ])('%s carries the athletic director reference verbatim, attributed', (path, scope) => {
+    const { container } = renderRoute(path)
+    const quotes = container.querySelectorAll('blockquote')
+    expect(quotes).toHaveLength(1)
+    expect(quotes[0].textContent).toBe(QUOTE)
+    const figure = quotes[0].closest('figure')
+    expect(figure.querySelector('figcaption').textContent).toMatch(/Scott Sorgea/)
+    expect(figure.querySelector('figcaption').textContent).toMatch(
+      /Athletic Director, Jessup University/
+    )
+    const home = scope === 'about' ? document.getElementById('about') : screen.getByTestId(scope)
+    expect(home.contains(figure)).toBe(true)
+  })
+
+  it('keeps the reference out of the Work and Pricing sections', () => {
+    renderRoute('/')
+    for (const id of ['work', 'pricing']) {
+      expect(document.getElementById(id).querySelector('blockquote')).toBeNull()
+    }
   })
 
   it('states the three track-record stats and links to the About page', () => {
