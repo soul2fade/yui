@@ -1,5 +1,35 @@
 import { Link } from 'react-router-dom'
-import { BOOKING_HREF, CREDENTIALS } from '../site'
+import { BOOKING_HREF, CREDENTIALS, TESTIMONIAL } from '../site'
+
+// The athletic director's reference, read from TESTIMONIAL in site.js. A figure
+// with a blockquote and figcaption, so the quote and the person who said it are
+// tied together for screen readers as well as on screen. The quote renders in
+// full; see the rules beside TESTIMONIAL before changing it.
+export function Testimonial({ className = '' }) {
+  const { quote, name, title, organization } = TESTIMONIAL
+  return (
+    <figure className={`card p-6 sm:p-10 ${className}`}>
+      <span
+        aria-hidden="true"
+        className="block text-5xl leading-none text-accent"
+        style={{ fontWeight: 600 }}
+      >
+        &ldquo;
+      </span>
+      <blockquote className="mt-2">
+        <p className="text-lg leading-relaxed text-ink">{quote}</p>
+      </blockquote>
+      <figcaption className="mt-8 border-t border-line pt-6">
+        <p className="text-[0.9375rem] text-ink" style={{ fontWeight: 600 }}>
+          {name}
+        </p>
+        <p className="mono mt-2 text-muted">
+          {title}, {organization}
+        </p>
+      </figcaption>
+    </figure>
+  )
+}
 
 // Mono eyebrow: Geist Mono, uppercase, 0.12em tracking, 11px.
 export function Eyebrow({ children, tone = 'accent', className = '' }) {

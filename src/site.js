@@ -81,6 +81,27 @@ export const CREDENTIALS = [
   },
 ]
 
+// Reference from Daniel's athletic director, shown on the homepage About section
+// and the About page. Rules for this block:
+//
+// 1. The quote is verbatim, as Scott Sorgea supplied it on 2026-11-24. Do not
+//    trim, reorder or "tighten" it. A shortened quote is a different statement
+//    than the one he gave. If it ever needs to be shorter, ask him for a short
+//    version.
+// 2. The attribution is the one he signed: "Jessup University" is the school's
+//    public name since its 2023 rebrand (its legal name is still William Jessup
+//    University, which is why STATS below uses the long form).
+// 3. It lives in the About section on purpose. It describes Daniel's work as an
+//    employee of the university, not a Yui engagement, so it must not be framed
+//    as a client testimonial.
+export const TESTIMONIAL = {
+  quote:
+    'Daniel took a fragmented budget and reporting process, spread across multiple disconnected systems, and transformed it into a streamlined, integrated solution. One of his most valuable contributions was developing a student-athlete financial aid tracker that provided coaches with real-time roster information and a clear understanding of available scholarship and academic aid dollars, allowing them to make informed recruiting offers. What impressed me most about Daniel was his ability to move beyond identifying problems and recommending solutions. He worked directly alongside the people involved, developed practical solutions, and ensured they were effective and sustainable. Daniel brings a rare combination of technical expertise, problem-solving ability, and a hands-on approach to his work. Any organization navigating complex processes and disconnected systems would be fortunate to have him on their team.',
+  name: 'Scott Sorgea',
+  title: 'Athletic Director',
+  organization: 'Jessup University',
+}
+
 // Shown on the homepage About section and again on the About page.
 export const STATS = [
   { figure: '$3.2B', label: 'Assets managed', detail: 'Folio Dynamix' },
